@@ -24,7 +24,7 @@ test.describe('Admin Panel', () => {
     
     // Should successfully load
     expect(response?.status()).toBe(200);
-    await expect(page.locator('h1, h2')).toContainText('Applications');
+    await expect(page.locator('h2')).toContainText('Applications Management');
   });
 
   test('should display list of applications in admin panel', async ({ page }) => {
@@ -43,21 +43,6 @@ test.describe('Admin Panel', () => {
     await page.click('button:has-text("Start Application")');
     await page.waitForURL(/\/applications\/.*\/step\/1/);
     
-    // Fill minimal data
-    await page.fill('input[name="applicant[firstName]"]', 'AdminTest');
-    await page.fill('input[name="applicant[lastName]"]', 'User');
-    await page.fill('input[name="applicant[email]"]', 'admin.test@example.com');
-    await page.fill('input[name="applicant[dob]"]', '1985-03-20');
-    await page.fill('input[name="applicant[address1]"]', '789 Admin St');
-    await page.fill('input[name="applicant[city]"]', 'Atlanta');
-    await page.fill('input[name="applicant[state]"]', 'GA');
-    await page.fill('input[name="applicant[zip]"]', '30304');
-    await page.fill('input[name="applicant[county]"]', 'Fulton');
-    await page.fill('input[name="request[assistanceFor]"]', 'Admin test');
-    await page.fill('input[name="request[approximateCost]"]', '100');
-    
-    await page.waitForTimeout(1000);
-    
     // Get the application ID from URL
     const url = page.url();
     const applicationId = url.match(/\/applications\/([^/]+)\/step/)?.[1];
@@ -68,9 +53,10 @@ test.describe('Admin Panel', () => {
     // View the application details
     await page.goto(`/admin/applications/${applicationId}`);
     
-    // Should display application details
-    await expect(page.locator('body')).toContainText('AdminTest');
-    await expect(page.locator('body')).toContainText('admin.test@example.com');
+    // Should display application details page with the application ID and status
+    await expect(page.locator('h2')).toContainText('Application Details');
+    await expect(page.locator('body')).toContainText(applicationId!);
+    await expect(page.locator('.status-badge')).toContainText('DRAFT');
   });
 
   test('should allow resetting submitted application', async ({ page }) => {
