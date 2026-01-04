@@ -41,6 +41,7 @@ test.describe('Admin Panel', () => {
     // First, create an application via the public form
     await page.goto('/');
     await page.click('button:has-text("Start Application")');
+    await page.waitForURL(/\/applications\/.*\/step\/1/);
     
     // Fill minimal data
     await page.fill('input[name="applicant[firstName]"]', 'AdminTest');
@@ -76,6 +77,7 @@ test.describe('Admin Panel', () => {
     // Create and submit a complete application first
     await page.goto('/');
     await page.click('button:has-text("Start Application")');
+    await page.waitForURL(/\/applications\/.*\/step\/1/);
     
     // Fill all required fields (abbreviated for brevity)
     await page.fill('input[name="applicant[firstName]"]', 'ResetTest');
