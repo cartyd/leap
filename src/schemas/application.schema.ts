@@ -40,7 +40,7 @@ export const medicalHistorySchema = z.object({
 });
 
 export const medicalCoverageSchema = z.object({
-  hasInsurance: z.boolean(),
+  hasInsurance: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true'),
   coverageType: z.enum(['Medicaid', 'Medicare', 'Private', 'None']).optional().or(z.literal('')),
   privateInsuranceName: z.string().optional().or(z.literal('')),
   rxCoverage: z.enum(['Yes', 'No', 'Copay']).optional().or(z.literal('')),
@@ -66,15 +66,15 @@ export const medicalCoverageSchema = z.object({
 
 // Income information
 export const incomeSchema = z.object({
-  appliedDisability: z.boolean().optional(),
+  appliedDisability: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true').optional(),
   receives: z.object({
-    ssdi: z.boolean().optional(),
-    ssi: z.boolean().optional(),
+    ssdi: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true').optional(),
+    ssi: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true').optional(),
     monthlyAmount: currencySchema.optional().or(z.literal('')),
   }),
-  currentlyEmployed: z.boolean().optional(),
+  currentlyEmployed: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true').optional(),
   unemployment: z.object({
-    receiving: z.boolean().optional(),
+    receiving: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true').optional(),
     amount: currencySchema.optional().or(z.literal('')),
   }),
   otherIncome: z.string().optional().or(z.literal('')),
@@ -120,7 +120,7 @@ export const dependentsSchema = z.object({
 });
 
 export const residencySchema = z.object({
-  residencyGA: z.boolean(),
+  residencyGA: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true'),
 });
 
 // Resources contacted
@@ -197,7 +197,7 @@ export const step3Schema = z.object({
 
 export const step4Schema = z.object({
   dependents: dependentsSchema.partial().optional(),
-  residencyGA: z.boolean().optional(),
+  residencyGA: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true').optional(),
   resourcesContacted: z.array(resourceSchema).max(4).optional(),
 });
 

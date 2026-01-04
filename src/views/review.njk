@@ -1,0 +1,239 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div class="progress-bar">
+  <div class="progress-step">1. Applicant Info</div>
+  <div class="progress-step">2. Medical</div>
+  <div class="progress-step">3. Income</div>
+  <div class="progress-step">4. Residency</div>
+  <div class="progress-step">5. Request</div>
+  <div class="progress-step">6. Certification</div>
+</div>
+
+<h2>Review Your Application</h2>
+
+<p class="review-instructions">
+  Please review all information below before submitting your application. 
+  If you need to make changes, use the links to return to specific steps.
+</p>
+
+<div class="review-sections">
+  <section class="review-section">
+    <div class="section-header">
+      <h3>Applicant Information</h3>
+      <a href="/applications/{{ application.id }}/step/1" class="edit-link">Edit</a>
+    </div>
+    <dl class="review-list">
+      {% if application.data.guardianName %}
+        <dt>Guardian Name:</dt>
+        <dd>{{ application.data.guardianName }}</dd>
+      {% endif %}
+      
+      <dt>Name:</dt>
+      <dd>{{ application.data.applicant.firstName }} {% if application.data.applicant.middleInitial %}{{ application.data.applicant.middleInitial }}. {% endif %}{{ application.data.applicant.lastName }}</dd>
+      
+      <dt>Email:</dt>
+      <dd>{{ application.data.applicant.email }}</dd>
+      
+      <dt>Date of Birth:</dt>
+      <dd>{{ application.data.applicant.dob | date }}</dd>
+      
+      <dt>Address:</dt>
+      <dd>
+        {{ application.data.applicant.address1 }}<br>
+        {{ application.data.applicant.city }}, {{ application.data.applicant.state }} {{ application.data.applicant.zip }}<br>
+        {{ application.data.applicant.county }} County
+      </dd>
+      
+      {% if application.data.applicant.phoneHome %}
+        <dt>Home Phone:</dt>
+        <dd>{{ application.data.applicant.phoneHome }}</dd>
+      {% endif %}
+      
+      {% if application.data.applicant.phoneCell %}
+        <dt>Cell Phone:</dt>
+        <dd>{{ application.data.applicant.phoneCell }}</dd>
+      {% endif %}
+    </dl>
+  </section>
+
+  <section class="review-section">
+    <div class="section-header">
+      <h3>Request Information</h3>
+      <a href="/applications/{{ application.id }}/step/1" class="edit-link">Edit</a>
+    </div>
+    <dl class="review-list">
+      <dt>Requesting Assistance For:</dt>
+      <dd>{{ application.data.request.assistanceFor }}</dd>
+      
+      <dt>Approximate Cost:</dt>
+      <dd>{{ application.data.request.approximateCost | currency }}</dd>
+    </dl>
+  </section>
+
+  <section class="review-section">
+    <div class="section-header">
+      <h3>Medical Information</h3>
+      <a href="/applications/{{ application.id }}/step/2" class="edit-link">Edit</a>
+    </div>
+    <dl class="review-list">
+      {% if application.data.medicalHistory.diagnosisYear %}
+        <dt>Year of Diagnosis:</dt>
+        <dd>{{ application.data.medicalHistory.diagnosisYear }}</dd>
+      {% endif %}
+      
+      {% if application.data.medicalHistory.lupusType %}
+        <dt>Type of Lupus:</dt>
+        <dd>{{ application.data.medicalHistory.lupusType }}</dd>
+      {% endif %}
+      
+      {% if application.data.medicalHistory.physicianName %}
+        <dt>Physician:</dt>
+        <dd>{{ application.data.medicalHistory.physicianName }}</dd>
+      {% endif %}
+      
+      <dt>Has Insurance:</dt>
+      <dd>{{ "Yes" if application.data.medicalCoverage.hasInsurance else "No" }}</dd>
+      
+      {% if application.data.medicalCoverage.coverageType %}
+        <dt>Coverage Type:</dt>
+        <dd>{{ application.data.medicalCoverage.coverageType }}</dd>
+        
+        {% if application.data.medicalCoverage.privateInsuranceName %}
+          <dt>Insurance Name:</dt>
+          <dd>{{ application.data.medicalCoverage.privateInsuranceName }}</dd>
+        {% endif %}
+      {% endif %}
+      
+      {% if application.data.medicalCoverage.rxCoverage %}
+        <dt>Prescription Coverage:</dt>
+        <dd>{{ application.data.medicalCoverage.rxCoverage }}</dd>
+      {% endif %}
+    </dl>
+  </section>
+
+  <section class="review-section">
+    <div class="section-header">
+      <h3>Income & Employment</h3>
+      <a href="/applications/{{ application.id }}/step/3" class="edit-link">Edit</a>
+    </div>
+    <dl class="review-list">
+      {% if application.data.income.receives.ssdi or application.data.income.receives.ssi %}
+        <dt>Receives:</dt>
+        <dd>
+          {% if application.data.income.receives.ssdi %}SSDI{% endif %}
+          {% if application.data.income.receives.ssi %}{% if application.data.income.receives.ssdi %}, {% endif %}SSI{% endif %}
+          {% if application.data.income.receives.monthlyAmount %}
+            - {{ application.data.income.receives.monthlyAmount | currency }}/month
+          {% endif %}
+        </dd>
+      {% endif %}
+      
+      {% if application.data.employmentApplicant.employerName %}
+        <dt>Employer:</dt>
+        <dd>{{ application.data.employmentApplicant.employerName }}</dd>
+      {% endif %}
+      
+      {% if application.data.employmentApplicant.status %}
+        <dt>Employment Status:</dt>
+        <dd>{{ application.data.employmentApplicant.status }}</dd>
+      {% endif %}
+      
+      {% if application.data.employmentApplicant.grossIncome %}
+        <dt>Gross Income:</dt>
+        <dd>{{ application.data.employmentApplicant.grossIncome | currency }}</dd>
+      {% endif %}
+    </dl>
+  </section>
+
+  <section class="review-section">
+    <div class="section-header">
+      <h3>Residency & Dependents</h3>
+      <a href="/applications/{{ application.id }}/step/4" class="edit-link">Edit</a>
+    </div>
+    <dl class="review-list">
+      <dt>Georgia Resident:</dt>
+      <dd>{{ "Yes" if application.data.residencyGA else "No" }}</dd>
+      
+      {% if application.data.dependents.count %}
+        <dt>Number of Dependents:</dt>
+        <dd>{{ application.data.dependents.count }}</dd>
+      {% endif %}
+      
+      {% if application.data.dependents.agesText %}
+        <dt>Dependent Ages:</dt>
+        <dd>{{ application.data.dependents.agesText }}</dd>
+      {% endif %}
+    </dl>
+  </section>
+
+  <section class="review-section">
+    <div class="section-header">
+      <h3>Nature of Request</h3>
+      <a href="/applications/{{ application.id }}/step/5" class="edit-link">Edit</a>
+    </div>
+    <p>{{ application.data.natureOfRequest }}</p>
+  </section>
+
+  <section class="review-section">
+    <div class="section-header">
+      <h3>Vendors</h3>
+      <a href="/applications/{{ application.id }}/step/5" class="edit-link">Edit</a>
+    </div>
+    {% for vendor in application.data.vendors %}
+      {% if vendor.vendorName %}
+        <div class="vendor-review">
+          <h4>{{ vendor.vendorName }}</h4>
+          {% if vendor.contactPerson %}
+            <p><strong>Contact:</strong> {{ vendor.contactPerson }}</p>
+          {% endif %}
+          {% if vendor.telephone %}
+            <p><strong>Phone:</strong> {{ vendor.telephone }}</p>
+          {% endif %}
+          {% if vendor.amountRequesting %}
+            <p><strong>Amount Requesting:</strong> {{ vendor.amountRequesting | currency }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </section>
+
+  {% if application.data.certification %}
+  <section class="review-section">
+    <div class="section-header">
+      <h3>Certification</h3>
+      <a href="/applications/{{ application.id }}/step/6" class="edit-link">Edit</a>
+    </div>
+    <dl class="review-list">
+      <dt>Signature:</dt>
+      <dd>{{ application.data.certification.applicantSignatureTyped }}</dd>
+      
+      <dt>Date Signed:</dt>
+      <dd>{{ application.data.certification.dateSigned | date }}</dd>
+    </dl>
+  </section>
+  {% endif %}
+
+  {% if uploads and uploads.length > 0 %}
+  <section class="review-section">
+    <h3>Uploaded Documents</h3>
+    <ul class="upload-list">
+      {% for upload in uploads %}
+        <li>{{ upload.category }}: {{ upload.filename }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</div>
+
+<div class="review-actions">
+  <form method="POST" action="/applications/{{ application.id }}/submit">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    
+    <div class="form-navigation">
+      <a href="/applications/{{ application.id }}/step/6" class="btn-secondary">← Back to Step 6</a>
+      <button type="submit" class="btn-primary">Submit Application</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

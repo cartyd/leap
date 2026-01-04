@@ -48,7 +48,7 @@ test.describe('Emergency Assistance Fund Application', () => {
     await page.fill('input[name="medicalHistory[physicianPhone]"]', '404-555-9999');
 
     // Fill medical coverage
-    await page.check('input[name="medicalCoverage[hasInsurance]"][value="true"]');
+    await page.check('input[name="medicalCoverage[hasInsurance]"]');
     await page.selectOption('select[name="medicalCoverage[coverageType]"]', 'Private');
     await page.fill('input[name="medicalCoverage[privateInsuranceName]"]', 'Blue Cross Blue Shield');
     await page.selectOption('select[name="medicalCoverage[rxCoverage]"]', 'Copay');
@@ -61,11 +61,10 @@ test.describe('Emergency Assistance Fund Application', () => {
     await expect(page.locator('h2')).toContainText('Step 3');
 
     // Income information
-    await page.check('input[name="income[appliedDisability]"][value="true"]');
+    await page.check('input[name="income[appliedDisability]"]');
     await page.check('input[name="income[receives][ssdi]"]');
     await page.fill('input[name="income[receives][monthlyAmount]"]', '1200');
-    await page.check('input[name="income[currentlyEmployed]"][value="false"]');
-    await page.check('input[name="income[unemployment][receiving]"][value="false"]');
+    // Leave currentlyEmployed and unemployment.receiving unchecked (default state)
 
     // Employment applicant
     await page.fill('input[name="employmentApplicant[employerName]"]', '');
@@ -82,17 +81,18 @@ test.describe('Emergency Assistance Fund Application', () => {
     await page.fill('input[name="dependents[agesText]"]', '8, 12');
 
     // Residency
-    await page.check('input[name="residencyGA"][value="true"]');
+    await page.check('input[name="residencyGA"]');
 
     // Resources contacted
     await page.fill('input[name="resourcesContacted[0][nameOrAgency]"]', 'United Way');
-    await page.fill('input[name="resourcesContacted[0][outcome]"]', 'Referred to other programs');
+    await page.fill('textarea[name="resourcesContacted[0][outcome]"]', 'Referred to other programs');
 
     await page.waitForTimeout(1000);
     await page.click('button:has-text("Continue to Step 5")');
+    await page.waitForTimeout(1000);
 
     // Step 5: Nature of Request & Vendors
-    await expect(page.locator('h2')).toContainText('Step 5');
+    await expect(page.locator('h2')).toContainText('Step 5: Request Details & Vendors');
 
     // Nature of request
     await page.fill('textarea[name="natureOfRequest"]', 'I am requesting assistance to cover outstanding medical bills from recent hospitalization and ongoing prescription medication costs. I am currently unemployed and receiving disability benefits which are insufficient to cover these expenses.');
@@ -197,7 +197,7 @@ test.describe('Emergency Assistance Fund Application', () => {
     await page.click('button:has-text("Continue to Step 2")');
 
     // Select private insurance without providing name
-    await page.check('input[name="medicalCoverage[hasInsurance]"][value="true"]');
+    await page.check('input[name="medicalCoverage[hasInsurance]"]');
     await page.selectOption('select[name="medicalCoverage[coverageType]"]', 'Private');
     await page.selectOption('select[name="medicalCoverage[rxCoverage]"]', 'Yes');
 
