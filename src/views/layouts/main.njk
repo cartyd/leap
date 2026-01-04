@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Emergency Assistance Fund Application{% endblock %}</title>
+  <link rel="stylesheet" href="/public/styles.css">
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <header>
+    <h1>Emergency Assistance Fund Application</h1>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

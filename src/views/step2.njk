@@ -1,0 +1,150 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div class="progress-bar">
+  <div class="progress-step">1. Applicant Info</div>
+  <div class="progress-step active">2. Medical</div>
+  <div class="progress-step">3. Income</div>
+  <div class="progress-step">4. Residency</div>
+  <div class="progress-step">5. Request</div>
+  <div class="progress-step">6. Certification</div>
+</div>
+
+<h2>Step 2: Medical Information</h2>
+
+<form method="POST" action="/applications/{{ application.id }}/step/2" 
+      hx-trigger="change delay:500ms" 
+      hx-post="/applications/{{ application.id }}/autosave"
+      hx-target="#autosave-indicator"
+      hx-swap="innerHTML">
+  
+  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  
+  <div id="autosave-indicator"></div>
+
+  <fieldset>
+    <legend>Medical History</legend>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="medicalHistory.diagnosisYear">Year of Diagnosis</label>
+        <input type="number" id="medicalHistory.diagnosisYear" name="medicalHistory[diagnosisYear]" 
+               min="1900" max="{{ "now" | date("yyyy") }}" 
+               value="{{ application.data.medicalHistory.diagnosisYear or '' }}">
+        {% if errors['medicalHistory.diagnosisYear'] %}
+          <div class="error">{{ errors['medicalHistory.diagnosisYear'] }}</div>
+        {% endif %}
+      </div>
+      
+      <div class="form-group">
+        <label for="medicalHistory.lupusType">Type of Lupus</label>
+        <select id="medicalHistory.lupusType" name="medicalHistory[lupusType]">
+          <option value="">Select...</option>
+          <option value="Discoid" {{ "selected" if application.data.medicalHistory.lupusType == "Discoid" }}>Discoid</option>
+          <option value="Systemic" {{ "selected" if application.data.medicalHistory.lupusType == "Systemic" }}>Systemic</option>
+          <option value="Both" {{ "selected" if application.data.medicalHistory.lupusType == "Both" }}>Both</option>
+          <option value="Unknown" {{ "selected" if application.data.medicalHistory.lupusType == "Unknown" }}>Unknown</option>
+        </select>
+        {% if errors['medicalHistory.lupusType'] %}
+          <div class="error">{{ errors['medicalHistory.lupusType'] }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="medicalHistory.physicianName">Physician Name</label>
+        <input type="text" id="medicalHistory.physicianName" name="medicalHistory[physicianName]" 
+               value="{{ application.data.medicalHistory.physicianName or '' }}">
+        {% if errors['medicalHistory.physicianName'] %}
+          <div class="error">{{ errors['medicalHistory.physicianName'] }}</div>
+        {% endif %}
+      </div>
+      
+      <div class="form-group">
+        <label for="medicalHistory.physicianPhone">Physician Phone</label>
+        <input type="tel" id="medicalHistory.physicianPhone" name="medicalHistory[physicianPhone]" 
+               value="{{ application.data.medicalHistory.physicianPhone or '' }}">
+        {% if errors['medicalHistory.physicianPhone'] %}
+          <div class="error">{{ errors['medicalHistory.physicianPhone'] }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Medical Coverage</legend>
+    
+    <div class="form-group">
+      <label>
+        <input type="checkbox" id="medicalCoverage.hasInsurance" name="medicalCoverage[hasInsurance]" 
+               value="true" {{ "checked" if application.data.medicalCoverage.hasInsurance }}>
+        Has Health Insurance
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="medicalCoverage.coverageType">Coverage Type</label>
+      <select id="medicalCoverage.coverageType" name="medicalCoverage[coverageType]">
+        <option value="">Select...</option>
+        <option value="Medicaid" {{ "selected" if application.data.medicalCoverage.coverageType == "Medicaid" }}>Medicaid</option>
+        <option value="Medicare" {{ "selected" if application.data.medicalCoverage.coverageType == "Medicare" }}>Medicare</option>
+        <option value="Private" {{ "selected" if application.data.medicalCoverage.coverageType == "Private" }}>Private</option>
+        <option value="None" {{ "selected" if application.data.medicalCoverage.coverageType == "None" }}>None</option>
+      </select>
+      {% if errors['medicalCoverage.coverageType'] %}
+        <div class="error">{{ errors['medicalCoverage.coverageType'] }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-group" id="privateInsuranceNameGroup" style="display: {{ 'block' if application.data.medicalCoverage.coverageType == 'Private' else 'none' }}">
+      <label for="medicalCoverage.privateInsuranceName">Private Insurance Name</label>
+      <input type="text" id="medicalCoverage.privateInsuranceName" name="medicalCoverage[privateInsuranceName]" 
+             value="{{ application.data.medicalCoverage.privateInsuranceName or '' }}">
+      {% if errors['medicalCoverage.privateInsuranceName'] %}
+        <div class="error">{{ errors['medicalCoverage.privateInsuranceName'] }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label for="medicalCoverage.rxCoverage">Prescription Drug Coverage</label>
+      <select id="medicalCoverage.rxCoverage" name="medicalCoverage[rxCoverage]">
+        <option value="">Select...</option>
+        <option value="Yes" {{ "selected" if application.data.medicalCoverage.rxCoverage == "Yes" }}>Yes</option>
+        <option value="No" {{ "selected" if application.data.medicalCoverage.rxCoverage == "No" }}>No</option>
+        <option value="Copay" {{ "selected" if application.data.medicalCoverage.rxCoverage == "Copay" }}>Copay</option>
+      </select>
+      {% if errors['medicalCoverage.rxCoverage'] %}
+        <div class="error">{{ errors['medicalCoverage.rxCoverage'] }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-group" id="copayAmountGroup" style="display: {{ 'block' if application.data.medicalCoverage.rxCoverage == 'Copay' else 'none' }}">
+      <label for="medicalCoverage.copayAmount">Copay Amount</label>
+      <input type="number" id="medicalCoverage.copayAmount" name="medicalCoverage[copayAmount]" 
+             min="0" step="0.01" value="{{ application.data.medicalCoverage.copayAmount or '' }}">
+      {% if errors['medicalCoverage.copayAmount'] %}
+        <div class="error">{{ errors['medicalCoverage.copayAmount'] }}</div>
+      {% endif %}
+    </div>
+  </fieldset>
+
+  <div class="form-navigation">
+    <a href="/applications/{{ application.id }}/step/1" class="btn-secondary">Back to Step 1</a>
+    <button type="submit">Continue to Step 3</button>
+  </div>
+</form>
+
+<script>
+  // Show/hide conditional fields
+  document.getElementById('medicalCoverage.coverageType').addEventListener('change', function() {
+    document.getElementById('privateInsuranceNameGroup').style.display = 
+      this.value === 'Private' ? 'block' : 'none';
+  });
+  
+  document.getElementById('medicalCoverage.rxCoverage').addEventListener('change', function() {
+    document.getElementById('copayAmountGroup').style.display = 
+      this.value === 'Copay' ? 'block' : 'none';
+  });
+</script>
+{% endblock %}

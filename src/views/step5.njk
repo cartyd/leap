@@ -1,0 +1,136 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div class="progress-bar">
+  <div class="progress-step">1. Applicant Info</div>
+  <div class="progress-step">2. Medical</div>
+  <div class="progress-step">3. Income</div>
+  <div class="progress-step">4. Residency</div>
+  <div class="progress-step active">5. Request</div>
+  <div class="progress-step">6. Certification</div>
+</div>
+
+<h2>Step 5: Request Details & Vendors</h2>
+
+<form method="POST" action="/applications/{{ application.id }}/step/5" 
+      hx-trigger="change delay:500ms" 
+      hx-post="/applications/{{ application.id }}/autosave"
+      hx-target="#autosave-indicator"
+      hx-swap="innerHTML">
+  
+  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  
+  <div id="autosave-indicator"></div>
+
+  <fieldset>
+    <legend>Nature of Request</legend>
+    
+    <div class="form-group">
+      <label for="natureOfRequest" class="required">Describe the nature of your request</label>
+      <textarea id="natureOfRequest" name="natureOfRequest" rows="5" required>{{ application.data.natureOfRequest or '' }}</textarea>
+      {% if errors['natureOfRequest'] %}
+        <div class="error">{{ errors['natureOfRequest'] }}</div>
+      {% endif %}
+      <small>Please provide a detailed explanation of what assistance you are requesting and why.</small>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Vendor Information</legend>
+    <p>Please provide information for up to 3 vendors. At least one vendor is required.</p>
+    
+    {% for i in range(3) %}
+    <div class="vendor-group">
+      <h3>Vendor {{ i + 1 }}{% if i == 0 %} <span class="required">(Required)</span>{% endif %}</h3>
+      
+      <div class="form-group">
+        <label for="vendors[{{ i }}].vendorName"{% if i == 0 %} class="required"{% endif %}>Vendor Name</label>
+        <input type="text" id="vendors[{{ i }}].vendorName" name="vendors[{{ i }}][vendorName]" 
+               value="{{ application.data.vendors[i].vendorName or '' if application.data.vendors[i] else '' }}"
+               {% if i == 0 %}required{% endif %}>
+        {% if errors['vendors.' + i|string + '.vendorName'] %}
+          <div class="error">{{ errors['vendors.' + i|string + '.vendorName'] }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="vendors[{{ i }}].contactPerson">Contact Person</label>
+          <input type="text" id="vendors[{{ i }}].contactPerson" name="vendors[{{ i }}][contactPerson]" 
+                 value="{{ application.data.vendors[i].contactPerson or '' if application.data.vendors[i] else '' }}">
+        </div>
+        
+        <div class="form-group">
+          <label for="vendors[{{ i }}].telephone">Telephone</label>
+          <input type="tel" id="vendors[{{ i }}].telephone" name="vendors[{{ i }}][telephone]" 
+                 value="{{ application.data.vendors[i].telephone or '' if application.data.vendors[i] else '' }}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="vendors[{{ i }}].address">Address</label>
+        <input type="text" id="vendors[{{ i }}].address" name="vendors[{{ i }}][address]" 
+               value="{{ application.data.vendors[i].address or '' if application.data.vendors[i] else '' }}">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="vendors[{{ i }}].city">City</label>
+          <input type="text" id="vendors[{{ i }}].city" name="vendors[{{ i }}][city]" 
+                 value="{{ application.data.vendors[i].city or '' if application.data.vendors[i] else '' }}">
+        </div>
+        
+        <div class="form-group">
+          <label for="vendors[{{ i }}].state">State</label>
+          <input type="text" id="vendors[{{ i }}].state" name="vendors[{{ i }}][state]" 
+                 maxlength="2" value="{{ application.data.vendors[i].state or '' if application.data.vendors[i] else '' }}">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="vendors[{{ i }}].zip">ZIP Code</label>
+          <input type="text" id="vendors[{{ i }}].zip" name="vendors[{{ i }}][zip]" 
+                 value="{{ application.data.vendors[i].zip or '' if application.data.vendors[i] else '' }}">
+        </div>
+        
+        <div class="form-group">
+          <label for="vendors[{{ i }}].fax">Fax</label>
+          <input type="tel" id="vendors[{{ i }}].fax" name="vendors[{{ i }}][fax]" 
+                 value="{{ application.data.vendors[i].fax or '' if application.data.vendors[i] else '' }}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="vendors[{{ i }}].email">Email</label>
+        <input type="email" id="vendors[{{ i }}].email" name="vendors[{{ i }}][email]" 
+               value="{{ application.data.vendors[i].email or '' if application.data.vendors[i] else '' }}">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="vendors[{{ i }}].totalAmountOwed">Total Amount Owed</label>
+          <input type="number" id="vendors[{{ i }}].totalAmountOwed" name="vendors[{{ i }}][totalAmountOwed]" 
+                 min="0" step="0.01" value="{{ application.data.vendors[i].totalAmountOwed or '' if application.data.vendors[i] else '' }}">
+        </div>
+        
+        <div class="form-group">
+          <label for="vendors[{{ i }}].amountRequesting"{% if i == 0 %} class="required"{% endif %}>Amount Requesting</label>
+          <input type="number" id="vendors[{{ i }}].amountRequesting" name="vendors[{{ i }}][amountRequesting]" 
+                 min="0" step="0.01" value="{{ application.data.vendors[i].amountRequesting or '' if application.data.vendors[i] else '' }}"
+                 {% if i == 0 %}required{% endif %}>
+          {% if errors['vendors.' + i|string + '.amountRequesting'] %}
+            <div class="error">{{ errors['vendors.' + i|string + '.amountRequesting'] }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </fieldset>
+
+  <div class="form-navigation">
+    <a href="/applications/{{ application.id }}/step/4" class="btn-secondary">Back to Step 4</a>
+    <button type="submit">Continue to Step 6</button>
+  </div>
+</form>
+{% endblock %}

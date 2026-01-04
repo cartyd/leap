@@ -1,0 +1,66 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div class="progress-bar">
+  <div class="progress-step">1. Applicant Info</div>
+  <div class="progress-step">2. Medical</div>
+  <div class="progress-step">3. Income</div>
+  <div class="progress-step">4. Residency</div>
+  <div class="progress-step">5. Request</div>
+  <div class="progress-step active">6. Certification</div>
+</div>
+
+<h2>Step 6: Certification</h2>
+
+<form method="POST" action="/applications/{{ application.id }}/step/6" 
+      hx-trigger="change delay:500ms" 
+      hx-post="/applications/{{ application.id }}/autosave"
+      hx-target="#autosave-indicator"
+      hx-swap="innerHTML">
+  
+  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  
+  <div id="autosave-indicator"></div>
+
+  <fieldset>
+    <legend>Certification</legend>
+    
+    <div class="certification-text">
+      <p>I certify that the information provided in this application is true and accurate to the best of my knowledge. I understand that any false or misleading information may result in the denial of assistance or legal action.</p>
+      
+      <p>I authorize the Lupus Foundation of America, Georgia Chapter, Inc. to verify any information provided in this application and to contact any vendors, healthcare providers, or other parties as necessary to process this application.</p>
+      
+      <p>I understand that any assistance provided is subject to available funds and approval by the Emergency Assistance Fund committee.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="certification.applicantSignatureTyped" class="required">
+        Type your full name to sign this application
+      </label>
+      <input type="text" id="certification.applicantSignatureTyped" 
+             name="certification[applicantSignatureTyped]" 
+             value="{{ application.data.certification.applicantSignatureTyped or '' if application.data.certification else '' }}" 
+             required>
+      {% if errors['certification.applicantSignatureTyped'] %}
+        <div class="error">{{ errors['certification.applicantSignatureTyped'] }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label for="certification.dateSigned" class="required">Date</label>
+      <input type="date" id="certification.dateSigned" 
+             name="certification[dateSigned]" 
+             value="{{ application.data.certification.dateSigned or '' if application.data.certification else '' }}" 
+             required>
+      {% if errors['certification.dateSigned'] %}
+        <div class="error">{{ errors['certification.dateSigned'] }}</div>
+      {% endif %}
+    </div>
+  </fieldset>
+
+  <div class="form-navigation">
+    <a href="/applications/{{ application.id }}/step/5" class="btn-secondary">Back to Step 5</a>
+    <button type="submit">Review Application</button>
+  </div>
+</form>
+{% endblock %}

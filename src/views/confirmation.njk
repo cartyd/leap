@@ -1,0 +1,24 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div style="text-align: center; padding: 40px 0;">
+  <h2 style="color: #28a745;">✓ Application Submitted Successfully</h2>
+  
+  <div style="background: #f8f9fa; padding: 30px; border-radius: 8px; max-width: 600px; margin: 30px auto; text-align: left;">
+    <p style="font-size: 18px; margin-bottom: 20px;"><strong>Application ID:</strong> {{ application.id }}</p>
+    <p style="margin-bottom: 10px;"><strong>Submitted:</strong> {{ application.submittedAt | date }}</p>
+    <p style="margin-bottom: 10px;"><strong>Applicant:</strong> {{ application.data.applicant.firstName }} {{ application.data.applicant.lastName }}</p>
+    <p style="margin-bottom: 20px;"><strong>Email:</strong> {{ application.data.applicant.email }}</p>
+    
+    <p style="margin-top: 30px;">
+      A confirmation email has been sent to your email address. 
+      Please keep your Application ID for your records.
+    </p>
+  </div>
+
+  <div style="margin-top: 30px;">
+    <a href="/" class="btn">Return to Home</a>
+    <button onclick="window.print()" class="btn btn-secondary" style="margin-left: 10px;">Print Confirmation</button>
+  </div>
+</div>
+{% endblock %}

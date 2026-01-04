@@ -1,0 +1,173 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div class="progress-bar">
+  <div class="progress-step">1. Applicant Info</div>
+  <div class="progress-step">2. Medical</div>
+  <div class="progress-step active">3. Income</div>
+  <div class="progress-step">4. Residency</div>
+  <div class="progress-step">5. Request</div>
+  <div class="progress-step">6. Certification</div>
+</div>
+
+<h2>Step 3: Income & Employment</h2>
+
+<form method="POST" action="/applications/{{ application.id }}/step/3" 
+      hx-trigger="change delay:500ms" 
+      hx-post="/applications/{{ application.id }}/autosave"
+      hx-target="#autosave-indicator"
+      hx-swap="innerHTML">
+  
+  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  
+  <div id="autosave-indicator"></div>
+
+  <fieldset>
+    <legend>Income Information</legend>
+    
+    <div class="form-group">
+      <label>
+        <input type="checkbox" id="income.appliedDisability" name="income[appliedDisability]" 
+               value="true" {{ "checked" if application.data.income.appliedDisability }}>
+        Have you applied for disability?
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>Do you receive SSDI or SSI?</label>
+      <label>
+        <input type="checkbox" id="income.receives.ssdi" name="income[receives][ssdi]" 
+               value="true" {{ "checked" if application.data.income.receives.ssdi }}>
+        SSDI
+      </label>
+      <label>
+        <input type="checkbox" id="income.receives.ssi" name="income[receives][ssi]" 
+               value="true" {{ "checked" if application.data.income.receives.ssi }}>
+        SSI
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="income.receives.monthlyAmount">Monthly Amount (if receiving SSDI/SSI)</label>
+      <input type="number" id="income.receives.monthlyAmount" name="income[receives][monthlyAmount]" 
+             min="0" step="0.01" value="{{ application.data.income.receives.monthlyAmount or '' }}">
+      {% if errors['income.receives.monthlyAmount'] %}
+        <div class="error">{{ errors['income.receives.monthlyAmount'] }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label>
+        <input type="checkbox" id="income.currentlyEmployed" name="income[currentlyEmployed]" 
+               value="true" {{ "checked" if application.data.income.currentlyEmployed }}>
+        Currently Employed
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <input type="checkbox" id="income.unemployment.receiving" name="income[unemployment][receiving]" 
+               value="true" {{ "checked" if application.data.income.unemployment.receiving }}>
+        Receiving Unemployment Benefits
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="income.unemployment.amount">Unemployment Amount (if receiving)</label>
+      <input type="number" id="income.unemployment.amount" name="income[unemployment][amount]" 
+             min="0" step="0.01" value="{{ application.data.income.unemployment.amount or '' }}">
+      {% if errors['income.unemployment.amount'] %}
+        <div class="error">{{ errors['income.unemployment.amount'] }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label for="income.otherIncome">Other Income Sources</label>
+      <textarea id="income.otherIncome" name="income[otherIncome]" rows="3">{{ application.data.income.otherIncome or '' }}</textarea>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Applicant Employment</legend>
+    
+    <div class="form-group">
+      <label for="employmentApplicant.employerName">Employer Name</label>
+      <input type="text" id="employmentApplicant.employerName" name="employmentApplicant[employerName]" 
+             value="{{ application.data.employmentApplicant.employerName or '' }}">
+    </div>
+
+    <div class="form-group">
+      <label for="employmentApplicant.status">Employment Status</label>
+      <select id="employmentApplicant.status" name="employmentApplicant[status]">
+        <option value="">Select...</option>
+        <option value="Full-Time" {{ "selected" if application.data.employmentApplicant.status == "Full-Time" }}>Full-Time</option>
+        <option value="Part-Time" {{ "selected" if application.data.employmentApplicant.status == "Part-Time" }}>Part-Time</option>
+        <option value="Other" {{ "selected" if application.data.employmentApplicant.status == "Other" }}>Other</option>
+        <option value="Unemployed" {{ "selected" if application.data.employmentApplicant.status == "Unemployed" }}>Unemployed</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="employmentApplicant.otherStatusText">Other Status (if applicable)</label>
+      <input type="text" id="employmentApplicant.otherStatusText" name="employmentApplicant[otherStatusText]" 
+             value="{{ application.data.employmentApplicant.otherStatusText or '' }}">
+    </div>
+
+    <div class="form-group">
+      <label for="employmentApplicant.grossIncome">Gross Income</label>
+      <input type="number" id="employmentApplicant.grossIncome" name="employmentApplicant[grossIncome]" 
+             min="0" step="0.01" value="{{ application.data.employmentApplicant.grossIncome or '' }}">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Spouse Information (if applicable)</legend>
+    
+    <div class="form-group">
+      <label for="spouse.name">Spouse Name</label>
+      <input type="text" id="spouse.name" name="spouse[name]" 
+             value="{{ application.data.spouse.name or '' }}">
+    </div>
+
+    <div class="form-group">
+      <label for="spouse.phone">Spouse Phone</label>
+      <input type="tel" id="spouse.phone" name="spouse[phone]" 
+             value="{{ application.data.spouse.phone or '' }}">
+    </div>
+
+    <div class="form-group">
+      <label for="spouse.employerName">Spouse Employer Name</label>
+      <input type="text" id="spouse.employerName" name="spouse[employerName]" 
+             value="{{ application.data.spouse.employerName or '' }}">
+    </div>
+
+    <div class="form-group">
+      <label for="spouse.status">Spouse Employment Status</label>
+      <select id="spouse.status" name="spouse[status]">
+        <option value="">Select...</option>
+        <option value="Full-Time" {{ "selected" if application.data.spouse.status == "Full-Time" }}>Full-Time</option>
+        <option value="Part-Time" {{ "selected" if application.data.spouse.status == "Part-Time" }}>Part-Time</option>
+        <option value="Other" {{ "selected" if application.data.spouse.status == "Other" }}>Other</option>
+        <option value="Unemployed" {{ "selected" if application.data.spouse.status == "Unemployed" }}>Unemployed</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="spouse.otherStatusText">Other Status (if applicable)</label>
+      <input type="text" id="spouse.otherStatusText" name="spouse[otherStatusText]" 
+             value="{{ application.data.spouse.otherStatusText or '' }}">
+    </div>
+
+    <div class="form-group">
+      <label for="spouse.grossTaxableIncome">Spouse Gross Taxable Income</label>
+      <input type="number" id="spouse.grossTaxableIncome" name="spouse[grossTaxableIncome]" 
+             min="0" step="0.01" value="{{ application.data.spouse.grossTaxableIncome or '' }}">
+    </div>
+  </fieldset>
+
+  <div class="form-navigation">
+    <a href="/applications/{{ application.id }}/step/2" class="btn-secondary">Back to Step 2</a>
+    <button type="submit">Continue to Step 4</button>
+  </div>
+</form>
+{% endblock %}

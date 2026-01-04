@@ -1,0 +1,174 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div class="progress-bar">
+  <div class="progress-step active">1. Applicant Info</div>
+  <div class="progress-step">2. Medical</div>
+  <div class="progress-step">3. Income</div>
+  <div class="progress-step">4. Residency</div>
+  <div class="progress-step">5. Request</div>
+  <div class="progress-step">6. Certification</div>
+</div>
+
+<h2>Step 1: Applicant & Guardian Information</h2>
+
+<form method="POST" action="/applications/{{ application.id }}/step/1" 
+      hx-trigger="change delay:500ms" 
+      hx-post="/applications/{{ application.id }}/autosave"
+      hx-target="#autosave-indicator"
+      hx-swap="innerHTML">
+  
+  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  
+  <div id="autosave-indicator"></div>
+
+  <fieldset>
+    <legend>Guardian Information (if applicable)</legend>
+    <div class="form-group">
+      <label for="guardianName">Guardian Name</label>
+      <input type="text" id="guardianName" name="guardianName" 
+             value="{{ application.data.guardianName or '' }}">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Applicant Information</legend>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="applicant.firstName" class="required">First Name</label>
+        <input type="text" id="applicant.firstName" name="applicant[firstName]" 
+               value="{{ application.data.applicant.firstName or '' }}" required>
+        {% if errors['applicant.firstName'] %}
+          <div class="error">{{ errors['applicant.firstName'] }}</div>
+        {% endif %}
+      </div>
+      
+      <div class="form-group">
+        <label for="applicant.middleInitial">Middle Initial</label>
+        <input type="text" id="applicant.middleInitial" name="applicant[middleInitial]" 
+               maxlength="1" value="{{ application.data.applicant.middleInitial or '' }}">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="applicant.lastName" class="required">Last Name</label>
+      <input type="text" id="applicant.lastName" name="applicant[lastName]" 
+             value="{{ application.data.applicant.lastName or '' }}" required>
+      {% if errors['applicant.lastName'] %}
+        <div class="error">{{ errors['applicant.lastName'] }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="applicant.email" class="required">Email</label>
+        <input type="email" id="applicant.email" name="applicant[email]" 
+               value="{{ application.data.applicant.email or '' }}" required>
+        {% if errors['applicant.email'] %}
+          <div class="error">{{ errors['applicant.email'] }}</div>
+        {% endif %}
+      </div>
+      
+      <div class="form-group">
+        <label for="applicant.dob" class="required">Date of Birth</label>
+        <input type="date" id="applicant.dob" name="applicant[dob]" 
+               value="{{ application.data.applicant.dob or '' }}" required>
+        {% if errors['applicant.dob'] %}
+          <div class="error">{{ errors['applicant.dob'] }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="applicant.address1" class="required">Address</label>
+      <input type="text" id="applicant.address1" name="applicant[address1]" 
+             value="{{ application.data.applicant.address1 or '' }}" required>
+      {% if errors['applicant.address1'] %}
+        <div class="error">{{ errors['applicant.address1'] }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="applicant.city" class="required">City</label>
+        <input type="text" id="applicant.city" name="applicant[city]" 
+               value="{{ application.data.applicant.city or '' }}" required>
+        {% if errors['applicant.city'] %}
+          <div class="error">{{ errors['applicant.city'] }}</div>
+        {% endif %}
+      </div>
+      
+      <div class="form-group">
+        <label for="applicant.state" class="required">State</label>
+        <input type="text" id="applicant.state" name="applicant[state]" 
+               value="{{ application.data.applicant.state or '' }}" maxlength="2" required>
+        {% if errors['applicant.state'] %}
+          <div class="error">{{ errors['applicant.state'] }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="applicant.zip" class="required">ZIP Code</label>
+        <input type="text" id="applicant.zip" name="applicant[zip]" 
+               value="{{ application.data.applicant.zip or '' }}" required>
+        {% if errors['applicant.zip'] %}
+          <div class="error">{{ errors['applicant.zip'] }}</div>
+        {% endif %}
+      </div>
+      
+      <div class="form-group">
+        <label for="applicant.county" class="required">County</label>
+        <input type="text" id="applicant.county" name="applicant[county]" 
+               value="{{ application.data.applicant.county or '' }}" required>
+        {% if errors['applicant.county'] %}
+          <div class="error">{{ errors['applicant.county'] }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="applicant.phoneHome">Home Phone</label>
+        <input type="tel" id="applicant.phoneHome" name="applicant[phoneHome]" 
+               value="{{ application.data.applicant.phoneHome or '' }}">
+      </div>
+      
+      <div class="form-group">
+        <label for="applicant.phoneCell">Cell Phone</label>
+        <input type="tel" id="applicant.phoneCell" name="applicant[phoneCell]" 
+               value="{{ application.data.applicant.phoneCell or '' }}">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Request Information</legend>
+    
+    <div class="form-group">
+      <label for="request.assistanceFor" class="required">Requesting Assistance For</label>
+      <input type="text" id="request.assistanceFor" name="request[assistanceFor]" 
+             value="{{ application.data.request.assistanceFor or '' }}" required>
+      {% if errors['request.assistanceFor'] %}
+        <div class="error">{{ errors['request.assistanceFor'] }}</div>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label for="request.approximateCost" class="required">Approximate Cost</label>
+      <input type="number" id="request.approximateCost" name="request[approximateCost]" 
+             min="0" step="0.01" value="{{ application.data.request.approximateCost or '' }}" required>
+      {% if errors['request.approximateCost'] %}
+        <div class="error">{{ errors['request.approximateCost'] }}</div>
+      {% endif %}
+    </div>
+  </fieldset>
+
+  <div class="form-navigation">
+    <div></div>
+    <button type="submit">Continue to Step 2</button>
+  </div>
+</form>
+{% endblock %}

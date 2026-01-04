@@ -1,0 +1,24 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div style="text-align: center; padding: 40px 0;">
+  <h2>Welcome to the Emergency Assistance Fund Application</h2>
+  <p style="margin: 20px 0; font-size: 18px;">
+    This application will guide you through the process of applying for emergency assistance.
+  </p>
+  <p style="margin: 20px 0;">
+    Please have the following information ready:
+  </p>
+  <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
+    <li>Personal and contact information</li>
+    <li>Medical history and coverage details</li>
+    <li>Income and employment information</li>
+    <li>Information about resources you've contacted</li>
+    <li>Details about vendors and amounts needed</li>
+  </ul>
+  <form method="POST" action="/applications" style="margin-top: 40px;">
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <button type="submit">Start Application</button>
+  </form>
+</div>
+{% endblock %}

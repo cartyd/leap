@@ -1,0 +1,83 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div class="progress-bar">
+  <div class="progress-step">1. Applicant Info</div>
+  <div class="progress-step">2. Medical</div>
+  <div class="progress-step">3. Income</div>
+  <div class="progress-step active">4. Residency</div>
+  <div class="progress-step">5. Request</div>
+  <div class="progress-step">6. Certification</div>
+</div>
+
+<h2>Step 4: Dependents & Residency</h2>
+
+<form method="POST" action="/applications/{{ application.id }}/step/4" 
+      hx-trigger="change delay:500ms" 
+      hx-post="/applications/{{ application.id }}/autosave"
+      hx-target="#autosave-indicator"
+      hx-swap="innerHTML">
+  
+  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  
+  <div id="autosave-indicator"></div>
+
+  <fieldset>
+    <legend>Dependents</legend>
+    
+    <div class="form-group">
+      <label for="dependents.count">Number of Dependents</label>
+      <input type="number" id="dependents.count" name="dependents[count]" 
+             min="0" value="{{ application.data.dependents.count or '' }}">
+    </div>
+
+    <div class="form-group">
+      <label for="dependents.agesText">Ages of Dependents (comma-separated)</label>
+      <input type="text" id="dependents.agesText" name="dependents[agesText]" 
+             placeholder="e.g. 5, 8, 12" value="{{ application.data.dependents.agesText or '' }}">
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Residency</legend>
+    
+    <div class="form-group">
+      <label class="required">
+        <input type="checkbox" id="residencyGA" name="residencyGA" 
+               value="true" {{ "checked" if application.data.residencyGA }} required>
+        I am a resident of Georgia
+      </label>
+      {% if errors['residencyGA'] %}
+        <div class="error">{{ errors['residencyGA'] }}</div>
+      {% endif %}
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Resources Contacted</legend>
+    <p>Please list other resources you have contacted for assistance (up to 4):</p>
+    
+    {% for i in range(4) %}
+    <div class="resource-group">
+      <h4>Resource {{ i + 1 }}</h4>
+      <div class="form-group">
+        <label for="resourcesContacted[{{ i }}].nameOrAgency">Name or Agency</label>
+        <input type="text" id="resourcesContacted[{{ i }}].nameOrAgency" name="resourcesContacted[{{ i }}][nameOrAgency]" 
+               value="{{ application.data.resourcesContacted[i].nameOrAgency or '' if application.data.resourcesContacted[i] else '' }}">
+      </div>
+      
+      <div class="form-group">
+        <label for="resourcesContacted[{{ i }}].outcome">Outcome</label>
+        <textarea id="resourcesContacted[{{ i }}].outcome" name="resourcesContacted[{{ i }}][outcome]" 
+                  rows="2">{{ application.data.resourcesContacted[i].outcome or '' if application.data.resourcesContacted[i] else '' }}</textarea>
+      </div>
+    </div>
+    {% endfor %}
+  </fieldset>
+
+  <div class="form-navigation">
+    <a href="/applications/{{ application.id }}/step/3" class="btn-secondary">Back to Step 3</a>
+    <button type="submit">Continue to Step 5</button>
+  </div>
+</form>
+{% endblock %}
