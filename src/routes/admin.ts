@@ -1,8 +1,8 @@
 import { FastifyInstance } from 'fastify';
-import { basicAuth } from '../middleware/auth';
-import * as applicationService from '../services/application.service';
-import * as uploadService from '../services/upload.service';
-import type { Status } from '../services/application.service';
+import { basicAuth } from '@middleware/auth';
+import * as applicationService from '@services/application.service';
+import * as uploadService from '@services/upload.service';
+import type { Status } from '@services/application.service';
 
 export async function adminRoutes(app: FastifyInstance) {
   // Protect all admin routes

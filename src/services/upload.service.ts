@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import fs from 'fs/promises';
 import path from 'path';
 import { pipeline } from 'stream/promises';
-import config from '../config';
+import config from '@config/index';
 
 const prisma = new PrismaClient();
 
@@ -52,14 +52,15 @@ export async function saveUpload(
     },
   });
 
-  return upload;
+  return upload as UploadData;
 }
 
 export async function getUploadsByApplication(applicationId: string): Promise<UploadData[]> {
-  return await prisma.upload.findMany({
+  const uploads = await prisma.upload.findMany({
     where: { applicationId },
     orderBy: { uploadedAt: 'desc' },
   });
+  return uploads as UploadData[];
 }
 
 export async function deleteUpload(id: string): Promise<void> {

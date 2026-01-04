@@ -43,11 +43,16 @@ export async function errorHandler(
 export function maskPII(data: any): any {
   if (!data || typeof data !== 'object') return data;
 
+  // Handle arrays separately to preserve array type
+  if (Array.isArray(data)) {
+    return data;
+  }
+
   const masked = { ...data };
   const piiFields = ['email', 'phoneHome', 'phoneCell', 'ssn', 'dob'];
 
   for (const field of piiFields) {
-    if (masked[field]) {
+    if (field in masked) {
       masked[field] = '***REDACTED***';
     }
   }

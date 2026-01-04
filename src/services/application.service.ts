@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { ApplicationData } from '../schemas/application.schema';
+import { ApplicationData } from '@schemas/application.schema';
 
 const prisma = new PrismaClient();
 
@@ -67,6 +67,7 @@ export async function createApplication(): Promise<ApplicationWithData> {
 
   return {
     ...application,
+    status: application.status as Status,
     data: JSON.parse(application.data) as ApplicationData,
   };
 }
@@ -81,6 +82,7 @@ export async function getApplication(id: string): Promise<ApplicationWithData | 
 
   return {
     ...application,
+    status: application.status as Status,
     data: JSON.parse(application.data) as ApplicationData,
   };
 }
@@ -112,6 +114,7 @@ export async function updateApplication(
 
   return {
     ...application,
+    status: application.status as Status,
     data: JSON.parse(application.data) as ApplicationData,
   };
 }
@@ -136,6 +139,7 @@ export async function submitApplication(id: string): Promise<ApplicationWithData
 
   return {
     ...application,
+    status: application.status as Status,
     data: JSON.parse(application.data) as ApplicationData,
   };
 }
@@ -148,6 +152,7 @@ export async function listApplications(status?: Status): Promise<ApplicationWith
 
   return applications.map(app => ({
     ...app,
+    status: app.status as Status,
     data: JSON.parse(app.data) as ApplicationData,
   }));
 }
@@ -163,6 +168,7 @@ export async function resetApplication(id: string): Promise<ApplicationWithData>
 
   return {
     ...application,
+    status: application.status as Status,
     data: JSON.parse(application.data) as ApplicationData,
   };
 }

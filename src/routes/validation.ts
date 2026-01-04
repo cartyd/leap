@@ -4,7 +4,7 @@ import {
   applicantSchema,
   medicalCoverageSchema,
   incomeSchema,
-} from '../schemas/application.schema';
+} from '@schemas/application.schema';
 
 export async function validationRoutes(app: FastifyInstance) {
   // Validate applicant section

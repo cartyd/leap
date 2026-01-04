@@ -8,18 +8,18 @@ import fastifyStatic from '@fastify/static';
 import fastifyView from '@fastify/view';
 import nunjucks from 'nunjucks';
 import path from 'path';
-import config from './config';
-import { errorHandler } from './middleware/error-handler';
-import { csrfProtection } from './middleware/csrf';
+import config from '@config/index';
+import { errorHandler } from '@middleware/error-handler';
+import { csrfProtection } from '@middleware/csrf';
 
 // Import routes
-import { indexRoutes } from './routes/index';
-import { applicationRoutes } from './routes/applications';
-import { stepRoutes } from './routes/steps';
-import { validationRoutes } from './routes/validation';
-import { uploadRoutes } from './routes/uploads';
-import { adminRoutes } from './routes/admin';
-import { partialRoutes } from './routes/partials';
+import { indexRoutes } from '@routes/index';
+import { applicationRoutes } from '@routes/applications';
+import { stepRoutes } from '@routes/steps';
+import { validationRoutes } from '@routes/validation';
+import { uploadRoutes } from '@routes/uploads';
+import { adminRoutes } from '@routes/admin';
+import { partialRoutes } from '@routes/partials';
 
 export const app = Fastify({
   logger: {

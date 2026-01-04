@@ -7,3 +7,8 @@ uploads/
 *.log
 coverage/
 .DS_Store
+
+# Playwright
+playwright-report/
+test-results/
+playwright/.cache/

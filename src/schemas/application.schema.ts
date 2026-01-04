@@ -55,7 +55,7 @@ export const medicalCoverageSchema = z.object({
     });
   }
   // If rx coverage is copay, require copay amount
-  if (data.rxCoverage === 'Copay' && !data.copayAmount) {
+  if (data.rxCoverage === 'Copay' && (data.copayAmount === undefined || data.copayAmount === '' || data.copayAmount === null)) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       message: 'Copay amount is required',

@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import * as applicationService from '../services/application.service';
+import * as applicationService from '@services/application.service';
 import {
   step1Schema,
   step2Schema,
@@ -7,7 +7,7 @@ import {
   step4Schema,
   step5Schema,
   step6Schema,
-} from '../schemas/application.schema';
+} from '@schemas/application.schema';
 
 const stepSchemas = [step1Schema, step2Schema, step3Schema, step4Schema, step5Schema, step6Schema];
 const stepTemplates = ['step1.njk', 'step2.njk', 'step3.njk', 'step4.njk', 'step5.njk', 'step6.njk'];

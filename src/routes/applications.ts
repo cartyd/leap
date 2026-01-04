@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify';
-import * as applicationService from '../services/application.service';
-import * as uploadService from '../services/upload.service';
-import { submitApplicationSchema } from '../schemas/application.schema';
+import * as applicationService from '@services/application.service';
+import * as uploadService from '@services/upload.service';
+import { submitApplicationSchema } from '@schemas/application.schema';
 
 export async function applicationRoutes(app: FastifyInstance) {
   // Create new application

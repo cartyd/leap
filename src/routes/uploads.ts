@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
-import * as uploadService from '../services/upload.service';
-import type { UploadCategory } from '../services/upload.service';
+import * as uploadService from '@services/upload.service';
+import type { UploadCategory } from '@services/upload.service';
 
 const ALLOWED_MIME_TYPES = [
   'application/pdf',

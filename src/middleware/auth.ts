@@ -1,5 +1,5 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import config from '../config';
+import config from '@config/index';
 
 export async function basicAuth(
   request: FastifyRequest,
