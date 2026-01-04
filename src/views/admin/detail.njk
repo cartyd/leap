@@ -1,0 +1,245 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div class="admin-header">
+  <h2>Application Details</h2>
+  <div class="admin-actions">
+    <a href="/admin/applications" class="btn-secondary">← Back to List</a>
+    {% if application.status == 'SUBMITTED' %}
+      <form method="POST" action="/admin/applications/{{ application.id }}/reset" style="display: inline;">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <button type="submit" class="btn-warning" onclick="return confirm('Reset this application to DRAFT status?')">
+          Reset to Draft
+        </button>
+      </form>
+    {% endif %}
+  </div>
+</div>
+
+<div class="application-status">
+  <h3>Status: <span class="status-badge status-{{ application.status | lower }}">{{ application.status }}</span></h3>
+  <p><strong>Application ID:</strong> {{ application.id }}</p>
+  <p><strong>Created:</strong> {{ application.createdAt | date }}</p>
+  {% if application.submittedAt %}
+    <p><strong>Submitted:</strong> {{ application.submittedAt | date }}</p>
+  {% endif %}
+</div>
+
+<div class="application-sections">
+  <section class="admin-section">
+    <h3>Applicant Information</h3>
+    <dl class="detail-list">
+      {% if application.data.guardianName %}
+        <dt>Guardian Name:</dt>
+        <dd>{{ application.data.guardianName }}</dd>
+      {% endif %}
+      
+      <dt>Name:</dt>
+      <dd>{{ application.data.applicant.firstName }} {{ application.data.applicant.middleInitial }} {{ application.data.applicant.lastName }}</dd>
+      
+      <dt>Email:</dt>
+      <dd>{{ application.data.applicant.email }}</dd>
+      
+      <dt>Date of Birth:</dt>
+      <dd>{{ application.data.applicant.dob | date }}</dd>
+      
+      <dt>Address:</dt>
+      <dd>
+        {{ application.data.applicant.address1 }}<br>
+        {{ application.data.applicant.city }}, {{ application.data.applicant.state }} {{ application.data.applicant.zip }}<br>
+        {{ application.data.applicant.county }} County
+      </dd>
+      
+      {% if application.data.applicant.phoneHome %}
+        <dt>Home Phone:</dt>
+        <dd>{{ application.data.applicant.phoneHome }}</dd>
+      {% endif %}
+      
+      {% if application.data.applicant.phoneCell %}
+        <dt>Cell Phone:</dt>
+        <dd>{{ application.data.applicant.phoneCell }}</dd>
+      {% endif %}
+    </dl>
+  </section>
+
+  <section class="admin-section">
+    <h3>Request Information</h3>
+    <dl class="detail-list">
+      <dt>Assistance For:</dt>
+      <dd>{{ application.data.request.assistanceFor }}</dd>
+      
+      <dt>Approximate Cost:</dt>
+      <dd>{{ application.data.request.approximateCost | currency }}</dd>
+    </dl>
+  </section>
+
+  <section class="admin-section">
+    <h3>Medical Information</h3>
+    <dl class="detail-list">
+      {% if application.data.medicalHistory.diagnosisYear %}
+        <dt>Year of Diagnosis:</dt>
+        <dd>{{ application.data.medicalHistory.diagnosisYear }}</dd>
+      {% endif %}
+      
+      {% if application.data.medicalHistory.lupusType %}
+        <dt>Type of Lupus:</dt>
+        <dd>{{ application.data.medicalHistory.lupusType }}</dd>
+      {% endif %}
+      
+      {% if application.data.medicalHistory.physicianName %}
+        <dt>Physician:</dt>
+        <dd>{{ application.data.medicalHistory.physicianName }} - {{ application.data.medicalHistory.physicianPhone }}</dd>
+      {% endif %}
+      
+      <dt>Has Insurance:</dt>
+      <dd>{{ "Yes" if application.data.medicalCoverage.hasInsurance else "No" }}</dd>
+      
+      {% if application.data.medicalCoverage.coverageType %}
+        <dt>Coverage Type:</dt>
+        <dd>{{ application.data.medicalCoverage.coverageType }}</dd>
+      {% endif %}
+      
+      {% if application.data.medicalCoverage.privateInsuranceName %}
+        <dt>Insurance Name:</dt>
+        <dd>{{ application.data.medicalCoverage.privateInsuranceName }}</dd>
+      {% endif %}
+      
+      {% if application.data.medicalCoverage.rxCoverage %}
+        <dt>Rx Coverage:</dt>
+        <dd>{{ application.data.medicalCoverage.rxCoverage }}</dd>
+      {% endif %}
+    </dl>
+  </section>
+
+  <section class="admin-section">
+    <h3>Income & Employment</h3>
+    <dl class="detail-list">
+      {% if application.data.income.appliedDisability %}
+        <dt>Applied for Disability:</dt>
+        <dd>Yes</dd>
+      {% endif %}
+      
+      {% if application.data.income.receives.ssdi or application.data.income.receives.ssi %}
+        <dt>Receives:</dt>
+        <dd>
+          {% if application.data.income.receives.ssdi %}SSDI{% endif %}
+          {% if application.data.income.receives.ssi %}SSI{% endif %}
+          {% if application.data.income.receives.monthlyAmount %}
+            - {{ application.data.income.receives.monthlyAmount | currency }}/month
+          {% endif %}
+        </dd>
+      {% endif %}
+      
+      {% if application.data.income.currentlyEmployed %}
+        <dt>Currently Employed:</dt>
+        <dd>Yes</dd>
+      {% endif %}
+      
+      {% if application.data.employmentApplicant.employerName %}
+        <dt>Employer:</dt>
+        <dd>{{ application.data.employmentApplicant.employerName }} ({{ application.data.employmentApplicant.status }})</dd>
+      {% endif %}
+      
+      {% if application.data.employmentApplicant.grossIncome %}
+        <dt>Gross Income:</dt>
+        <dd>{{ application.data.employmentApplicant.grossIncome | currency }}</dd>
+      {% endif %}
+    </dl>
+  </section>
+
+  <section class="admin-section">
+    <h3>Residency & Dependents</h3>
+    <dl class="detail-list">
+      <dt>Georgia Resident:</dt>
+      <dd>{{ "Yes" if application.data.residencyGA else "No" }}</dd>
+      
+      {% if application.data.dependents.count %}
+        <dt>Number of Dependents:</dt>
+        <dd>{{ application.data.dependents.count }}</dd>
+      {% endif %}
+      
+      {% if application.data.dependents.agesText %}
+        <dt>Dependent Ages:</dt>
+        <dd>{{ application.data.dependents.agesText }}</dd>
+      {% endif %}
+    </dl>
+  </section>
+
+  {% if application.data.resourcesContacted and application.data.resourcesContacted.length > 0 %}
+  <section class="admin-section">
+    <h3>Resources Contacted</h3>
+    {% for resource in application.data.resourcesContacted %}
+      {% if resource.nameOrAgency %}
+        <div class="resource-item">
+          <strong>{{ resource.nameOrAgency }}</strong>
+          {% if resource.outcome %}
+            <p>{{ resource.outcome }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <section class="admin-section">
+    <h3>Nature of Request</h3>
+    <p>{{ application.data.natureOfRequest }}</p>
+  </section>
+
+  <section class="admin-section">
+    <h3>Vendors</h3>
+    {% for vendor in application.data.vendors %}
+      {% if vendor.vendorName %}
+        <div class="vendor-item">
+          <h4>{{ vendor.vendorName }}</h4>
+          {% if vendor.contactPerson %}
+            <p><strong>Contact:</strong> {{ vendor.contactPerson }}</p>
+          {% endif %}
+          {% if vendor.address %}
+            <p><strong>Address:</strong> {{ vendor.address }}, {{ vendor.city }}, {{ vendor.state }} {{ vendor.zip }}</p>
+          {% endif %}
+          {% if vendor.telephone %}
+            <p><strong>Phone:</strong> {{ vendor.telephone }}</p>
+          {% endif %}
+          {% if vendor.email %}
+            <p><strong>Email:</strong> {{ vendor.email }}</p>
+          {% endif %}
+          {% if vendor.totalAmountOwed %}
+            <p><strong>Total Owed:</strong> {{ vendor.totalAmountOwed | currency }}</p>
+          {% endif %}
+          {% if vendor.amountRequesting %}
+            <p><strong>Amount Requesting:</strong> {{ vendor.amountRequesting | currency }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </section>
+
+  {% if application.data.certification %}
+  <section class="admin-section">
+    <h3>Certification</h3>
+    <dl class="detail-list">
+      <dt>Signature:</dt>
+      <dd>{{ application.data.certification.applicantSignatureTyped }}</dd>
+      
+      <dt>Date Signed:</dt>
+      <dd>{{ application.data.certification.dateSigned | date }}</dd>
+    </dl>
+  </section>
+  {% endif %}
+
+  {% if uploads and uploads.length > 0 %}
+  <section class="admin-section">
+    <h3>Uploaded Files</h3>
+    <ul class="upload-list">
+      {% for upload in uploads %}
+        <li>
+          <strong>{{ upload.category }}:</strong> {{ upload.filename }}
+          <a href="/uploads/{{ application.id }}/{{ upload.filename }}" target="_blank">Download</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</div>
+{% endblock %}

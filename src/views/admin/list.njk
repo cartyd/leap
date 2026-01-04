@@ -1,0 +1,87 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+<div class="admin-header">
+  <h2>Applications Management</h2>
+  <p>View and manage all Emergency Assistance Fund applications</p>
+</div>
+
+<div class="admin-filters">
+  <form method="GET" action="/admin/applications">
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter" name="status" onchange="this.form.submit()">
+      <option value="">All Applications</option>
+      <option value="DRAFT" {{ "selected" if filterStatus == "DRAFT" }}>Draft</option>
+      <option value="SUBMITTED" {{ "selected" if filterStatus == "SUBMITTED" }}>Submitted</option>
+    </select>
+  </form>
+</div>
+
+<div class="applications-list">
+  {% if applications.length > 0 %}
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Applicant Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Created</th>
+          <th>Submitted</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for app in applications %}
+        <tr>
+          <td>
+            <span class="app-id">{{ app.id | slice(0, 8) }}...</span>
+          </td>
+          <td>
+            {% if app.data.applicant.firstName %}
+              {{ app.data.applicant.firstName }} {{ app.data.applicant.lastName }}
+            {% else %}
+              <em>No name provided</em>
+            {% endif %}
+          </td>
+          <td>
+            {% if app.data.applicant.email %}
+              {{ app.data.applicant.email }}
+            {% else %}
+              <em>No email</em>
+            {% endif %}
+          </td>
+          <td>
+            <span class="status-badge status-{{ app.status | lower }}">
+              {{ app.status }}
+            </span>
+          </td>
+          <td>{{ app.createdAt | date }}</td>
+          <td>
+            {% if app.submittedAt %}
+              {{ app.submittedAt | date }}
+            {% else %}
+              -
+            {% endif %}
+          </td>
+          <td>
+            <a href="/admin/applications/{{ app.id }}" class="btn-small">View Details</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="no-results">
+      <p>No applications found.</p>
+      {% if filterStatus %}
+        <a href="/admin/applications">Clear filter</a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+<div class="admin-stats">
+  <p>Total applications displayed: <strong>{{ applications.length }}</strong></p>
+</div>
+{% endblock %}
