@@ -132,7 +132,10 @@
     <div class="form-group">
       <label for="spouse.phone">Spouse Phone</label>
       <input type="tel" id="spouse.phone" name="spouse[phone]" 
-             value="{{ application.data.spouse.phone or '' }}">
+             value="{{ application.data.spouse.phone | phone }}" 
+             placeholder="(999) 999-9999" 
+             pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" 
+             class="phone-input">
     </div>
 
     <div class="form-group">

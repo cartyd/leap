@@ -64,7 +64,10 @@
       <div class="form-group">
         <label for="medicalHistory.physicianPhone">Physician Phone</label>
         <input type="tel" id="medicalHistory.physicianPhone" name="medicalHistory[physicianPhone]" 
-               value="{{ application.data.medicalHistory.physicianPhone or '' }}">
+               value="{{ application.data.medicalHistory.physicianPhone | phone }}" 
+               placeholder="(999) 999-9999" 
+               pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" 
+               class="phone-input">
         {% if errors['medicalHistory.physicianPhone'] %}
           <div class="error">{{ errors['medicalHistory.physicianPhone'] }}</div>
         {% endif %}

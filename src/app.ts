@@ -99,6 +99,17 @@ app.register(fastifyView, {
         if (!value) return '';
         return new Date(value).toLocaleDateString('en-US');
       });
+
+      env.addFilter('phone', (value: any) => {
+        if (!value) return '';
+        // Remove all non-digits
+        const digits = value.toString().replace(/\D/g, '');
+        // Format as (999) 999-9999
+        if (digits.length === 10) {
+          return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+        }
+        return value; // Return as-is if not 10 digits
+      });
     },
   },
 });

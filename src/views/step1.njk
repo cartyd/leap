@@ -133,13 +133,19 @@
       <div class="form-group">
         <label for="applicant.phoneHome">Home Phone</label>
         <input type="tel" id="applicant.phoneHome" name="applicant[phoneHome]" 
-               value="{{ application.data.applicant.phoneHome or '' }}">
+               value="{{ application.data.applicant.phoneHome | phone }}" 
+               placeholder="(999) 999-9999" 
+               pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" 
+               class="phone-input">
       </div>
       
       <div class="form-group">
         <label for="applicant.phoneCell">Cell Phone</label>
         <input type="tel" id="applicant.phoneCell" name="applicant[phoneCell]" 
-               value="{{ application.data.applicant.phoneCell or '' }}">
+               value="{{ application.data.applicant.phoneCell | phone }}" 
+               placeholder="(999) 999-9999" 
+               pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" 
+               class="phone-input">
       </div>
     </div>
   </fieldset>

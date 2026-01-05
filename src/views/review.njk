@@ -47,12 +47,12 @@
       
       {% if application.data.applicant.phoneHome %}
         <dt>Home Phone:</dt>
-        <dd>{{ application.data.applicant.phoneHome }}</dd>
+        <dd>{{ application.data.applicant.phoneHome | phone }}</dd>
       {% endif %}
       
       {% if application.data.applicant.phoneCell %}
         <dt>Cell Phone:</dt>
-        <dd>{{ application.data.applicant.phoneCell }}</dd>
+        <dd>{{ application.data.applicant.phoneCell | phone }}</dd>
       {% endif %}
     </dl>
   </section>

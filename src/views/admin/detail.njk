@@ -52,12 +52,12 @@
       
       {% if application.data.applicant.phoneHome %}
         <dt>Home Phone:</dt>
-        <dd>{{ application.data.applicant.phoneHome }}</dd>
+        <dd>{{ application.data.applicant.phoneHome | phone }}</dd>
       {% endif %}
       
       {% if application.data.applicant.phoneCell %}
         <dt>Cell Phone:</dt>
-        <dd>{{ application.data.applicant.phoneCell }}</dd>
+        <dd>{{ application.data.applicant.phoneCell | phone }}</dd>
       {% endif %}
     </dl>
   </section>
@@ -88,7 +88,7 @@
       
       {% if application.data.medicalHistory.physicianName %}
         <dt>Physician:</dt>
-        <dd>{{ application.data.medicalHistory.physicianName }} - {{ application.data.medicalHistory.physicianPhone }}</dd>
+        <dd>{{ application.data.medicalHistory.physicianName }} - {{ application.data.medicalHistory.physicianPhone | phone }}</dd>
       {% endif %}
       
       <dt>Has Insurance:</dt>
@@ -199,7 +199,7 @@
             <p><strong>Address:</strong> {{ vendor.address }}, {{ vendor.city }}, {{ vendor.state }} {{ vendor.zip }}</p>
           {% endif %}
           {% if vendor.telephone %}
-            <p><strong>Phone:</strong> {{ vendor.telephone }}</p>
+            <p><strong>Phone:</strong> {{ vendor.telephone | phone }}</p>
           {% endif %}
           {% if vendor.email %}
             <p><strong>Email:</strong> {{ vendor.email }}</p>

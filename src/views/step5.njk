@@ -63,7 +63,10 @@
         <div class="form-group">
           <label for="vendors[{{ i }}].telephone">Telephone</label>
           <input type="tel" id="vendors[{{ i }}].telephone" name="vendors[{{ i }}][telephone]" 
-                 value="{{ application.data.vendors[i].telephone or '' if application.data.vendors[i] else '' }}">
+                 value="{{ application.data.vendors[i].telephone | phone if application.data.vendors[i] else '' }}" 
+                 placeholder="(999) 999-9999" 
+                 pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" 
+                 class="phone-input">
         </div>
       </div>
 
@@ -97,7 +100,10 @@
         <div class="form-group">
           <label for="vendors[{{ i }}].fax">Fax</label>
           <input type="tel" id="vendors[{{ i }}].fax" name="vendors[{{ i }}][fax]" 
-                 value="{{ application.data.vendors[i].fax or '' if application.data.vendors[i] else '' }}">
+                 value="{{ application.data.vendors[i].fax | phone if application.data.vendors[i] else '' }}" 
+                 placeholder="(999) 999-9999" 
+                 pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" 
+                 class="phone-input">
         </div>
       </div>
 
