@@ -141,8 +141,9 @@ test.describe('Emergency Assistance Fund Application', () => {
     await page.click('button:has-text("Submit Application")');
 
     // Confirmation page
-    await expect(page.locator('h2')).toContainText('Application Submitted');
-    await expect(page.locator('body')).toContainText('Thank you');
+    await expect(page.locator('h2')).toContainText('Application Submitted Successfully');
+    await expect(page.locator('body')).toContainText('Application ID');
+    await expect(page.locator('body')).toContainText('confirmation email');
   });
 
   test('should validate required fields on step 1', async ({ page }) => {
