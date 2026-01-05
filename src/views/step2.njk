@@ -101,22 +101,36 @@
       <div class="form-group">
         <label for="medicalHistory.diagnosisYear" class="required">Year of Diagnosis</label>
            <input type="number" id="medicalHistory.diagnosisYear" name="medicalHistory[diagnosisYear]" 
-             min="1900" max="{{ "now" | date("yyyy") }}" 
+             min="1951" max="{{ "now" | date("yyyy") }}" 
              value="{{ application.data.medicalHistory.diagnosisYear or '' }}" required>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var diagnosisYear = document.getElementById('medicalHistory.diagnosisYear');
+            var currentYear = new Date().getFullYear();
+            diagnosisYear.addEventListener('input', function() {
+              var val = parseInt(this.value);
+              if (this.value && val < 1951) {
+                this.setCustomValidity('Year must be after 1950.');
+              } else if (this.value && val > currentYear) {
+                this.setCustomValidity('Year cannot be in the future.');
+              } else {
+                this.setCustomValidity('');
+              }
+            });
+          });
+        </script>
         {% if errors['medicalHistory.diagnosisYear'] %}
           <div class="error">{{ errors['medicalHistory.diagnosisYear'] }}</div>
         {% endif %}
       </div>
       
       <div class="form-group">
-        <label for="medicalHistory.lupusType" class="required">Type of Lupus</label>
-        <select id="medicalHistory.lupusType" name="medicalHistory[lupusType]" required>
-          <option value="">Select...</option>
-          <option value="Discoid" {{ "selected" if application.data.medicalHistory.lupusType == "Discoid" }}>Discoid</option>
-          <option value="Systemic" {{ "selected" if application.data.medicalHistory.lupusType == "Systemic" }}>Systemic</option>
-          <option value="Both" {{ "selected" if application.data.medicalHistory.lupusType == "Both" }}>Both</option>
-          <option value="Unknown" {{ "selected" if application.data.medicalHistory.lupusType == "Unknown" }}>Unknown</option>
-        </select>
+        <label class="required">Type of Lupus</label>
+        <div class="segmented-control" id="lupusTypeControl">
+          <label><input type="radio" name="medicalHistory[lupusType]" value="Discoid" {% if application.data.medicalHistory.lupusType == 'Discoid' %}checked{% endif %} required> Discoid</label>
+          <label><input type="radio" name="medicalHistory[lupusType]" value="Systemic" {% if application.data.medicalHistory.lupusType == 'Systemic' %}checked{% endif %} required> Systemic</label>
+          <label><input type="radio" name="medicalHistory[lupusType]" value="Both" {% if application.data.medicalHistory.lupusType == 'Both' %}checked{% endif %} required> Both</label>
+        </div>
         {% if errors['medicalHistory.lupusType'] %}
           <div class="error">{{ errors['medicalHistory.lupusType'] }}</div>
         {% endif %}
@@ -151,22 +165,20 @@
     <legend>Medical Coverage</legend>
     
     <div class="form-group">
-      <label>
-         <input type="checkbox" id="medicalCoverage.hasInsurance" name="medicalCoverage[hasInsurance]" 
-           value="true" {{ "checked" if application.data.medicalCoverage.hasInsurance }}>
-        Has Health Insurance
-      </label>
+      <label class="required">Has Health Insurance</label>
+      <div class="segmented-control" id="hasInsuranceControl">
+        <label><input type="radio" id="medicalCoverage.hasInsurance-yes" name="medicalCoverage[hasInsurance]" value="true" {% if application.data.medicalCoverage.hasInsurance %}checked{% endif %}> Yes</label>
+        <label><input type="radio" id="medicalCoverage.hasInsurance-no" name="medicalCoverage[hasInsurance]" value="false" {% if not application.data.medicalCoverage.hasInsurance %}checked{% endif %}> No</label>
+      </div>
     </div>
 
     <div class="form-group">
-      <label for="medicalCoverage.coverageType" class="required">Coverage Type</label>
-      <select id="medicalCoverage.coverageType" name="medicalCoverage[coverageType]"
-        {% if not application.data.medicalCoverage.hasInsurance %}disabled{% endif %}>
-        <option value="None" {% if not application.data.medicalCoverage.coverageType or application.data.medicalCoverage.coverageType == 'None' %}selected{% endif %}>None</option>
-        <option value="Medicaid" {{ "selected" if application.data.medicalCoverage.coverageType == "Medicaid" }}>Medicaid</option>
-        <option value="Medicare" {{ "selected" if application.data.medicalCoverage.coverageType == "Medicare" }}>Medicare</option>
-        <option value="Private" {{ "selected" if application.data.medicalCoverage.coverageType == "Private" }}>Private</option>
-      </select>
+      <label class="required">Coverage Type</label>
+      <div class="segmented-control" id="coverageTypeControl">
+        <label><input type="radio" id="medicalCoverage.coverageType-medicaid" name="medicalCoverage[coverageType]" value="Medicaid" {% if application.data.medicalCoverage.coverageType == 'Medicaid' %}checked{% endif %} {% if not application.data.medicalCoverage.hasInsurance %}disabled{% endif %}> Medicaid</label>
+        <label><input type="radio" id="medicalCoverage.coverageType-medicare" name="medicalCoverage[coverageType]" value="Medicare" {% if application.data.medicalCoverage.coverageType == 'Medicare' %}checked{% endif %} {% if not application.data.medicalCoverage.hasInsurance %}disabled{% endif %}> Medicare</label>
+        <label><input type="radio" id="medicalCoverage.coverageType-private" name="medicalCoverage[coverageType]" value="Private" {% if application.data.medicalCoverage.coverageType == 'Private' %}checked{% endif %} {% if not application.data.medicalCoverage.hasInsurance %}disabled{% endif %}> Private</label>
+      </div>
       {% if errors['medicalCoverage.coverageType'] %}
         <div class="error">{{ errors['medicalCoverage.coverageType'] }}</div>
       {% endif %}
@@ -184,25 +196,23 @@
     </div>
 
     <div class="form-group">
-      <label for="medicalCoverage.rxCoverage" class="required">Prescription Drug Coverage</label>
-      <select id="medicalCoverage.rxCoverage" name="medicalCoverage[rxCoverage]"
-        {% if not application.data.medicalCoverage.hasInsurance %}disabled{% endif %}>
-        <option value="None" {% if not application.data.medicalCoverage.rxCoverage or application.data.medicalCoverage.rxCoverage == 'None' %}selected{% endif %}>None</option>
-        <option value="Yes" {{ "selected" if application.data.medicalCoverage.rxCoverage == "Yes" }}>Yes</option>
-        <option value="No" {{ "selected" if application.data.medicalCoverage.rxCoverage == "No" }}>No</option>
-        <option value="Copay" {{ "selected" if application.data.medicalCoverage.rxCoverage == "Copay" }}>Copay</option>
-      </select>
+      <label class="required">Prescription Drug Coverage</label>
+      <div class="segmented-control" id="rxCoverageControl">
+        <label><input type="radio" id="medicalCoverage.rxCoverage-none" name="medicalCoverage[rxCoverage]" value="None" {% if not application.data.medicalCoverage.rxCoverage or application.data.medicalCoverage.rxCoverage == 'None' %}checked{% endif %} {% if not application.data.medicalCoverage.hasInsurance %}disabled{% endif %}> None</label>
+        <label><input type="radio" id="medicalCoverage.rxCoverage-yes" name="medicalCoverage[rxCoverage]" value="Yes" {% if application.data.medicalCoverage.rxCoverage == 'Yes' %}checked{% endif %} {% if not application.data.medicalCoverage.hasInsurance %}disabled{% endif %}> Yes</label>
+        <label><input type="radio" id="medicalCoverage.rxCoverage-no" name="medicalCoverage[rxCoverage]" value="No" {% if application.data.medicalCoverage.rxCoverage == 'No' %}checked{% endif %} {% if not application.data.medicalCoverage.hasInsurance %}disabled{% endif %}> No</label>
+      </div>
       {% if errors['medicalCoverage.rxCoverage'] %}
         <div class="error">{{ errors['medicalCoverage.rxCoverage'] }}</div>
       {% endif %}
     </div>
 
-    <div class="form-group" id="copayAmountGroup" style="display: {{ 'block' if application.data.medicalCoverage.rxCoverage == 'Copay' else 'none' }}">
+    <div class="form-group" id="copayAmountGroup" style="display: {{ 'block' if application.data.medicalCoverage.rxCoverage == 'Yes' else 'none' }}">
       <label for="medicalCoverage.copayAmount" class="required">Copay Amount</label>
         <input type="number" id="medicalCoverage.copayAmount" name="medicalCoverage[copayAmount]" 
           min="0" step="0.01" value="{{ application.data.medicalCoverage.copayAmount or '' }}"
-          {% if not application.data.medicalCoverage.hasInsurance or application.data.medicalCoverage.rxCoverage != 'Copay' %}disabled{% endif %}
-          {% if application.data.medicalCoverage.hasInsurance and application.data.medicalCoverage.rxCoverage == 'Copay' %}required{% endif %}>
+          {% if not application.data.medicalCoverage.hasInsurance or application.data.medicalCoverage.rxCoverage != 'Yes' %}disabled{% endif %}
+          {% if application.data.medicalCoverage.hasInsurance and application.data.medicalCoverage.rxCoverage == 'Yes' %}required{% endif %}>
       {% if errors['medicalCoverage.copayAmount'] %}
         <div class="error">{{ errors['medicalCoverage.copayAmount'] }}</div>
       {% endif %}
@@ -228,16 +238,71 @@
 </script>
 </form>
 
+<style>
+  .segmented-control {
+    display: flex;
+    gap: 10px;
+    margin: 5px 0 0 0;
+  }
+  .segmented-control label {
+    background: #f4f4f4;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 5px 14px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s, border 0.2s;
+  }
+  .segmented-control input[type="radio"] {
+    display: none;
+  }
+  .segmented-control input[type="radio"]:checked + span,
+  .segmented-control label:has(input[type="radio"]:checked) {
+    background: #490075;
+    color: #fff;
+    border-color: #490075;
+  }
+</style>
 <script>
-  // Show/hide conditional fields
-  document.getElementById('medicalCoverage.coverageType').addEventListener('change', function() {
-    document.getElementById('privateInsuranceNameGroup').style.display = 
-      this.value === 'Private' ? 'block' : 'none';
+  // Show/hide conditional fields for private insurance and copay
+  function updatePrivateInsuranceGroup() {
+    var priv = document.getElementById('privateInsuranceNameGroup');
+    var privRadio = document.getElementById('medicalCoverage.coverageType-private');
+    priv.style.display = privRadio && privRadio.checked ? 'block' : 'none';
+  }
+  function updateCopayGroup() {
+    var copay = document.getElementById('copayAmountGroup');
+    var yesRadio = document.getElementById('medicalCoverage.rxCoverage-yes');
+    copay.style.display = yesRadio && yesRadio.checked ? 'block' : 'none';
+  }
+  function updateCoverageTypeEnabled() {
+    var hasInsuranceYes = document.getElementById('medicalCoverage.hasInsurance-yes');
+    var coverageTypeRadios = document.querySelectorAll('input[name="medicalCoverage[coverageType]"]');
+    if (hasInsuranceYes && hasInsuranceYes.checked) {
+      coverageTypeRadios.forEach(function(radio) {
+        radio.disabled = false;
+        radio.required = true;
+      });
+    } else {
+      coverageTypeRadios.forEach(function(radio) {
+        radio.checked = false;
+        radio.disabled = true;
+        radio.required = false;
+      });
+    }
+    updatePrivateInsuranceGroup();
+  }
+  document.querySelectorAll('input[name="medicalCoverage[coverageType]"]').forEach(function(radio) {
+    radio.addEventListener('change', updatePrivateInsuranceGroup);
   });
-  
-  document.getElementById('medicalCoverage.rxCoverage').addEventListener('change', function() {
-    document.getElementById('copayAmountGroup').style.display = 
-      this.value === 'Copay' ? 'block' : 'none';
+  document.querySelectorAll('input[name="medicalCoverage[rxCoverage]"]').forEach(function(radio) {
+    radio.addEventListener('change', updateCopayGroup);
   });
+  document.querySelectorAll('input[name="medicalCoverage[hasInsurance]"]').forEach(function(radio) {
+    radio.addEventListener('change', updateCoverageTypeEnabled);
+  });
+  // Initial state
+  updateCoverageTypeEnabled();
+  updateCopayGroup();
 </script>
 {% endblock %}
