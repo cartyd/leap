@@ -64,7 +64,11 @@
       <div class="form-group">
         <label for="applicant.email" class="required">Email</label>
         <input type="email" id="applicant.email" name="applicant[email]" 
-               value="{{ application.data.applicant.email or '' }}" required>
+               value="{{ application.data.applicant.email or '' }}" 
+               placeholder="example@email.com" 
+               pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" 
+               title="Please enter a valid email address" 
+               required>
         {% if errors['applicant.email'] %}
           <div class="error">{{ errors['applicant.email'] }}</div>
         {% endif %}

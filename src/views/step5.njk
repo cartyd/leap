@@ -110,7 +110,10 @@
       <div class="form-group">
         <label for="vendors[{{ i }}].email">Email</label>
         <input type="email" id="vendors[{{ i }}].email" name="vendors[{{ i }}][email]" 
-               value="{{ application.data.vendors[i].email or '' if application.data.vendors[i] else '' }}">
+               value="{{ application.data.vendors[i].email or '' if application.data.vendors[i] else '' }}" 
+               placeholder="example@email.com" 
+               pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" 
+               title="Please enter a valid email address">
       </div>
 
       <div class="form-row">
