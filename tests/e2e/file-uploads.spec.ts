@@ -30,10 +30,11 @@ test.describe('File Uploads', () => {
     await page.fill('input[name="applicant[email]"]', 'upload@example.com');
     await page.fill('input[name="applicant[dob]"]', '1985-06-10');
     await page.fill('input[name="applicant[address1]"]', '456 Upload St');
-    await page.fill('input[name="applicant[city]"]', 'Atlanta');
-    await page.fill('input[name="applicant[state]"]', 'GA');
+    
+    // Fill ZIP first to auto-populate city, state, county
     await page.fill('input[name="applicant[zip]"]', '30306');
-    await page.fill('input[name="applicant[county]"]', 'Fulton');
+    await page.waitForTimeout(500);
+    
     await page.fill('input[name="request[assistanceFor]"]', 'Upload test');
     await page.fill('input[name="request[approximateCost]"]', '250');
 
@@ -70,10 +71,11 @@ test.describe('File Uploads', () => {
     await page.fill('input[name="applicant[email]"]', 'large@example.com');
     await page.fill('input[name="applicant[dob]"]', '1990-01-01');
     await page.fill('input[name="applicant[address1]"]', '789 Large St');
-    await page.fill('input[name="applicant[city]"]', 'Atlanta');
-    await page.fill('input[name="applicant[state]"]', 'GA');
+    
+    // Fill ZIP first to auto-populate city, state, county
     await page.fill('input[name="applicant[zip]"]', '30307');
-    await page.fill('input[name="applicant[county]"]', 'Fulton');
+    await page.waitForTimeout(500);
+    
     await page.fill('input[name="request[assistanceFor]"]', 'Size test');
     await page.fill('input[name="request[approximateCost]"]', '100');
 
@@ -107,10 +109,11 @@ test.describe('File Uploads', () => {
     await page.fill('input[name="applicant[email]"]', 'multi@example.com');
     await page.fill('input[name="applicant[dob]"]', '1988-04-15');
     await page.fill('input[name="applicant[address1]"]', '321 Multi Ave');
-    await page.fill('input[name="applicant[city]"]', 'Atlanta');
-    await page.fill('input[name="applicant[state]"]', 'GA');
+    
+    // Fill ZIP first to auto-populate city, state, county
     await page.fill('input[name="applicant[zip]"]', '30308');
-    await page.fill('input[name="applicant[county]"]', 'Fulton');
+    await page.waitForTimeout(500);
+    
     await page.fill('input[name="request[assistanceFor]"]', 'Multi upload test');
     await page.fill('input[name="request[approximateCost]"]', '300');
 
@@ -149,10 +152,11 @@ test.describe('File Uploads', () => {
     await page.fill('input[name="applicant[email]"]', 'delete@example.com');
     await page.fill('input[name="applicant[dob]"]', '1992-09-20');
     await page.fill('input[name="applicant[address1]"]', '555 Delete Rd');
-    await page.fill('input[name="applicant[city]"]', 'Atlanta');
-    await page.fill('input[name="applicant[state]"]', 'GA');
+    
+    // Fill ZIP first to auto-populate city, state, county
     await page.fill('input[name="applicant[zip]"]', '30309');
-    await page.fill('input[name="applicant[county]"]', 'Fulton');
+    await page.waitForTimeout(500);
+    
     await page.fill('input[name="request[assistanceFor]"]', 'Delete test');
     await page.fill('input[name="request[approximateCost]"]', '150');
 
@@ -198,10 +202,11 @@ test.describe('File Uploads', () => {
     await page.fill('input[name="applicant[email]"]', 'invalid@example.com');
     await page.fill('input[name="applicant[dob]"]', '1987-12-05');
     await page.fill('input[name="applicant[address1]"]', '999 Invalid Ln');
-    await page.fill('input[name="applicant[city]"]', 'Atlanta');
-    await page.fill('input[name="applicant[state]"]', 'GA');
+    
+    // Fill ZIP first to auto-populate city, state, county
     await page.fill('input[name="applicant[zip]"]', '30310');
-    await page.fill('input[name="applicant[county]"]', 'Fulton');
+    await page.waitForTimeout(500);
+    
     await page.fill('input[name="request[assistanceFor]"]', 'MIME test');
     await page.fill('input[name="request[approximateCost]"]', '200');
 

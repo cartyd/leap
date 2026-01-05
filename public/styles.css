@@ -1,3 +1,10 @@
+/* Readonly/Non-editable Field Styles */
+.readonly-field {
+  background: #f4f4f4;
+  color: #888;
+  border: 1px dashed #bbb;
+  cursor: not-allowed;
+}
 /* Reset and Base Styles */
 * {
   box-sizing: border-box;

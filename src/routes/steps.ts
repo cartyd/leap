@@ -8,6 +8,7 @@ import {
   step5Schema,
   step6Schema,
 } from '@schemas/application.schema';
+import config from '@config/index';
 
 const stepSchemas = [step1Schema, step2Schema, step3Schema, step4Schema, step5Schema, step6Schema];
 const stepTemplates = ['step1.njk', 'step2.njk', 'step3.njk', 'step4.njk', 'step5.njk', 'step6.njk'];
@@ -32,6 +33,7 @@ export async function stepRoutes(app: FastifyInstance) {
       step,
       csrfToken: request.csrfToken,
       errors: {},
+      isDevelopment: config.isDevelopment,
     });
   });
 
@@ -66,6 +68,7 @@ export async function stepRoutes(app: FastifyInstance) {
           acc[err.path.join('.')] = err.message;
           return acc;
         }, {}),
+        isDevelopment: config.isDevelopment,
       });
     }
 

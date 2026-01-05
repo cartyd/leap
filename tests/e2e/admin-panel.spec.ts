@@ -71,10 +71,16 @@ test.describe('Admin Panel', () => {
     await page.fill('input[name="applicant[email]"]', 'reset@example.com');
     await page.fill('input[name="applicant[dob]"]', '1990-01-01');
     await page.fill('input[name="applicant[address1]"]', '123 Reset St');
-    await page.fill('input[name="applicant[city]"]', 'Atlanta');
-    await page.fill('input[name="applicant[state]"]', 'GA');
+    
+    // Fill ZIP first to auto-populate city, state, county
     await page.fill('input[name="applicant[zip]"]', '30305');
-    await page.fill('input[name="applicant[county]"]', 'Fulton');
+    await page.waitForTimeout(500); // Wait for auto-population
+    
+    // Verify auto-population worked (30305 = Atlanta, Fulton)
+    await expect(page.locator('input[name="applicant[city]"]')).toHaveValue('Atlanta');
+    await expect(page.locator('input[name="applicant[state]"]')).toHaveValue('GA');
+    await expect(page.locator('input[name="applicant[county]"]')).toHaveValue('Fulton');
+    
     await page.fill('input[name="request[assistanceFor]"]', 'Reset test');
     await page.fill('input[name="request[approximateCost]"]', '500');
     

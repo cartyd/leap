@@ -21,10 +21,17 @@ test.describe('Emergency Assistance Fund Application', () => {
     await page.fill('input[name="applicant[email]"]', 'john.doe@example.com');
     await page.fill('input[name="applicant[dob]"]', '1980-05-15');
     await page.fill('input[name="applicant[address1]"]', '123 Main Street');
-    await page.fill('input[name="applicant[city]"]', 'Atlanta');
-    await page.fill('input[name="applicant[state]"]', 'GA');
+    
+    // Fill ZIP code first - this will auto-populate city, state, and county
     await page.fill('input[name="applicant[zip]"]', '30301');
-    await page.fill('input[name="applicant[county]"]', 'Fulton');
+    
+    // Wait for auto-population to complete
+    await page.waitForTimeout(500);
+    
+    // Verify the fields were auto-populated
+    await expect(page.locator('input[name="applicant[city]"]')).toHaveValue('Atlanta');
+    await expect(page.locator('input[name="applicant[state]"]')).toHaveValue('GA');
+    await expect(page.locator('input[name="applicant[county]"]')).toHaveValue('Fulton');
     await page.fill('input[name="applicant[phoneHome]"]', '404-555-1234');
     await page.fill('input[name="applicant[phoneCell]"]', '404-555-5678');
 
@@ -186,10 +193,16 @@ test.describe('Emergency Assistance Fund Application', () => {
     await page.fill('input[name="applicant[email]"]', 'john@example.com');
     await page.fill('input[name="applicant[dob]"]', '1980-01-01');
     await page.fill('input[name="applicant[address1]"]', '123 Main St');
-    await page.fill('input[name="applicant[city]"]', 'Atlanta');
-    await page.fill('input[name="applicant[state]"]', 'GA');
+    
+    // Fill ZIP first to auto-populate city, state, county
     await page.fill('input[name="applicant[zip]"]', '30301');
-    await page.fill('input[name="applicant[county]"]', 'Fulton');
+    await page.waitForTimeout(500); // Wait for auto-population
+    
+    // Verify auto-population worked
+    await expect(page.locator('input[name="applicant[city]"]')).toHaveValue('Atlanta');
+    await expect(page.locator('input[name="applicant[state]"]')).toHaveValue('GA');
+    await expect(page.locator('input[name="applicant[county]"]')).toHaveValue('Fulton');
+    
     await page.fill('input[name="request[assistanceFor]"]', 'Medical');
     await page.fill('input[name="request[approximateCost]"]', '1000');
 
@@ -219,10 +232,16 @@ test.describe('Emergency Assistance Fund Application', () => {
     await page.fill('input[name="applicant[email]"]', 'preserve@example.com');
     await page.fill('input[name="applicant[dob]"]', '1990-01-01');
     await page.fill('input[name="applicant[address1]"]', '456 Test Ave');
-    await page.fill('input[name="applicant[city]"]', 'Atlanta');
-    await page.fill('input[name="applicant[state]"]', 'GA');
+    
+    // Fill ZIP first to auto-populate city, state, county
     await page.fill('input[name="applicant[zip]"]', '30302');
-    await page.fill('input[name="applicant[county]"]', 'DeKalb');
+    await page.waitForTimeout(500); // Wait for auto-population
+    
+    // Verify auto-population worked (30302 = Decatur, DeKalb)
+    await expect(page.locator('input[name="applicant[city]"]')).toHaveValue('Decatur');
+    await expect(page.locator('input[name="applicant[state]"]')).toHaveValue('GA');
+    await expect(page.locator('input[name="applicant[county]"]')).toHaveValue('DeKalb');
+    
     await page.fill('input[name="request[assistanceFor]"]', 'Test request');
     await page.fill('input[name="request[approximateCost]"]', '500');
 

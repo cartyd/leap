@@ -1,0 +1,4837 @@
+[
+  {
+    "zip": "30002",
+    "city": "Avondale Estates",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30003",
+    "city": "Norcross",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30004",
+    "city": "Alpharetta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30005",
+    "city": "Alpharetta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30006",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30007",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30008",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30009",
+    "city": "Alpharetta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30010",
+    "city": "Norcross",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30011",
+    "city": "Auburn",
+    "county": "Barrow"
+  },
+  {
+    "zip": "30012",
+    "city": "Conyers",
+    "county": "Rockdale"
+  },
+  {
+    "zip": "30013",
+    "city": "Conyers",
+    "county": "Rockdale"
+  },
+  {
+    "zip": "30014",
+    "city": "Covington",
+    "county": "Newton"
+  },
+  {
+    "zip": "30015",
+    "city": "Covington",
+    "county": "Newton"
+  },
+  {
+    "zip": "30016",
+    "city": "Covington",
+    "county": "Newton"
+  },
+  {
+    "zip": "30017",
+    "city": "Grayson",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30018",
+    "city": "Jersey",
+    "county": "Walton"
+  },
+  {
+    "zip": "30019",
+    "city": "Dacula",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30021",
+    "city": "Clarkston",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30022",
+    "city": "Alpharetta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30023",
+    "city": "Alpharetta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30024",
+    "city": "Suwanee",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30025",
+    "city": "Social Circle",
+    "county": "Walton"
+  },
+  {
+    "zip": "30026",
+    "city": "North Metro",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30028",
+    "city": "Cumming",
+    "county": "Forsyth"
+  },
+  {
+    "zip": "30029",
+    "city": "North Metro",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30030",
+    "city": "Decatur",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30031",
+    "city": "Decatur",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30032",
+    "city": "Decatur",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30033",
+    "city": "Decatur",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30034",
+    "city": "Decatur",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30035",
+    "city": "Decatur",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30036",
+    "city": "Decatur",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30037",
+    "city": "Decatur",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30038",
+    "city": "Lithonia",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30039",
+    "city": "Snellville",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30040",
+    "city": "Cumming",
+    "county": "Forsyth"
+  },
+  {
+    "zip": "30041",
+    "city": "Cumming",
+    "county": "Forsyth"
+  },
+  {
+    "zip": "30042",
+    "city": "Lawrenceville",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30043",
+    "city": "Lawrenceville",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30044",
+    "city": "Lawrenceville",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30045",
+    "city": "Lawrenceville",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30046",
+    "city": "Lawrenceville",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30047",
+    "city": "Lilburn",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30048",
+    "city": "Lilburn",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30049",
+    "city": "Lawrenceville",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30052",
+    "city": "Loganville",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30054",
+    "city": "Oxford",
+    "county": "Newton"
+  },
+  {
+    "zip": "30055",
+    "city": "Mansfield",
+    "county": "Jasper"
+  },
+  {
+    "zip": "30056",
+    "city": "Newborn",
+    "county": "Newton"
+  },
+  {
+    "zip": "30058",
+    "city": "Lithonia",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30060",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30061",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30062",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30063",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30064",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30065",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30066",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30067",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30068",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30069",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30070",
+    "city": "Porterdale",
+    "county": "Newton"
+  },
+  {
+    "zip": "30071",
+    "city": "Norcross",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30072",
+    "city": "Pine Lake",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30074",
+    "city": "Redan",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30075",
+    "city": "Roswell",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30076",
+    "city": "Roswell",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30077",
+    "city": "Roswell",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30078",
+    "city": "Snellville",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30079",
+    "city": "Scottdale",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30080",
+    "city": "Smyrna",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30081",
+    "city": "Smyrna",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30082",
+    "city": "Smyrna",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30083",
+    "city": "Stone Mountain",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30084",
+    "city": "Tucker",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30085",
+    "city": "Tucker",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30086",
+    "city": "Stone Mountain",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30087",
+    "city": "Stone Mountain",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30088",
+    "city": "Stone Mountain",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30090",
+    "city": "Marietta",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30091",
+    "city": "Norcross",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30092",
+    "city": "Norcross",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30093",
+    "city": "Norcross",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30094",
+    "city": "Conyers",
+    "county": "Rockdale"
+  },
+  {
+    "zip": "30095",
+    "city": "Duluth",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30096",
+    "city": "Duluth",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30097",
+    "city": "Duluth",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30098",
+    "city": "Duluth",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30099",
+    "city": "Duluth",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30101",
+    "city": "Acworth",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30102",
+    "city": "Acworth",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30103",
+    "city": "Adairsville",
+    "county": "Bartow"
+  },
+  {
+    "zip": "30104",
+    "city": "Aragon",
+    "county": "Polk"
+  },
+  {
+    "zip": "30105",
+    "city": "Armuchee",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30106",
+    "city": "Austell",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30107",
+    "city": "Ball Ground",
+    "county": "Cherokee"
+  },
+  {
+    "zip": "30108",
+    "city": "Bowdon",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30109",
+    "city": "Bowdon Junction",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30110",
+    "city": "Bremen",
+    "county": "Haralson"
+  },
+  {
+    "zip": "30111",
+    "city": "Clarkdale",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30113",
+    "city": "Buchanan",
+    "county": "Haralson"
+  },
+  {
+    "zip": "30114",
+    "city": "Canton",
+    "county": "Cherokee"
+  },
+  {
+    "zip": "30115",
+    "city": "Canton",
+    "county": "Cherokee"
+  },
+  {
+    "zip": "30116",
+    "city": "Carrollton",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30117",
+    "city": "Carrollton",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30118",
+    "city": "Carrollton",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30119",
+    "city": "Carrollton",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30120",
+    "city": "Cartersville",
+    "county": "Bartow"
+  },
+  {
+    "zip": "30121",
+    "city": "Cartersville",
+    "county": "Bartow"
+  },
+  {
+    "zip": "30122",
+    "city": "Lithia Springs",
+    "county": "Douglas"
+  },
+  {
+    "zip": "30123",
+    "city": "Cassville",
+    "county": "Bartow"
+  },
+  {
+    "zip": "30124",
+    "city": "Cave Spring",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30125",
+    "city": "Cedartown",
+    "county": "Polk"
+  },
+  {
+    "zip": "30126",
+    "city": "Mableton",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30127",
+    "city": "Powder Springs",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30129",
+    "city": "Coosa",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30132",
+    "city": "Dallas",
+    "county": "Paulding"
+  },
+  {
+    "zip": "30133",
+    "city": "Douglasville",
+    "county": "Douglas"
+  },
+  {
+    "zip": "30134",
+    "city": "Douglasville",
+    "county": "Douglas"
+  },
+  {
+    "zip": "30135",
+    "city": "Douglasville",
+    "county": "Douglas"
+  },
+  {
+    "zip": "30137",
+    "city": "Emerson",
+    "county": "Bartow"
+  },
+  {
+    "zip": "30138",
+    "city": "Esom Hill",
+    "county": "Polk"
+  },
+  {
+    "zip": "30139",
+    "city": "Fairmount",
+    "county": "Gordon"
+  },
+  {
+    "zip": "30140",
+    "city": "Felton",
+    "county": "Haralson"
+  },
+  {
+    "zip": "30141",
+    "city": "Hiram",
+    "county": "Paulding"
+  },
+  {
+    "zip": "30142",
+    "city": "Holly Springs",
+    "county": "Cherokee"
+  },
+  {
+    "zip": "30143",
+    "city": "Jasper",
+    "county": "Pickens"
+  },
+  {
+    "zip": "30144",
+    "city": "Kennesaw",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30145",
+    "city": "Kingston",
+    "county": "Bartow"
+  },
+  {
+    "zip": "30146",
+    "city": "Lebanon",
+    "county": "Cherokee"
+  },
+  {
+    "zip": "30147",
+    "city": "Lindale",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30148",
+    "city": "Marble Hill",
+    "county": "Pickens"
+  },
+  {
+    "zip": "30149",
+    "city": "Mount Berry",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30150",
+    "city": "Mount Zion",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30151",
+    "city": "Nelson",
+    "county": "Cherokee"
+  },
+  {
+    "zip": "30152",
+    "city": "Kennesaw",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30153",
+    "city": "Rockmart",
+    "county": "Polk"
+  },
+  {
+    "zip": "30154",
+    "city": "Douglasville",
+    "county": "Douglas"
+  },
+  {
+    "zip": "30156",
+    "city": "Kennesaw",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30157",
+    "city": "Dallas",
+    "county": "Paulding"
+  },
+  {
+    "zip": "30160",
+    "city": "Kennesaw",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30161",
+    "city": "Rome",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30162",
+    "city": "Rome",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30163",
+    "city": "Rome",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30164",
+    "city": "Rome",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30165",
+    "city": "Rome",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30168",
+    "city": "Austell",
+    "county": "Cobb"
+  },
+  {
+    "zip": "30170",
+    "city": "Roopville",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30171",
+    "city": "Rydal",
+    "county": "Bartow"
+  },
+  {
+    "zip": "30172",
+    "city": "Shannon",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30173",
+    "city": "Silver Creek",
+    "county": "Floyd"
+  },
+  {
+    "zip": "30175",
+    "city": "Talking Rock",
+    "county": "Pickens"
+  },
+  {
+    "zip": "30176",
+    "city": "Tallapoosa",
+    "county": "Haralson"
+  },
+  {
+    "zip": "30177",
+    "city": "Tate",
+    "county": "Pickens"
+  },
+  {
+    "zip": "30178",
+    "city": "Taylorsville",
+    "county": "Bartow"
+  },
+  {
+    "zip": "30179",
+    "city": "Temple",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30180",
+    "city": "Villa Rica",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30182",
+    "city": "Waco",
+    "county": "Haralson"
+  },
+  {
+    "zip": "30183",
+    "city": "Waleska",
+    "county": "Cherokee"
+  },
+  {
+    "zip": "30184",
+    "city": "White",
+    "county": "Bartow"
+  },
+  {
+    "zip": "30185",
+    "city": "Whitesburg",
+    "county": "Carroll"
+  },
+  {
+    "zip": "30187",
+    "city": "Winston",
+    "county": "Douglas"
+  },
+  {
+    "zip": "30188",
+    "city": "Woodstock",
+    "county": "Cherokee"
+  },
+  {
+    "zip": "30189",
+    "city": "Woodstock",
+    "county": "Cherokee"
+  },
+  {
+    "zip": "30204",
+    "city": "Barnesville",
+    "county": "Lamar"
+  },
+  {
+    "zip": "30205",
+    "city": "Brooks",
+    "county": "Fayette"
+  },
+  {
+    "zip": "30206",
+    "city": "Concord",
+    "county": "Pike"
+  },
+  {
+    "zip": "30212",
+    "city": "Experiment",
+    "county": "Spalding"
+  },
+  {
+    "zip": "30213",
+    "city": "Fairburn",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30214",
+    "city": "Fayetteville",
+    "county": "Fayette"
+  },
+  {
+    "zip": "30215",
+    "city": "Fayetteville",
+    "county": "Fayette"
+  },
+  {
+    "zip": "30216",
+    "city": "Flovilla",
+    "county": "Butts"
+  },
+  {
+    "zip": "30217",
+    "city": "Franklin",
+    "county": "Heard"
+  },
+  {
+    "zip": "30218",
+    "city": "Gay",
+    "county": "Meriwether"
+  },
+  {
+    "zip": "30219",
+    "city": "Glenn",
+    "county": "Heard"
+  },
+  {
+    "zip": "30220",
+    "city": "Grantville",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30222",
+    "city": "Greenville",
+    "county": "Meriwether"
+  },
+  {
+    "zip": "30223",
+    "city": "Griffin",
+    "county": "Spalding"
+  },
+  {
+    "zip": "30224",
+    "city": "Griffin",
+    "county": "Spalding"
+  },
+  {
+    "zip": "30228",
+    "city": "Hampton",
+    "county": "Henry"
+  },
+  {
+    "zip": "30229",
+    "city": "Haralson",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30230",
+    "city": "Hogansville",
+    "county": "Troup"
+  },
+  {
+    "zip": "30232",
+    "city": "Inman",
+    "county": "Fayette"
+  },
+  {
+    "zip": "30233",
+    "city": "Jackson",
+    "county": "Butts"
+  },
+  {
+    "zip": "30234",
+    "city": "Jenkinsburg",
+    "county": "Butts"
+  },
+  {
+    "zip": "30236",
+    "city": "Jonesboro",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30237",
+    "city": "Jonesboro",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30238",
+    "city": "Jonesboro",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30240",
+    "city": "Lagrange",
+    "county": "Troup"
+  },
+  {
+    "zip": "30241",
+    "city": "Lagrange",
+    "county": "Troup"
+  },
+  {
+    "zip": "30248",
+    "city": "Locust Grove",
+    "county": "Henry"
+  },
+  {
+    "zip": "30250",
+    "city": "Lovejoy",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30251",
+    "city": "Luthersville",
+    "county": "Meriwether"
+  },
+  {
+    "zip": "30252",
+    "city": "Mcdonough",
+    "county": "Henry"
+  },
+  {
+    "zip": "30253",
+    "city": "Mcdonough",
+    "county": "Henry"
+  },
+  {
+    "zip": "30256",
+    "city": "Meansville",
+    "county": "Pike"
+  },
+  {
+    "zip": "30257",
+    "city": "Milner",
+    "county": "Lamar"
+  },
+  {
+    "zip": "30258",
+    "city": "Molena",
+    "county": "Pike"
+  },
+  {
+    "zip": "30259",
+    "city": "Moreland",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30260",
+    "city": "Morrow",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30261",
+    "city": "Lagrange",
+    "county": "Troup"
+  },
+  {
+    "zip": "30263",
+    "city": "Newnan",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30264",
+    "city": "Newnan",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30265",
+    "city": "Newnan",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30266",
+    "city": "Orchard Hill",
+    "county": "Spalding"
+  },
+  {
+    "zip": "30268",
+    "city": "Palmetto",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30269",
+    "city": "Peachtree City",
+    "county": "Fayette"
+  },
+  {
+    "zip": "30271",
+    "city": "Newnan",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30272",
+    "city": "Red Oak",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30273",
+    "city": "Rex",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30274",
+    "city": "Riverdale",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30275",
+    "city": "Sargent",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30276",
+    "city": "Senoia",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30277",
+    "city": "Sharpsburg",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30281",
+    "city": "Stockbridge",
+    "county": "Henry"
+  },
+  {
+    "zip": "30284",
+    "city": "Sunny Side",
+    "county": "Spalding"
+  },
+  {
+    "zip": "30285",
+    "city": "The Rock",
+    "county": "Upson"
+  },
+  {
+    "zip": "30286",
+    "city": "Thomaston",
+    "county": "Upson"
+  },
+  {
+    "zip": "30287",
+    "city": "Morrow",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30288",
+    "city": "Conley",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30289",
+    "city": "Turin",
+    "county": "Coweta"
+  },
+  {
+    "zip": "30290",
+    "city": "Tyrone",
+    "county": "Fayette"
+  },
+  {
+    "zip": "30291",
+    "city": "Union City",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30292",
+    "city": "Williamson",
+    "county": "Pike"
+  },
+  {
+    "zip": "30293",
+    "city": "Woodbury",
+    "county": "Meriwether"
+  },
+  {
+    "zip": "30294",
+    "city": "Ellenwood",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30295",
+    "city": "Zebulon",
+    "county": "Pike"
+  },
+  {
+    "zip": "30296",
+    "city": "Riverdale",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30297",
+    "city": "Forest Park",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30298",
+    "city": "Forest Park",
+    "county": "Clayton"
+  },
+  {
+    "zip": "30301",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30302",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30303",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30304",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30305",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30306",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30307",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30308",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30309",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30310",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30311",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30312",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30313",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30314",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30315",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30316",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30317",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30318",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30319",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30320",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30321",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30322",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30324",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30325",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30326",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30327",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30328",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30329",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30330",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30331",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30332",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30333",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30334",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30336",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30337",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30338",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30339",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30340",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30341",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30342",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30343",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30344",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30345",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30346",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30347",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30348",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30349",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30350",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30353",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30354",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30355",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30356",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30357",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30358",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30359",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30360",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30361",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30362",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30364",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30366",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "30368",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30369",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30370",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30371",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30374",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30375",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30376",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30377",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30378",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30379",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30380",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30384",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30385",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30386",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30387",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30388",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30389",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30390",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30392",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30394",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30396",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30398",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30399",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "30401",
+    "city": "Swainsboro",
+    "county": "Emanuel"
+  },
+  {
+    "zip": "30410",
+    "city": "Ailey",
+    "county": "Montgomery"
+  },
+  {
+    "zip": "30411",
+    "city": "Alamo",
+    "county": "Wheeler"
+  },
+  {
+    "zip": "30412",
+    "city": "Alston",
+    "county": "Montgomery"
+  },
+  {
+    "zip": "30413",
+    "city": "Bartow",
+    "county": "Jefferson"
+  },
+  {
+    "zip": "30414",
+    "city": "Bellville",
+    "county": "Evans"
+  },
+  {
+    "zip": "30415",
+    "city": "Brooklet",
+    "county": "Bulloch"
+  },
+  {
+    "zip": "30417",
+    "city": "Claxton",
+    "county": "Evans"
+  },
+  {
+    "zip": "30420",
+    "city": "Cobbtown",
+    "county": "Tattnall"
+  },
+  {
+    "zip": "30421",
+    "city": "Collins",
+    "county": "Tattnall"
+  },
+  {
+    "zip": "30423",
+    "city": "Daisy",
+    "county": "Evans"
+  },
+  {
+    "zip": "30424",
+    "city": "Dover",
+    "county": "Screven"
+  },
+  {
+    "zip": "30425",
+    "city": "Garfield",
+    "county": "Emanuel"
+  },
+  {
+    "zip": "30426",
+    "city": "Girard",
+    "county": "Burke"
+  },
+  {
+    "zip": "30427",
+    "city": "Glennville",
+    "county": "Tattnall"
+  },
+  {
+    "zip": "30428",
+    "city": "Glenwood",
+    "county": "Wheeler"
+  },
+  {
+    "zip": "30429",
+    "city": "Hagan",
+    "county": "Evans"
+  },
+  {
+    "zip": "30434",
+    "city": "Louisville",
+    "county": "Jefferson"
+  },
+  {
+    "zip": "30436",
+    "city": "Lyons",
+    "county": "Toombs"
+  },
+  {
+    "zip": "30438",
+    "city": "Manassas",
+    "county": "Tattnall"
+  },
+  {
+    "zip": "30439",
+    "city": "Metter",
+    "county": "Candler"
+  },
+  {
+    "zip": "30441",
+    "city": "Midville",
+    "county": "Burke"
+  },
+  {
+    "zip": "30442",
+    "city": "Millen",
+    "county": "Jenkins"
+  },
+  {
+    "zip": "30445",
+    "city": "Mount Vernon",
+    "county": "Montgomery"
+  },
+  {
+    "zip": "30446",
+    "city": "Newington",
+    "county": "Screven"
+  },
+  {
+    "zip": "30447",
+    "city": "Norristown",
+    "county": "Emanuel"
+  },
+  {
+    "zip": "30448",
+    "city": "Nunez",
+    "county": "Emanuel"
+  },
+  {
+    "zip": "30449",
+    "city": "Oliver",
+    "county": "Screven"
+  },
+  {
+    "zip": "30450",
+    "city": "Portal",
+    "county": "Bulloch"
+  },
+  {
+    "zip": "30451",
+    "city": "Pulaski",
+    "county": "Candler"
+  },
+  {
+    "zip": "30452",
+    "city": "Register",
+    "county": "Bulloch"
+  },
+  {
+    "zip": "30453",
+    "city": "Reidsville",
+    "county": "Tattnall"
+  },
+  {
+    "zip": "30454",
+    "city": "Rockledge",
+    "county": "Laurens"
+  },
+  {
+    "zip": "30455",
+    "city": "Rocky Ford",
+    "county": "Screven"
+  },
+  {
+    "zip": "30456",
+    "city": "Sardis",
+    "county": "Burke"
+  },
+  {
+    "zip": "30457",
+    "city": "Soperton",
+    "county": "Treutlen"
+  },
+  {
+    "zip": "30458",
+    "city": "Statesboro",
+    "county": "Bulloch"
+  },
+  {
+    "zip": "30459",
+    "city": "Statesboro",
+    "county": "Bulloch"
+  },
+  {
+    "zip": "30460",
+    "city": "Statesboro",
+    "county": "Bulloch"
+  },
+  {
+    "zip": "30461",
+    "city": "Statesboro",
+    "county": "Bulloch"
+  },
+  {
+    "zip": "30464",
+    "city": "Stillmore",
+    "county": "Emanuel"
+  },
+  {
+    "zip": "30467",
+    "city": "Sylvania",
+    "county": "Screven"
+  },
+  {
+    "zip": "30470",
+    "city": "Tarrytown",
+    "county": "Montgomery"
+  },
+  {
+    "zip": "30471",
+    "city": "Twin City",
+    "county": "Emanuel"
+  },
+  {
+    "zip": "30473",
+    "city": "Uvalda",
+    "county": "Montgomery"
+  },
+  {
+    "zip": "30474",
+    "city": "Vidalia",
+    "county": "Toombs"
+  },
+  {
+    "zip": "30475",
+    "city": "Vidalia",
+    "county": "Toombs"
+  },
+  {
+    "zip": "30477",
+    "city": "Wadley",
+    "county": "Jefferson"
+  },
+  {
+    "zip": "30499",
+    "city": "Reidsville",
+    "county": "Tattnall"
+  },
+  {
+    "zip": "30501",
+    "city": "Gainesville",
+    "county": "Hall"
+  },
+  {
+    "zip": "30502",
+    "city": "Chestnut Mountain",
+    "county": "Hall"
+  },
+  {
+    "zip": "30503",
+    "city": "Gainesville",
+    "county": "Hall"
+  },
+  {
+    "zip": "30504",
+    "city": "Gainesville",
+    "county": "Hall"
+  },
+  {
+    "zip": "30506",
+    "city": "Gainesville",
+    "county": "Hall"
+  },
+  {
+    "zip": "30507",
+    "city": "Gainesville",
+    "county": "Hall"
+  },
+  {
+    "zip": "30510",
+    "city": "Alto",
+    "county": "Habersham"
+  },
+  {
+    "zip": "30511",
+    "city": "Baldwin",
+    "county": "Banks"
+  },
+  {
+    "zip": "30512",
+    "city": "Blairsville",
+    "county": "Union"
+  },
+  {
+    "zip": "30513",
+    "city": "Blue Ridge",
+    "county": "Fannin"
+  },
+  {
+    "zip": "30514",
+    "city": "Blairsville",
+    "county": "Union"
+  },
+  {
+    "zip": "30515",
+    "city": "Buford",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30516",
+    "city": "Bowersville",
+    "county": "Hart"
+  },
+  {
+    "zip": "30517",
+    "city": "Braselton",
+    "county": "Jackson"
+  },
+  {
+    "zip": "30518",
+    "city": "Buford",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30519",
+    "city": "Buford",
+    "county": "Gwinnett"
+  },
+  {
+    "zip": "30520",
+    "city": "Canon",
+    "county": "Franklin"
+  },
+  {
+    "zip": "30521",
+    "city": "Carnesville",
+    "county": "Franklin"
+  },
+  {
+    "zip": "30522",
+    "city": "Cherrylog",
+    "county": "Gilmer"
+  },
+  {
+    "zip": "30523",
+    "city": "Clarkesville",
+    "county": "Habersham"
+  },
+  {
+    "zip": "30525",
+    "city": "Clayton",
+    "county": "Rabun"
+  },
+  {
+    "zip": "30527",
+    "city": "Clermont",
+    "county": "Hall"
+  },
+  {
+    "zip": "30528",
+    "city": "Cleveland",
+    "county": "White"
+  },
+  {
+    "zip": "30529",
+    "city": "Commerce",
+    "county": "Jackson"
+  },
+  {
+    "zip": "30530",
+    "city": "Commerce",
+    "county": "Jackson"
+  },
+  {
+    "zip": "30531",
+    "city": "Cornelia",
+    "county": "Habersham"
+  },
+  {
+    "zip": "30533",
+    "city": "Dahlonega",
+    "county": "Lumpkin"
+  },
+  {
+    "zip": "30534",
+    "city": "Dawsonville",
+    "county": "Dawson"
+  },
+  {
+    "zip": "30535",
+    "city": "Demorest",
+    "county": "Habersham"
+  },
+  {
+    "zip": "30537",
+    "city": "Dillard",
+    "county": "Rabun"
+  },
+  {
+    "zip": "30538",
+    "city": "Eastanollee",
+    "county": "Stephens"
+  },
+  {
+    "zip": "30539",
+    "city": "East Ellijay",
+    "county": "Gilmer"
+  },
+  {
+    "zip": "30540",
+    "city": "Ellijay",
+    "county": "Gilmer"
+  },
+  {
+    "zip": "30541",
+    "city": "Epworth",
+    "county": "Fannin"
+  },
+  {
+    "zip": "30542",
+    "city": "Flowery Branch",
+    "county": "Hall"
+  },
+  {
+    "zip": "30543",
+    "city": "Gillsville",
+    "county": "Hall"
+  },
+  {
+    "zip": "30544",
+    "city": "Demorest",
+    "county": "Habersham"
+  },
+  {
+    "zip": "30545",
+    "city": "Helen",
+    "county": "White"
+  },
+  {
+    "zip": "30546",
+    "city": "Hiawassee",
+    "county": "Towns"
+  },
+  {
+    "zip": "30547",
+    "city": "Homer",
+    "county": "Banks"
+  },
+  {
+    "zip": "30548",
+    "city": "Hoschton",
+    "county": "Jackson"
+  },
+  {
+    "zip": "30549",
+    "city": "Jefferson",
+    "county": "Jackson"
+  },
+  {
+    "zip": "30552",
+    "city": "Lakemont",
+    "county": "Rabun"
+  },
+  {
+    "zip": "30553",
+    "city": "Lavonia",
+    "county": "Franklin"
+  },
+  {
+    "zip": "30554",
+    "city": "Lula",
+    "county": "Hall"
+  },
+  {
+    "zip": "30555",
+    "city": "Mc Caysville",
+    "county": "Fannin"
+  },
+  {
+    "zip": "30557",
+    "city": "Martin",
+    "county": "Stephens"
+  },
+  {
+    "zip": "30558",
+    "city": "Maysville",
+    "county": "Banks"
+  },
+  {
+    "zip": "30559",
+    "city": "Mineral Bluff",
+    "county": "Fannin"
+  },
+  {
+    "zip": "30560",
+    "city": "Morganton",
+    "county": "Fannin"
+  },
+  {
+    "zip": "30562",
+    "city": "Mountain City",
+    "county": "Rabun"
+  },
+  {
+    "zip": "30563",
+    "city": "Mount Airy",
+    "county": "Habersham"
+  },
+  {
+    "zip": "30564",
+    "city": "Murrayville",
+    "county": "Hall"
+  },
+  {
+    "zip": "30565",
+    "city": "Nicholson",
+    "county": "Jackson"
+  },
+  {
+    "zip": "30566",
+    "city": "Oakwood",
+    "county": "Hall"
+  },
+  {
+    "zip": "30567",
+    "city": "Pendergrass",
+    "county": "Jackson"
+  },
+  {
+    "zip": "30568",
+    "city": "Rabun Gap",
+    "county": "Rabun"
+  },
+  {
+    "zip": "30571",
+    "city": "Sautee Nacoochee",
+    "county": "White"
+  },
+  {
+    "zip": "30572",
+    "city": "Suches",
+    "county": "Union"
+  },
+  {
+    "zip": "30573",
+    "city": "Tallulah Falls",
+    "county": "Rabun"
+  },
+  {
+    "zip": "30575",
+    "city": "Talmo",
+    "county": "Jackson"
+  },
+  {
+    "zip": "30576",
+    "city": "Tiger",
+    "county": "Rabun"
+  },
+  {
+    "zip": "30577",
+    "city": "Toccoa",
+    "county": "Stephens"
+  },
+  {
+    "zip": "30580",
+    "city": "Turnerville",
+    "county": "Habersham"
+  },
+  {
+    "zip": "30581",
+    "city": "Wiley",
+    "county": "Rabun"
+  },
+  {
+    "zip": "30582",
+    "city": "Young Harris",
+    "county": "Towns"
+  },
+  {
+    "zip": "30596",
+    "city": "Alto",
+    "county": "Habersham"
+  },
+  {
+    "zip": "30597",
+    "city": "Dahlonega",
+    "county": "Lumpkin"
+  },
+  {
+    "zip": "30598",
+    "city": "Toccoa Falls",
+    "county": "Stephens"
+  },
+  {
+    "zip": "30599",
+    "city": "Commerce",
+    "county": "Jackson"
+  },
+  {
+    "zip": "30601",
+    "city": "Athens",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30602",
+    "city": "Athens",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30603",
+    "city": "Athens",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30604",
+    "city": "Athens",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30605",
+    "city": "Athens",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30606",
+    "city": "Athens",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30607",
+    "city": "Athens",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30608",
+    "city": "Athens",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30609",
+    "city": "Athens",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30612",
+    "city": "Athens",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30619",
+    "city": "Arnoldsville",
+    "county": "Oglethorpe"
+  },
+  {
+    "zip": "30620",
+    "city": "Bethlehem",
+    "county": "Barrow"
+  },
+  {
+    "zip": "30621",
+    "city": "Bishop",
+    "county": "Oconee"
+  },
+  {
+    "zip": "30622",
+    "city": "Bogart",
+    "county": "Oconee"
+  },
+  {
+    "zip": "30623",
+    "city": "Bostwick",
+    "county": "Morgan"
+  },
+  {
+    "zip": "30624",
+    "city": "Bowman",
+    "county": "Elbert"
+  },
+  {
+    "zip": "30625",
+    "city": "Buckhead",
+    "county": "Morgan"
+  },
+  {
+    "zip": "30627",
+    "city": "Carlton",
+    "county": "Madison"
+  },
+  {
+    "zip": "30628",
+    "city": "Colbert",
+    "county": "Madison"
+  },
+  {
+    "zip": "30629",
+    "city": "Comer",
+    "county": "Madison"
+  },
+  {
+    "zip": "30630",
+    "city": "Crawford",
+    "county": "Oglethorpe"
+  },
+  {
+    "zip": "30631",
+    "city": "Crawfordville",
+    "county": "Taliaferro"
+  },
+  {
+    "zip": "30633",
+    "city": "Danielsville",
+    "county": "Madison"
+  },
+  {
+    "zip": "30634",
+    "city": "Dewy Rose",
+    "county": "Elbert"
+  },
+  {
+    "zip": "30635",
+    "city": "Elberton",
+    "county": "Elbert"
+  },
+  {
+    "zip": "30638",
+    "city": "Farmington",
+    "county": "Oconee"
+  },
+  {
+    "zip": "30639",
+    "city": "Franklin Springs",
+    "county": "Franklin"
+  },
+  {
+    "zip": "30641",
+    "city": "Good Hope",
+    "county": "Walton"
+  },
+  {
+    "zip": "30642",
+    "city": "Greensboro",
+    "county": "Greene"
+  },
+  {
+    "zip": "30643",
+    "city": "Hartwell",
+    "county": "Hart"
+  },
+  {
+    "zip": "30645",
+    "city": "High Shoals",
+    "county": "Morgan"
+  },
+  {
+    "zip": "30646",
+    "city": "Hull",
+    "county": "Madison"
+  },
+  {
+    "zip": "30647",
+    "city": "Ila",
+    "county": "Madison"
+  },
+  {
+    "zip": "30648",
+    "city": "Lexington",
+    "county": "Oglethorpe"
+  },
+  {
+    "zip": "30650",
+    "city": "Madison",
+    "county": "Morgan"
+  },
+  {
+    "zip": "30655",
+    "city": "Monroe",
+    "county": "Walton"
+  },
+  {
+    "zip": "30656",
+    "city": "Monroe",
+    "county": "Walton"
+  },
+  {
+    "zip": "30660",
+    "city": "Rayle",
+    "county": "Wilkes"
+  },
+  {
+    "zip": "30662",
+    "city": "Royston",
+    "county": "Franklin"
+  },
+  {
+    "zip": "30663",
+    "city": "Rutledge",
+    "county": "Morgan"
+  },
+  {
+    "zip": "30664",
+    "city": "Sharon",
+    "county": "Taliaferro"
+  },
+  {
+    "zip": "30665",
+    "city": "Siloam",
+    "county": "Greene"
+  },
+  {
+    "zip": "30666",
+    "city": "Statham",
+    "county": "Barrow"
+  },
+  {
+    "zip": "30667",
+    "city": "Stephens",
+    "county": "Oglethorpe"
+  },
+  {
+    "zip": "30668",
+    "city": "Tignall",
+    "county": "Wilkes"
+  },
+  {
+    "zip": "30669",
+    "city": "Union Point",
+    "county": "Greene"
+  },
+  {
+    "zip": "30671",
+    "city": "Maxeys",
+    "county": "Oglethorpe"
+  },
+  {
+    "zip": "30673",
+    "city": "Washington",
+    "county": "Wilkes"
+  },
+  {
+    "zip": "30677",
+    "city": "Watkinsville",
+    "county": "Oconee"
+  },
+  {
+    "zip": "30678",
+    "city": "White Plains",
+    "county": "Greene"
+  },
+  {
+    "zip": "30680",
+    "city": "Winder",
+    "county": "Barrow"
+  },
+  {
+    "zip": "30683",
+    "city": "Winterville",
+    "county": "Clarke"
+  },
+  {
+    "zip": "30701",
+    "city": "Calhoun",
+    "county": "Gordon"
+  },
+  {
+    "zip": "30703",
+    "city": "Calhoun",
+    "county": "Gordon"
+  },
+  {
+    "zip": "30705",
+    "city": "Chatsworth",
+    "county": "Murray"
+  },
+  {
+    "zip": "30707",
+    "city": "Chickamauga",
+    "county": "Walker"
+  },
+  {
+    "zip": "30708",
+    "city": "Cisco",
+    "county": "Murray"
+  },
+  {
+    "zip": "30710",
+    "city": "Cohutta",
+    "county": "Whitfield"
+  },
+  {
+    "zip": "30711",
+    "city": "Crandall",
+    "county": "Murray"
+  },
+  {
+    "zip": "30719",
+    "city": "Dalton",
+    "county": "Whitfield"
+  },
+  {
+    "zip": "30720",
+    "city": "Dalton",
+    "county": "Whitfield"
+  },
+  {
+    "zip": "30721",
+    "city": "Dalton",
+    "county": "Whitfield"
+  },
+  {
+    "zip": "30722",
+    "city": "Dalton",
+    "county": "Whitfield"
+  },
+  {
+    "zip": "30724",
+    "city": "Eton",
+    "county": "Murray"
+  },
+  {
+    "zip": "30725",
+    "city": "Flintstone",
+    "county": "Walker"
+  },
+  {
+    "zip": "30726",
+    "city": "Graysville",
+    "county": "Catoosa"
+  },
+  {
+    "zip": "30728",
+    "city": "La Fayette",
+    "county": "Walker"
+  },
+  {
+    "zip": "30730",
+    "city": "Lyerly",
+    "county": "Chattooga"
+  },
+  {
+    "zip": "30731",
+    "city": "Menlo",
+    "county": "Chattooga"
+  },
+  {
+    "zip": "30732",
+    "city": "Oakman",
+    "county": "Gordon"
+  },
+  {
+    "zip": "30733",
+    "city": "Plainville",
+    "county": "Gordon"
+  },
+  {
+    "zip": "30734",
+    "city": "Ranger",
+    "county": "Gordon"
+  },
+  {
+    "zip": "30735",
+    "city": "Resaca",
+    "county": "Gordon"
+  },
+  {
+    "zip": "30736",
+    "city": "Ringgold",
+    "county": "Catoosa"
+  },
+  {
+    "zip": "30738",
+    "city": "Rising Fawn",
+    "county": "Dade"
+  },
+  {
+    "zip": "30739",
+    "city": "Rock Spring",
+    "county": "Walker"
+  },
+  {
+    "zip": "30740",
+    "city": "Rocky Face",
+    "county": "Whitfield"
+  },
+  {
+    "zip": "30741",
+    "city": "Rossville",
+    "county": "Walker"
+  },
+  {
+    "zip": "30742",
+    "city": "Fort Oglethorpe",
+    "county": "Catoosa"
+  },
+  {
+    "zip": "30746",
+    "city": "Sugar Valley",
+    "county": "Gordon"
+  },
+  {
+    "zip": "30747",
+    "city": "Summerville",
+    "county": "Chattooga"
+  },
+  {
+    "zip": "30750",
+    "city": "Lookout Mountain",
+    "county": "Walker"
+  },
+  {
+    "zip": "30751",
+    "city": "Tennga",
+    "county": "Murray"
+  },
+  {
+    "zip": "30752",
+    "city": "Trenton",
+    "county": "Dade"
+  },
+  {
+    "zip": "30753",
+    "city": "Trion",
+    "county": "Chattooga"
+  },
+  {
+    "zip": "30755",
+    "city": "Tunnel Hill",
+    "county": "Whitfield"
+  },
+  {
+    "zip": "30756",
+    "city": "Varnell",
+    "county": "Whitfield"
+  },
+  {
+    "zip": "30757",
+    "city": "Wildwood",
+    "county": "Dade"
+  },
+  {
+    "zip": "30802",
+    "city": "Appling",
+    "county": "Columbia"
+  },
+  {
+    "zip": "30803",
+    "city": "Avera",
+    "county": "Jefferson"
+  },
+  {
+    "zip": "30805",
+    "city": "Blythe",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30806",
+    "city": "Boneville",
+    "county": "Mcduffie"
+  },
+  {
+    "zip": "30807",
+    "city": "Camak",
+    "county": "Warren"
+  },
+  {
+    "zip": "30808",
+    "city": "Dearing",
+    "county": "Mcduffie"
+  },
+  {
+    "zip": "30809",
+    "city": "Evans",
+    "county": "Columbia"
+  },
+  {
+    "zip": "30810",
+    "city": "Gibson",
+    "county": "Glascock"
+  },
+  {
+    "zip": "30811",
+    "city": "Gough",
+    "county": "Burke"
+  },
+  {
+    "zip": "30812",
+    "city": "Gracewood",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30813",
+    "city": "Grovetown",
+    "county": "Columbia"
+  },
+  {
+    "zip": "30814",
+    "city": "Harlem",
+    "county": "Columbia"
+  },
+  {
+    "zip": "30815",
+    "city": "Hephzibah",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30816",
+    "city": "Keysville",
+    "county": "Burke"
+  },
+  {
+    "zip": "30817",
+    "city": "Lincolnton",
+    "county": "Lincoln"
+  },
+  {
+    "zip": "30818",
+    "city": "Matthews",
+    "county": "Jefferson"
+  },
+  {
+    "zip": "30819",
+    "city": "Mesena",
+    "county": "Warren"
+  },
+  {
+    "zip": "30820",
+    "city": "Mitchell",
+    "county": "Glascock"
+  },
+  {
+    "zip": "30821",
+    "city": "Norwood",
+    "county": "Warren"
+  },
+  {
+    "zip": "30822",
+    "city": "Perkins",
+    "county": "Jenkins"
+  },
+  {
+    "zip": "30823",
+    "city": "Stapleton",
+    "county": "Jefferson"
+  },
+  {
+    "zip": "30824",
+    "city": "Thomson",
+    "county": "Mcduffie"
+  },
+  {
+    "zip": "30828",
+    "city": "Warrenton",
+    "county": "Warren"
+  },
+  {
+    "zip": "30830",
+    "city": "Waynesboro",
+    "county": "Burke"
+  },
+  {
+    "zip": "30833",
+    "city": "Wrens",
+    "county": "Jefferson"
+  },
+  {
+    "zip": "30901",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30903",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30904",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30905",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30906",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30907",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30909",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30910",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30911",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30912",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30913",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30914",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30916",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30917",
+    "city": "Augusta",
+    "county": "Columbia"
+  },
+  {
+    "zip": "30919",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "30999",
+    "city": "Augusta",
+    "county": "Richmond"
+  },
+  {
+    "zip": "31001",
+    "city": "Abbeville",
+    "county": "Wilcox"
+  },
+  {
+    "zip": "31002",
+    "city": "Adrian",
+    "county": "Emanuel"
+  },
+  {
+    "zip": "31003",
+    "city": "Allentown",
+    "county": "Wilkinson"
+  },
+  {
+    "zip": "31004",
+    "city": "Bolingbroke",
+    "county": "Monroe"
+  },
+  {
+    "zip": "31005",
+    "city": "Bonaire",
+    "county": "Houston"
+  },
+  {
+    "zip": "31006",
+    "city": "Butler",
+    "county": "Taylor"
+  },
+  {
+    "zip": "31007",
+    "city": "Byromville",
+    "county": "Dooly"
+  },
+  {
+    "zip": "31008",
+    "city": "Byron",
+    "county": "Peach"
+  },
+  {
+    "zip": "31009",
+    "city": "Cadwell",
+    "county": "Laurens"
+  },
+  {
+    "zip": "31010",
+    "city": "Cordele",
+    "county": "Crisp"
+  },
+  {
+    "zip": "31011",
+    "city": "Chauncey",
+    "county": "Dodge"
+  },
+  {
+    "zip": "31012",
+    "city": "Chester",
+    "county": "Dodge"
+  },
+  {
+    "zip": "31013",
+    "city": "Clinchfield",
+    "county": "Houston"
+  },
+  {
+    "zip": "31014",
+    "city": "Cochran",
+    "county": "Bleckley"
+  },
+  {
+    "zip": "31015",
+    "city": "Cordele",
+    "county": "Crisp"
+  },
+  {
+    "zip": "31016",
+    "city": "Culloden",
+    "county": "Monroe"
+  },
+  {
+    "zip": "31017",
+    "city": "Danville",
+    "county": "Twiggs"
+  },
+  {
+    "zip": "31018",
+    "city": "Davisboro",
+    "county": "Washington"
+  },
+  {
+    "zip": "31019",
+    "city": "Dexter",
+    "county": "Laurens"
+  },
+  {
+    "zip": "31020",
+    "city": "Dry Branch",
+    "county": "Twiggs"
+  },
+  {
+    "zip": "31021",
+    "city": "Dublin",
+    "county": "Laurens"
+  },
+  {
+    "zip": "31022",
+    "city": "Dudley",
+    "county": "Laurens"
+  },
+  {
+    "zip": "31023",
+    "city": "Eastman",
+    "county": "Dodge"
+  },
+  {
+    "zip": "31024",
+    "city": "Eatonton",
+    "county": "Putnam"
+  },
+  {
+    "zip": "31025",
+    "city": "Elko",
+    "county": "Houston"
+  },
+  {
+    "zip": "31027",
+    "city": "Dublin",
+    "county": "Laurens"
+  },
+  {
+    "zip": "31028",
+    "city": "Centerville",
+    "county": "Houston"
+  },
+  {
+    "zip": "31029",
+    "city": "Forsyth",
+    "county": "Monroe"
+  },
+  {
+    "zip": "31030",
+    "city": "Fort Valley",
+    "county": "Peach"
+  },
+  {
+    "zip": "31031",
+    "city": "Gordon",
+    "county": "Wilkinson"
+  },
+  {
+    "zip": "31032",
+    "city": "Gray",
+    "county": "Jones"
+  },
+  {
+    "zip": "31033",
+    "city": "Haddock",
+    "county": "Jones"
+  },
+  {
+    "zip": "31034",
+    "city": "Hardwick",
+    "county": "Baldwin"
+  },
+  {
+    "zip": "31035",
+    "city": "Harrison",
+    "county": "Washington"
+  },
+  {
+    "zip": "31036",
+    "city": "Hawkinsville",
+    "county": "Pulaski"
+  },
+  {
+    "zip": "31037",
+    "city": "Helena",
+    "county": "Telfair"
+  },
+  {
+    "zip": "31038",
+    "city": "Hillsboro",
+    "county": "Jasper"
+  },
+  {
+    "zip": "31039",
+    "city": "Howard",
+    "county": "Taylor"
+  },
+  {
+    "zip": "31040",
+    "city": "Dublin",
+    "county": "Laurens"
+  },
+  {
+    "zip": "31041",
+    "city": "Ideal",
+    "county": "Macon"
+  },
+  {
+    "zip": "31042",
+    "city": "Irwinton",
+    "county": "Wilkinson"
+  },
+  {
+    "zip": "31044",
+    "city": "Jeffersonville",
+    "county": "Twiggs"
+  },
+  {
+    "zip": "31045",
+    "city": "Jewell",
+    "county": "Warren"
+  },
+  {
+    "zip": "31046",
+    "city": "Juliette",
+    "county": "Monroe"
+  },
+  {
+    "zip": "31047",
+    "city": "Kathleen",
+    "county": "Houston"
+  },
+  {
+    "zip": "31049",
+    "city": "Kite",
+    "county": "Johnson"
+  },
+  {
+    "zip": "31050",
+    "city": "Knoxville",
+    "county": "Crawford"
+  },
+  {
+    "zip": "31051",
+    "city": "Lilly",
+    "county": "Dooly"
+  },
+  {
+    "zip": "31052",
+    "city": "Lizella",
+    "county": "Crawford"
+  },
+  {
+    "zip": "31054",
+    "city": "Mc Intyre",
+    "county": "Wilkinson"
+  },
+  {
+    "zip": "31055",
+    "city": "Mc Rae",
+    "county": "Telfair"
+  },
+  {
+    "zip": "31057",
+    "city": "Marshallville",
+    "county": "Macon"
+  },
+  {
+    "zip": "31058",
+    "city": "Mauk",
+    "county": "Taylor"
+  },
+  {
+    "zip": "31059",
+    "city": "Milledgeville",
+    "county": "Baldwin"
+  },
+  {
+    "zip": "31060",
+    "city": "Milan",
+    "county": "Telfair"
+  },
+  {
+    "zip": "31061",
+    "city": "Milledgeville",
+    "county": "Baldwin"
+  },
+  {
+    "zip": "31062",
+    "city": "Milledgeville",
+    "county": "Baldwin"
+  },
+  {
+    "zip": "31063",
+    "city": "Montezuma",
+    "county": "Macon"
+  },
+  {
+    "zip": "31064",
+    "city": "Monticello",
+    "county": "Jasper"
+  },
+  {
+    "zip": "31065",
+    "city": "Montrose",
+    "county": "Laurens"
+  },
+  {
+    "zip": "31066",
+    "city": "Musella",
+    "county": "Crawford"
+  },
+  {
+    "zip": "31067",
+    "city": "Oconee",
+    "county": "Washington"
+  },
+  {
+    "zip": "31068",
+    "city": "Oglethorpe",
+    "county": "Macon"
+  },
+  {
+    "zip": "31069",
+    "city": "Perry",
+    "county": "Houston"
+  },
+  {
+    "zip": "31070",
+    "city": "Pinehurst",
+    "county": "Dooly"
+  },
+  {
+    "zip": "31071",
+    "city": "Pineview",
+    "county": "Wilcox"
+  },
+  {
+    "zip": "31072",
+    "city": "Pitts",
+    "county": "Wilcox"
+  },
+  {
+    "zip": "31073",
+    "city": "Plainfield",
+    "county": "Dodge"
+  },
+  {
+    "zip": "31075",
+    "city": "Rentz",
+    "county": "Laurens"
+  },
+  {
+    "zip": "31076",
+    "city": "Reynolds",
+    "county": "Taylor"
+  },
+  {
+    "zip": "31077",
+    "city": "Rhine",
+    "county": "Dodge"
+  },
+  {
+    "zip": "31078",
+    "city": "Roberta",
+    "county": "Crawford"
+  },
+  {
+    "zip": "31079",
+    "city": "Rochelle",
+    "county": "Wilcox"
+  },
+  {
+    "zip": "31081",
+    "city": "Rupert",
+    "county": "Taylor"
+  },
+  {
+    "zip": "31082",
+    "city": "Sandersville",
+    "county": "Washington"
+  },
+  {
+    "zip": "31083",
+    "city": "Scotland",
+    "county": "Telfair"
+  },
+  {
+    "zip": "31084",
+    "city": "Seville",
+    "county": "Wilcox"
+  },
+  {
+    "zip": "31085",
+    "city": "Shady Dale",
+    "county": "Jasper"
+  },
+  {
+    "zip": "31086",
+    "city": "Smarr",
+    "county": "Monroe"
+  },
+  {
+    "zip": "31087",
+    "city": "Sparta",
+    "county": "Hancock"
+  },
+  {
+    "zip": "31088",
+    "city": "Warner Robins",
+    "county": "Houston"
+  },
+  {
+    "zip": "31089",
+    "city": "Tennille",
+    "county": "Washington"
+  },
+  {
+    "zip": "31090",
+    "city": "Toomsboro",
+    "county": "Wilkinson"
+  },
+  {
+    "zip": "31091",
+    "city": "Unadilla",
+    "county": "Dooly"
+  },
+  {
+    "zip": "31092",
+    "city": "Vienna",
+    "county": "Dooly"
+  },
+  {
+    "zip": "31093",
+    "city": "Warner Robins",
+    "county": "Houston"
+  },
+  {
+    "zip": "31094",
+    "city": "Warthen",
+    "county": "Washington"
+  },
+  {
+    "zip": "31095",
+    "city": "Warner Robins",
+    "county": "Houston"
+  },
+  {
+    "zip": "31096",
+    "city": "Wrightsville",
+    "county": "Johnson"
+  },
+  {
+    "zip": "31097",
+    "city": "Yatesville",
+    "county": "Upson"
+  },
+  {
+    "zip": "31098",
+    "city": "Warner Robins",
+    "county": "Houston"
+  },
+  {
+    "zip": "31099",
+    "city": "Warner Robins",
+    "county": "Houston"
+  },
+  {
+    "zip": "31106",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31107",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31119",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "31126",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31131",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31139",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31141",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "31145",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "31146",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  },
+  {
+    "zip": "31150",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31156",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31191",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31192",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31193",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31195",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31196",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31197",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31198",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31199",
+    "city": "Atlanta",
+    "county": "Fulton"
+  },
+  {
+    "zip": "31201",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31202",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31203",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31204",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31205",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31206",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31207",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31208",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31209",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31210",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31211",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31212",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31213",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31216",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31217",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31220",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31221",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31294",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31295",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31296",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31297",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31298",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31299",
+    "city": "Macon",
+    "county": "Bibb"
+  },
+  {
+    "zip": "31301",
+    "city": "Allenhurst",
+    "county": "Liberty"
+  },
+  {
+    "zip": "31302",
+    "city": "Bloomingdale",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31303",
+    "city": "Clyo",
+    "county": "Effingham"
+  },
+  {
+    "zip": "31304",
+    "city": "Crescent",
+    "county": "Mcintosh"
+  },
+  {
+    "zip": "31305",
+    "city": "Darien",
+    "county": "Mcintosh"
+  },
+  {
+    "zip": "31307",
+    "city": "Eden",
+    "county": "Effingham"
+  },
+  {
+    "zip": "31308",
+    "city": "Ellabell",
+    "county": "Bryan"
+  },
+  {
+    "zip": "31309",
+    "city": "Fleming",
+    "county": "Liberty"
+  },
+  {
+    "zip": "31310",
+    "city": "Hinesville",
+    "county": "Liberty"
+  },
+  {
+    "zip": "31312",
+    "city": "Guyton",
+    "county": "Effingham"
+  },
+  {
+    "zip": "31313",
+    "city": "Hinesville",
+    "county": "Liberty"
+  },
+  {
+    "zip": "31314",
+    "city": "Fort Stewart",
+    "county": "Liberty"
+  },
+  {
+    "zip": "31315",
+    "city": "Fort Stewart",
+    "county": "Liberty"
+  },
+  {
+    "zip": "31316",
+    "city": "Ludowici",
+    "county": "Long"
+  },
+  {
+    "zip": "31318",
+    "city": "Meldrim",
+    "county": "Effingham"
+  },
+  {
+    "zip": "31319",
+    "city": "Meridian",
+    "county": "Mcintosh"
+  },
+  {
+    "zip": "31320",
+    "city": "Midway",
+    "county": "Liberty"
+  },
+  {
+    "zip": "31321",
+    "city": "Pembroke",
+    "county": "Bryan"
+  },
+  {
+    "zip": "31322",
+    "city": "Pooler",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31323",
+    "city": "Riceboro",
+    "county": "Liberty"
+  },
+  {
+    "zip": "31324",
+    "city": "Richmond Hill",
+    "county": "Bryan"
+  },
+  {
+    "zip": "31326",
+    "city": "Rincon",
+    "county": "Effingham"
+  },
+  {
+    "zip": "31327",
+    "city": "Sapelo Island",
+    "county": "Mcintosh"
+  },
+  {
+    "zip": "31328",
+    "city": "Tybee Island",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31329",
+    "city": "Springfield",
+    "county": "Effingham"
+  },
+  {
+    "zip": "31331",
+    "city": "Townsend",
+    "county": "Mcintosh"
+  },
+  {
+    "zip": "31333",
+    "city": "Walthourville",
+    "county": "Liberty"
+  },
+  {
+    "zip": "31401",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31402",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31403",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31404",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31405",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31406",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31407",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31408",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31409",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31410",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31411",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31412",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31414",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31415",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31416",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31418",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31419",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31420",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31421",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31422",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31498",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31499",
+    "city": "Savannah",
+    "county": "Chatham"
+  },
+  {
+    "zip": "31501",
+    "city": "Waycross",
+    "county": "Ware"
+  },
+  {
+    "zip": "31502",
+    "city": "Waycross",
+    "county": "Ware"
+  },
+  {
+    "zip": "31503",
+    "city": "Waycross",
+    "county": "Ware"
+  },
+  {
+    "zip": "31510",
+    "city": "Alma",
+    "county": "Bacon"
+  },
+  {
+    "zip": "31512",
+    "city": "Ambrose",
+    "county": "Coffee"
+  },
+  {
+    "zip": "31513",
+    "city": "Baxley",
+    "county": "Appling"
+  },
+  {
+    "zip": "31515",
+    "city": "Baxley",
+    "county": "Appling"
+  },
+  {
+    "zip": "31516",
+    "city": "Blackshear",
+    "county": "Pierce"
+  },
+  {
+    "zip": "31518",
+    "city": "Bristol",
+    "county": "Pierce"
+  },
+  {
+    "zip": "31519",
+    "city": "Broxton",
+    "county": "Coffee"
+  },
+  {
+    "zip": "31520",
+    "city": "Brunswick",
+    "county": "Glynn"
+  },
+  {
+    "zip": "31521",
+    "city": "Brunswick",
+    "county": "Glynn"
+  },
+  {
+    "zip": "31522",
+    "city": "Saint Simons Island",
+    "county": "Glynn"
+  },
+  {
+    "zip": "31523",
+    "city": "Brunswick",
+    "county": "Glynn"
+  },
+  {
+    "zip": "31524",
+    "city": "Brunswick",
+    "county": "Glynn"
+  },
+  {
+    "zip": "31525",
+    "city": "Brunswick",
+    "county": "Glynn"
+  },
+  {
+    "zip": "31527",
+    "city": "Jekyll Island",
+    "county": "Glynn"
+  },
+  {
+    "zip": "31532",
+    "city": "Denton",
+    "county": "Jeff Davis"
+  },
+  {
+    "zip": "31533",
+    "city": "Douglas",
+    "county": "Coffee"
+  },
+  {
+    "zip": "31534",
+    "city": "Douglas",
+    "county": "Coffee"
+  },
+  {
+    "zip": "31535",
+    "city": "Douglas",
+    "county": "Coffee"
+  },
+  {
+    "zip": "31537",
+    "city": "Folkston",
+    "county": "Charlton"
+  },
+  {
+    "zip": "31539",
+    "city": "Hazlehurst",
+    "county": "Jeff Davis"
+  },
+  {
+    "zip": "31542",
+    "city": "Hoboken",
+    "county": "Brantley"
+  },
+  {
+    "zip": "31543",
+    "city": "Hortense",
+    "county": "Brantley"
+  },
+  {
+    "zip": "31544",
+    "city": "Jacksonville",
+    "county": "Telfair"
+  },
+  {
+    "zip": "31545",
+    "city": "Jesup",
+    "county": "Wayne"
+  },
+  {
+    "zip": "31546",
+    "city": "Jesup",
+    "county": "Wayne"
+  },
+  {
+    "zip": "31547",
+    "city": "Kings Bay",
+    "county": "Camden"
+  },
+  {
+    "zip": "31548",
+    "city": "Kingsland",
+    "county": "Camden"
+  },
+  {
+    "zip": "31549",
+    "city": "Lumber City",
+    "county": "Telfair"
+  },
+  {
+    "zip": "31550",
+    "city": "Manor",
+    "county": "Ware"
+  },
+  {
+    "zip": "31551",
+    "city": "Mershon",
+    "county": "Pierce"
+  },
+  {
+    "zip": "31552",
+    "city": "Millwood",
+    "county": "Ware"
+  },
+  {
+    "zip": "31553",
+    "city": "Nahunta",
+    "county": "Brantley"
+  },
+  {
+    "zip": "31554",
+    "city": "Nicholls",
+    "county": "Coffee"
+  },
+  {
+    "zip": "31555",
+    "city": "Odum",
+    "county": "Wayne"
+  },
+  {
+    "zip": "31556",
+    "city": "Offerman",
+    "county": "Pierce"
+  },
+  {
+    "zip": "31557",
+    "city": "Patterson",
+    "county": "Pierce"
+  },
+  {
+    "zip": "31558",
+    "city": "Saint Marys",
+    "county": "Camden"
+  },
+  {
+    "zip": "31560",
+    "city": "Screven",
+    "county": "Wayne"
+  },
+  {
+    "zip": "31561",
+    "city": "Sea Island",
+    "county": "Glynn"
+  },
+  {
+    "zip": "31563",
+    "city": "Surrency",
+    "county": "Appling"
+  },
+  {
+    "zip": "31564",
+    "city": "Waresboro",
+    "county": "Ware"
+  },
+  {
+    "zip": "31565",
+    "city": "Waverly",
+    "county": "Camden"
+  },
+  {
+    "zip": "31566",
+    "city": "Waynesville",
+    "county": "Brantley"
+  },
+  {
+    "zip": "31567",
+    "city": "West Green",
+    "county": "Coffee"
+  },
+  {
+    "zip": "31568",
+    "city": "White Oak",
+    "county": "Camden"
+  },
+  {
+    "zip": "31569",
+    "city": "Woodbine",
+    "county": "Camden"
+  },
+  {
+    "zip": "31598",
+    "city": "Jesup",
+    "county": "Wayne"
+  },
+  {
+    "zip": "31599",
+    "city": "Jesup",
+    "county": "Wayne"
+  },
+  {
+    "zip": "31601",
+    "city": "Valdosta",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31602",
+    "city": "Valdosta",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31603",
+    "city": "Valdosta",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31604",
+    "city": "Valdosta",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31605",
+    "city": "Valdosta",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31606",
+    "city": "Valdosta",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31620",
+    "city": "Adel",
+    "county": "Cook"
+  },
+  {
+    "zip": "31622",
+    "city": "Alapaha",
+    "county": "Berrien"
+  },
+  {
+    "zip": "31623",
+    "city": "Argyle",
+    "county": "Clinch"
+  },
+  {
+    "zip": "31624",
+    "city": "Axson",
+    "county": "Atkinson"
+  },
+  {
+    "zip": "31625",
+    "city": "Barney",
+    "county": "Brooks"
+  },
+  {
+    "zip": "31626",
+    "city": "Boston",
+    "county": "Thomas"
+  },
+  {
+    "zip": "31627",
+    "city": "Cecil",
+    "county": "Cook"
+  },
+  {
+    "zip": "31629",
+    "city": "Dixie",
+    "county": "Brooks"
+  },
+  {
+    "zip": "31630",
+    "city": "Du Pont",
+    "county": "Clinch"
+  },
+  {
+    "zip": "31631",
+    "city": "Fargo",
+    "county": "Clinch"
+  },
+  {
+    "zip": "31632",
+    "city": "Hahira",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31634",
+    "city": "Homerville",
+    "county": "Clinch"
+  },
+  {
+    "zip": "31635",
+    "city": "Lakeland",
+    "county": "Lanier"
+  },
+  {
+    "zip": "31636",
+    "city": "Lake Park",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31637",
+    "city": "Lenox",
+    "county": "Cook"
+  },
+  {
+    "zip": "31638",
+    "city": "Morven",
+    "county": "Brooks"
+  },
+  {
+    "zip": "31639",
+    "city": "Nashville",
+    "county": "Berrien"
+  },
+  {
+    "zip": "31641",
+    "city": "Naylor",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31642",
+    "city": "Pearson",
+    "county": "Atkinson"
+  },
+  {
+    "zip": "31643",
+    "city": "Quitman",
+    "county": "Brooks"
+  },
+  {
+    "zip": "31645",
+    "city": "Ray City",
+    "county": "Berrien"
+  },
+  {
+    "zip": "31646",
+    "city": "Saint George",
+    "county": "Charlton"
+  },
+  {
+    "zip": "31647",
+    "city": "Sparks",
+    "county": "Cook"
+  },
+  {
+    "zip": "31648",
+    "city": "Statenville",
+    "county": "Echols"
+  },
+  {
+    "zip": "31649",
+    "city": "Stockton",
+    "county": "Lanier"
+  },
+  {
+    "zip": "31650",
+    "city": "Willacoochee",
+    "county": "Atkinson"
+  },
+  {
+    "zip": "31698",
+    "city": "Valdosta",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31699",
+    "city": "Valdosta",
+    "county": "Lowndes"
+  },
+  {
+    "zip": "31701",
+    "city": "Albany",
+    "county": "Dougherty"
+  },
+  {
+    "zip": "31702",
+    "city": "Albany",
+    "county": "Dougherty"
+  },
+  {
+    "zip": "31703",
+    "city": "Albany",
+    "county": "Dougherty"
+  },
+  {
+    "zip": "31704",
+    "city": "Albany",
+    "county": "Dougherty"
+  },
+  {
+    "zip": "31705",
+    "city": "Albany",
+    "county": "Dougherty"
+  },
+  {
+    "zip": "31706",
+    "city": "Albany",
+    "county": "Dougherty"
+  },
+  {
+    "zip": "31707",
+    "city": "Albany",
+    "county": "Dougherty"
+  },
+  {
+    "zip": "31708",
+    "city": "Albany",
+    "county": "Dougherty"
+  },
+  {
+    "zip": "31709",
+    "city": "Americus",
+    "county": "Sumter"
+  },
+  {
+    "zip": "31710",
+    "city": "Americus",
+    "county": "Sumter"
+  },
+  {
+    "zip": "31711",
+    "city": "Andersonville",
+    "county": "Sumter"
+  },
+  {
+    "zip": "31712",
+    "city": "Arabi",
+    "county": "Crisp"
+  },
+  {
+    "zip": "31713",
+    "city": "Arlington",
+    "county": "Calhoun"
+  },
+  {
+    "zip": "31714",
+    "city": "Ashburn",
+    "county": "Turner"
+  },
+  {
+    "zip": "31715",
+    "city": "Attapulgus",
+    "county": "Decatur"
+  },
+  {
+    "zip": "31716",
+    "city": "Baconton",
+    "county": "Mitchell"
+  },
+  {
+    "zip": "31717",
+    "city": "Bainbridge",
+    "county": "Decatur"
+  },
+  {
+    "zip": "31718",
+    "city": "Bainbridge",
+    "county": "Decatur"
+  },
+  {
+    "zip": "31720",
+    "city": "Barwick",
+    "county": "Brooks"
+  },
+  {
+    "zip": "31722",
+    "city": "Berlin",
+    "county": "Colquitt"
+  },
+  {
+    "zip": "31723",
+    "city": "Blakely",
+    "county": "Early"
+  },
+  {
+    "zip": "31724",
+    "city": "Bluffton",
+    "county": "Clay"
+  },
+  {
+    "zip": "31725",
+    "city": "Brinson",
+    "county": "Decatur"
+  },
+  {
+    "zip": "31726",
+    "city": "Bronwood",
+    "county": "Terrell"
+  },
+  {
+    "zip": "31727",
+    "city": "Brookfield",
+    "county": "Tift"
+  },
+  {
+    "zip": "31728",
+    "city": "Cairo",
+    "county": "Grady"
+  },
+  {
+    "zip": "31729",
+    "city": "Calvary",
+    "county": "Grady"
+  },
+  {
+    "zip": "31730",
+    "city": "Camilla",
+    "county": "Mitchell"
+  },
+  {
+    "zip": "31732",
+    "city": "Cedar Springs",
+    "county": "Early"
+  },
+  {
+    "zip": "31733",
+    "city": "Chula",
+    "county": "Tift"
+  },
+  {
+    "zip": "31734",
+    "city": "Climax",
+    "county": "Decatur"
+  },
+  {
+    "zip": "31735",
+    "city": "Cobb",
+    "county": "Sumter"
+  },
+  {
+    "zip": "31736",
+    "city": "Coleman",
+    "county": "Randolph"
+  },
+  {
+    "zip": "31737",
+    "city": "Colquitt",
+    "county": "Miller"
+  },
+  {
+    "zip": "31738",
+    "city": "Coolidge",
+    "county": "Thomas"
+  },
+  {
+    "zip": "31739",
+    "city": "Cotton",
+    "county": "Mitchell"
+  },
+  {
+    "zip": "31740",
+    "city": "Cuthbert",
+    "county": "Randolph"
+  },
+  {
+    "zip": "31741",
+    "city": "Damascus",
+    "county": "Early"
+  },
+  {
+    "zip": "31742",
+    "city": "Dawson",
+    "county": "Terrell"
+  },
+  {
+    "zip": "31743",
+    "city": "De Soto",
+    "county": "Sumter"
+  },
+  {
+    "zip": "31744",
+    "city": "Doerun",
+    "county": "Colquitt"
+  },
+  {
+    "zip": "31745",
+    "city": "Donalsonville",
+    "county": "Seminole"
+  },
+  {
+    "zip": "31746",
+    "city": "Edison",
+    "county": "Calhoun"
+  },
+  {
+    "zip": "31747",
+    "city": "Ellenton",
+    "county": "Colquitt"
+  },
+  {
+    "zip": "31749",
+    "city": "Enigma",
+    "county": "Berrien"
+  },
+  {
+    "zip": "31750",
+    "city": "Fitzgerald",
+    "county": "Ben Hill"
+  },
+  {
+    "zip": "31751",
+    "city": "Fort Gaines",
+    "county": "Clay"
+  },
+  {
+    "zip": "31752",
+    "city": "Fowlstown",
+    "county": "Decatur"
+  },
+  {
+    "zip": "31753",
+    "city": "Funston",
+    "county": "Colquitt"
+  },
+  {
+    "zip": "31754",
+    "city": "Georgetown",
+    "county": "Quitman"
+  },
+  {
+    "zip": "31756",
+    "city": "Hartsfield",
+    "county": "Colquitt"
+  },
+  {
+    "zip": "31757",
+    "city": "Thomasville",
+    "county": "Thomas"
+  },
+  {
+    "zip": "31758",
+    "city": "Thomasville",
+    "county": "Thomas"
+  },
+  {
+    "zip": "31759",
+    "city": "Iron City",
+    "county": "Seminole"
+  },
+  {
+    "zip": "31760",
+    "city": "Irwinville",
+    "county": "Irwin"
+  },
+  {
+    "zip": "31761",
+    "city": "Jakin",
+    "county": "Early"
+  },
+  {
+    "zip": "31762",
+    "city": "Leary",
+    "county": "Calhoun"
+  },
+  {
+    "zip": "31763",
+    "city": "Leesburg",
+    "county": "Lee"
+  },
+  {
+    "zip": "31764",
+    "city": "Leslie",
+    "county": "Sumter"
+  },
+  {
+    "zip": "31765",
+    "city": "Meigs",
+    "county": "Thomas"
+  },
+  {
+    "zip": "31766",
+    "city": "Morgan",
+    "county": "Calhoun"
+  },
+  {
+    "zip": "31767",
+    "city": "Morris",
+    "county": "Quitman"
+  },
+  {
+    "zip": "31768",
+    "city": "Moultrie",
+    "county": "Colquitt"
+  },
+  {
+    "zip": "31769",
+    "city": "Mystic",
+    "county": "Irwin"
+  },
+  {
+    "zip": "31770",
+    "city": "Newton",
+    "county": "Baker"
+  },
+  {
+    "zip": "31771",
+    "city": "Norman Park",
+    "county": "Colquitt"
+  },
+  {
+    "zip": "31772",
+    "city": "Oakfield",
+    "county": "Worth"
+  },
+  {
+    "zip": "31773",
+    "city": "Ochlocknee",
+    "county": "Thomas"
+  },
+  {
+    "zip": "31774",
+    "city": "Ocilla",
+    "county": "Irwin"
+  },
+  {
+    "zip": "31775",
+    "city": "Omega",
+    "county": "Tift"
+  },
+  {
+    "zip": "31776",
+    "city": "Moultrie",
+    "county": "Colquitt"
+  },
+  {
+    "zip": "31777",
+    "city": "Parrott",
+    "county": "Terrell"
+  },
+  {
+    "zip": "31778",
+    "city": "Pavo",
+    "county": "Thomas"
+  },
+  {
+    "zip": "31779",
+    "city": "Pelham",
+    "county": "Mitchell"
+  },
+  {
+    "zip": "31780",
+    "city": "Plains",
+    "county": "Sumter"
+  },
+  {
+    "zip": "31781",
+    "city": "Poulan",
+    "county": "Worth"
+  },
+  {
+    "zip": "31782",
+    "city": "Putney",
+    "county": "Dougherty"
+  },
+  {
+    "zip": "31783",
+    "city": "Rebecca",
+    "county": "Turner"
+  },
+  {
+    "zip": "31784",
+    "city": "Sale City",
+    "county": "Mitchell"
+  },
+  {
+    "zip": "31785",
+    "city": "Sasser",
+    "county": "Terrell"
+  },
+  {
+    "zip": "31786",
+    "city": "Shellman",
+    "county": "Randolph"
+  },
+  {
+    "zip": "31787",
+    "city": "Smithville",
+    "county": "Lee"
+  },
+  {
+    "zip": "31789",
+    "city": "Sumner",
+    "county": "Worth"
+  },
+  {
+    "zip": "31790",
+    "city": "Sycamore",
+    "county": "Turner"
+  },
+  {
+    "zip": "31791",
+    "city": "Sylvester",
+    "county": "Worth"
+  },
+  {
+    "zip": "31792",
+    "city": "Thomasville",
+    "county": "Thomas"
+  },
+  {
+    "zip": "31793",
+    "city": "Tifton",
+    "county": "Tift"
+  },
+  {
+    "zip": "31794",
+    "city": "Tifton",
+    "county": "Tift"
+  },
+  {
+    "zip": "31795",
+    "city": "Ty Ty",
+    "county": "Tift"
+  },
+  {
+    "zip": "31796",
+    "city": "Warwick",
+    "county": "Worth"
+  },
+  {
+    "zip": "31797",
+    "city": "Whigham",
+    "county": "Grady"
+  },
+  {
+    "zip": "31798",
+    "city": "Wray",
+    "county": "Irwin"
+  },
+  {
+    "zip": "31799",
+    "city": "Thomasville",
+    "county": "Thomas"
+  },
+  {
+    "zip": "31801",
+    "city": "Box Springs",
+    "county": "Talbot"
+  },
+  {
+    "zip": "31803",
+    "city": "Buena Vista",
+    "county": "Marion"
+  },
+  {
+    "zip": "31804",
+    "city": "Cataula",
+    "county": "Harris"
+  },
+  {
+    "zip": "31805",
+    "city": "Cusseta",
+    "county": "Chattahoochee"
+  },
+  {
+    "zip": "31806",
+    "city": "Ellaville",
+    "county": "Schley"
+  },
+  {
+    "zip": "31807",
+    "city": "Ellerslie",
+    "county": "Harris"
+  },
+  {
+    "zip": "31808",
+    "city": "Fortson",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31810",
+    "city": "Geneva",
+    "county": "Talbot"
+  },
+  {
+    "zip": "31811",
+    "city": "Hamilton",
+    "county": "Harris"
+  },
+  {
+    "zip": "31812",
+    "city": "Junction City",
+    "county": "Talbot"
+  },
+  {
+    "zip": "31814",
+    "city": "Louvale",
+    "county": "Stewart"
+  },
+  {
+    "zip": "31815",
+    "city": "Lumpkin",
+    "county": "Stewart"
+  },
+  {
+    "zip": "31816",
+    "city": "Manchester",
+    "county": "Meriwether"
+  },
+  {
+    "zip": "31820",
+    "city": "Midland",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31821",
+    "city": "Omaha",
+    "county": "Stewart"
+  },
+  {
+    "zip": "31822",
+    "city": "Pine Mountain",
+    "county": "Harris"
+  },
+  {
+    "zip": "31823",
+    "city": "Pine Mountain Valley",
+    "county": "Harris"
+  },
+  {
+    "zip": "31824",
+    "city": "Preston",
+    "county": "Webster"
+  },
+  {
+    "zip": "31825",
+    "city": "Richland",
+    "county": "Stewart"
+  },
+  {
+    "zip": "31826",
+    "city": "Shiloh",
+    "county": "Harris"
+  },
+  {
+    "zip": "31827",
+    "city": "Talbotton",
+    "county": "Talbot"
+  },
+  {
+    "zip": "31829",
+    "city": "Upatoi",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31830",
+    "city": "Warm Springs",
+    "county": "Meriwether"
+  },
+  {
+    "zip": "31831",
+    "city": "Waverly Hall",
+    "county": "Harris"
+  },
+  {
+    "zip": "31832",
+    "city": "Weston",
+    "county": "Webster"
+  },
+  {
+    "zip": "31833",
+    "city": "West Point",
+    "county": "Troup"
+  },
+  {
+    "zip": "31836",
+    "city": "Woodland",
+    "county": "Talbot"
+  },
+  {
+    "zip": "31901",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31902",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31903",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31904",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31905",
+    "city": "Fort Benning",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31906",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31907",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31908",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31909",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31914",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31917",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31993",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31994",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31995",
+    "city": "Fort Benning",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31997",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31998",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "31999",
+    "city": "Columbus",
+    "county": "Muscogee"
+  },
+  {
+    "zip": "39901",
+    "city": "Atlanta",
+    "county": "Dekalb"
+  }
+]
