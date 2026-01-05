@@ -10,6 +10,47 @@
   <div class="progress-step">6. Certification</div>
 </div>
 
+
+{% if isDevelopment %}
+<div style="margin: 20px 0 10px 0;">
+  <button type="button" id="populate-form-btn" style="background:#28a745; color:white; border:none; padding:10px 18px; border-radius:4px; font-size:15px;">Populate Form (Dev Only)</button>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('populate-form-btn');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        const data = {
+          'natureOfRequest': 'Need help with medication costs',
+          'vendors[0][vendorName]': 'Pharmacy One',
+          'vendors[0][contactPerson]': 'Alice',
+          'vendors[0][telephone]': '(404) 555-1111',
+          'vendors[0][address]': '789 Health St',
+          'vendors[0][city]': 'Atlanta',
+          'vendors[0][state]': 'GA',
+          'vendors[0][zip]': '30301',
+          'vendors[0][totalAmountOwed]': '200',
+          'vendors[0][amountRequesting]': '150',
+          'vendors[1][vendorName]': 'Medical Supply Co',
+          'vendors[1][contactPerson]': 'Bob',
+          'vendors[1][telephone]': '(404) 555-2222',
+          'vendors[1][address]': '123 Med Ave',
+          'vendors[1][city]': 'Atlanta',
+          'vendors[1][state]': 'GA',
+          'vendors[1][zip]': '30302',
+          'vendors[1][totalAmountOwed]': '300',
+          'vendors[1][amountRequesting]': '250',
+        };
+        for (const [name, value] of Object.entries(data)) {
+          const el = document.querySelector(`[name="${name}"]`);
+          if (el) el.value = value;
+        }
+      });
+    }
+  });
+</script>
+{% endif %}
+
 <h2>Step 5: Request Details & Vendors</h2>
 
 <form method="POST" action="/applications/{{ application.id }}/step/5" 
@@ -22,9 +63,9 @@
   
   <div id="autosave-indicator"></div>
 
+
   <fieldset>
     <legend>Nature of Request</legend>
-    
     <div class="form-group">
       <label for="natureOfRequest" class="required">Describe the nature of your request</label>
       <textarea id="natureOfRequest" name="natureOfRequest" rows="5" required>{{ application.data.natureOfRequest or '' }}</textarea>
@@ -118,16 +159,20 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label for="vendors[{{ i }}].totalAmountOwed">Total Amount Owed</label>
-          <input type="number" id="vendors[{{ i }}].totalAmountOwed" name="vendors[{{ i }}][totalAmountOwed]" 
-                 min="0" step="0.01" value="{{ application.data.vendors[i].totalAmountOwed or '' if application.data.vendors[i] else '' }}">
+          <label for="vendors[{{ i }}].totalAmountOwed" class="vendor-amount-label">Total Amount Owed</label>
+          <div style="position:relative;">
+            <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#666; font-size:15px;">$</span>
+            <input type="number" id="vendors[{{ i }}].totalAmountOwed" name="vendors[{{ i }}][totalAmountOwed]" 
+                   min="0" step="0.01" value="{{ application.data.vendors[i].totalAmountOwed or '' if application.data.vendors[i] else '' }}" style="padding-left:22px;">
+          </div>
         </div>
-        
         <div class="form-group">
-          <label for="vendors[{{ i }}].amountRequesting"{% if i == 0 %} class="required"{% endif %}>Amount Requesting</label>
-          <input type="number" id="vendors[{{ i }}].amountRequesting" name="vendors[{{ i }}][amountRequesting]" 
-                 min="0" step="0.01" value="{{ application.data.vendors[i].amountRequesting or '' if application.data.vendors[i] else '' }}"
-                 {% if i == 0 %}required{% endif %}>
+          <label for="vendors[{{ i }}].amountRequesting" class="vendor-amount-label">Amount Requesting</label>
+          <div style="position:relative;">
+            <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#666; font-size:15px;">$</span>
+            <input type="number" id="vendors[{{ i }}].amountRequesting" name="vendors[{{ i }}][amountRequesting]" 
+                   min="0" step="0.01" value="{{ application.data.vendors[i].amountRequesting or '' if application.data.vendors[i] else '' }}" style="padding-left:22px;">
+          </div>
           {% if errors['vendors.' + i|string + '.amountRequesting'] %}
             <div class="error">{{ errors['vendors.' + i|string + '.amountRequesting'] }}</div>
           {% endif %}
@@ -139,7 +184,53 @@
 
   <div class="form-navigation">
     <a href="/applications/{{ application.id }}/step/4" class="btn-secondary">Back to Step 4</a>
-    <button type="submit">Continue to Step 6</button>
+    <button type="submit" id="step5-continue-btn">Continue to Step 6</button>
   </div>
+
+<script>
+document.getElementById('step5-continue-btn').addEventListener('click', function(e) {
+  // SSDI/SSI checkbox validation
+  var ssdiSsiCheckbox = document.getElementById('receives-ssdi-ssi');
+  if (ssdiSsiCheckbox && ssdiSsiCheckbox.checked) {
+    // If checked, require at least one vendor with a name
+    var vendorValid = false;
+    for (var i = 0; i < 3; i++) {
+      var vendorName = document.getElementById('vendors['+i+'].vendorName');
+      if (vendorName && vendorName.value.trim() !== '') {
+        vendorValid = true;
+        break;
+      }
+    }
+    if (!vendorValid) {
+      alert('If you receive SSDI or SSI, you must specify at least one vendor.');
+      e.preventDefault();
+      return;
+    }
+  }
+  // For each vendor, if vendor name is specified, require Total Amount Owed and Amount Requesting
+  for (var i = 0; i < 3; i++) {
+    var vendorName = document.getElementById('vendors['+i+'].vendorName');
+    var totalAmountOwed = document.getElementById('vendors['+i+'].totalAmountOwed');
+    var amountRequesting = document.getElementById('vendors['+i+'].amountRequesting');
+    if (vendorName && vendorName.value.trim() !== '') {
+      if (!totalAmountOwed.value || parseFloat(totalAmountOwed.value) <= 0) {
+        alert('Total Amount Owed is required and must be greater than 0 for vendor #' + (i+1));
+        e.preventDefault();
+        return;
+      }
+      if (!amountRequesting.value || parseFloat(amountRequesting.value) <= 0) {
+        alert('Amount Requesting is required and must be greater than 0 for vendor #' + (i+1));
+        e.preventDefault();
+        return;
+      }
+      if (parseFloat(amountRequesting.value) > parseFloat(totalAmountOwed.value)) {
+        alert('Amount Requesting cannot be greater than Total Amount Owed for vendor #' + (i+1));
+        e.preventDefault();
+        return;
+      }
+    }
+  }
+});
+</script>
 </form>
 {% endblock %}

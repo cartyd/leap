@@ -10,6 +10,78 @@
   <div class="progress-step">6. Certification</div>
 </div>
 
+
+{% if isDevelopment %}
+<div style="margin: 20px 0 10px 0;">
+  <button type="button" id="populate-form-btn" style="background:#28a745; color:white; border:none; padding:10px 18px; border-radius:4px; font-size:15px;">Populate Form (Dev Only)</button>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('populate-form-btn');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        const data = {
+          'medicalHistory[diagnosisYear]': '2010',
+          'medicalHistory[lupusType]': 'Systemic',
+          'medicalHistory[physicianName]': 'Dr. Smith',
+          'medicalHistory[physicianPhone]': '(404) 555-1234',
+          'medicalCoverage[hasInsurance]': true,
+          'medicalCoverage[coverageType]': 'Private',
+          'medicalCoverage[privateInsuranceName]': 'Blue Cross',
+          'medicalCoverage[rxCoverage]': 'Copay',
+          'medicalCoverage[copayAmount]': '25',
+        };
+        for (const [name, value] of Object.entries(data)) {
+          const el = document.querySelector(`[name="${name}"]`);
+          if (el) {
+            if (el.type === 'checkbox') {
+              el.checked = true;
+            } else {
+              el.value = value;
+            }
+          }
+        }
+        // Trigger change events for conditional fields
+        document.getElementById('medicalCoverage.coverageType').dispatchEvent(new Event('change'));
+        document.getElementById('medicalCoverage.rxCoverage').dispatchEvent(new Event('change'));
+      });
+    }
+
+    // Disable/enable and clear coverage fields based on insurance checkbox
+    var hasInsurance = document.getElementById('medicalCoverage.hasInsurance');
+    var coverageType = document.getElementById('medicalCoverage.coverageType');
+    var rxCoverage = document.getElementById('medicalCoverage.rxCoverage');
+    var privateInsuranceName = document.getElementById('medicalCoverage.privateInsuranceName');
+    var copayAmount = document.getElementById('medicalCoverage.copayAmount');
+
+    function updateCoverageFields() {
+      if (!hasInsurance.checked) {
+        coverageType.value = '';
+        coverageType.disabled = true;
+        rxCoverage.value = '';
+        rxCoverage.disabled = true;
+        if (privateInsuranceName) privateInsuranceName.value = '';
+        if (privateInsuranceName) privateInsuranceName.disabled = true;
+        if (copayAmount) copayAmount.value = '';
+        if (copayAmount) copayAmount.disabled = true;
+        document.getElementById('privateInsuranceNameGroup').style.display = 'none';
+        document.getElementById('copayAmountGroup').style.display = 'none';
+      } else {
+        coverageType.disabled = false;
+        rxCoverage.disabled = false;
+        if (privateInsuranceName) privateInsuranceName.disabled = false;
+        if (copayAmount) copayAmount.disabled = false;
+        // Show/hide conditional fields as normal
+        coverageType.dispatchEvent(new Event('change'));
+        rxCoverage.dispatchEvent(new Event('change'));
+      }
+    }
+    hasInsurance.addEventListener('change', updateCoverageFields);
+    updateCoverageFields();
+  });
+</script>
+{% endif %}
+
 <h2>Step 2: Medical Information</h2>
 
 <form method="POST" action="/applications/{{ application.id }}/step/2" 
@@ -27,18 +99,18 @@
     
     <div class="form-row">
       <div class="form-group">
-        <label for="medicalHistory.diagnosisYear">Year of Diagnosis</label>
-        <input type="number" id="medicalHistory.diagnosisYear" name="medicalHistory[diagnosisYear]" 
-               min="1900" max="{{ "now" | date("yyyy") }}" 
-               value="{{ application.data.medicalHistory.diagnosisYear or '' }}">
+        <label for="medicalHistory.diagnosisYear" class="required">Year of Diagnosis</label>
+           <input type="number" id="medicalHistory.diagnosisYear" name="medicalHistory[diagnosisYear]" 
+             min="1900" max="{{ "now" | date("yyyy") }}" 
+             value="{{ application.data.medicalHistory.diagnosisYear or '' }}" required>
         {% if errors['medicalHistory.diagnosisYear'] %}
           <div class="error">{{ errors['medicalHistory.diagnosisYear'] }}</div>
         {% endif %}
       </div>
       
       <div class="form-group">
-        <label for="medicalHistory.lupusType">Type of Lupus</label>
-        <select id="medicalHistory.lupusType" name="medicalHistory[lupusType]">
+        <label for="medicalHistory.lupusType" class="required">Type of Lupus</label>
+        <select id="medicalHistory.lupusType" name="medicalHistory[lupusType]" required>
           <option value="">Select...</option>
           <option value="Discoid" {{ "selected" if application.data.medicalHistory.lupusType == "Discoid" }}>Discoid</option>
           <option value="Systemic" {{ "selected" if application.data.medicalHistory.lupusType == "Systemic" }}>Systemic</option>
@@ -53,21 +125,21 @@
 
     <div class="form-row">
       <div class="form-group">
-        <label for="medicalHistory.physicianName">Physician Name</label>
-        <input type="text" id="medicalHistory.physicianName" name="medicalHistory[physicianName]" 
-               value="{{ application.data.medicalHistory.physicianName or '' }}">
+        <label for="medicalHistory.physicianName" class="required">Physician Name</label>
+           <input type="text" id="medicalHistory.physicianName" name="medicalHistory[physicianName]" 
+             value="{{ application.data.medicalHistory.physicianName or '' }}" required>
         {% if errors['medicalHistory.physicianName'] %}
           <div class="error">{{ errors['medicalHistory.physicianName'] }}</div>
         {% endif %}
       </div>
       
       <div class="form-group">
-        <label for="medicalHistory.physicianPhone">Physician Phone</label>
-        <input type="tel" id="medicalHistory.physicianPhone" name="medicalHistory[physicianPhone]" 
-               value="{{ application.data.medicalHistory.physicianPhone | phone }}" 
-               placeholder="(999) 999-9999" 
-               pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" 
-               class="phone-input">
+        <label for="medicalHistory.physicianPhone" class="required">Physician Phone</label>
+           <input type="tel" id="medicalHistory.physicianPhone" name="medicalHistory[physicianPhone]" 
+             value="{{ application.data.medicalHistory.physicianPhone | phone }}" 
+             placeholder="(999) 999-9999" 
+             pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" 
+             class="phone-input" required>
         {% if errors['medicalHistory.physicianPhone'] %}
           <div class="error">{{ errors['medicalHistory.physicianPhone'] }}</div>
         {% endif %}
@@ -80,20 +152,20 @@
     
     <div class="form-group">
       <label>
-        <input type="checkbox" id="medicalCoverage.hasInsurance" name="medicalCoverage[hasInsurance]" 
-               value="true" {{ "checked" if application.data.medicalCoverage.hasInsurance }}>
+         <input type="checkbox" id="medicalCoverage.hasInsurance" name="medicalCoverage[hasInsurance]" 
+           value="true" {{ "checked" if application.data.medicalCoverage.hasInsurance }}>
         Has Health Insurance
       </label>
     </div>
 
     <div class="form-group">
-      <label for="medicalCoverage.coverageType">Coverage Type</label>
-      <select id="medicalCoverage.coverageType" name="medicalCoverage[coverageType]">
-        <option value="">Select...</option>
+      <label for="medicalCoverage.coverageType" class="required">Coverage Type</label>
+      <select id="medicalCoverage.coverageType" name="medicalCoverage[coverageType]"
+        {% if not application.data.medicalCoverage.hasInsurance %}disabled{% endif %}>
+        <option value="None" {% if not application.data.medicalCoverage.coverageType or application.data.medicalCoverage.coverageType == 'None' %}selected{% endif %}>None</option>
         <option value="Medicaid" {{ "selected" if application.data.medicalCoverage.coverageType == "Medicaid" }}>Medicaid</option>
         <option value="Medicare" {{ "selected" if application.data.medicalCoverage.coverageType == "Medicare" }}>Medicare</option>
         <option value="Private" {{ "selected" if application.data.medicalCoverage.coverageType == "Private" }}>Private</option>
-        <option value="None" {{ "selected" if application.data.medicalCoverage.coverageType == "None" }}>None</option>
       </select>
       {% if errors['medicalCoverage.coverageType'] %}
         <div class="error">{{ errors['medicalCoverage.coverageType'] }}</div>
@@ -101,18 +173,21 @@
     </div>
 
     <div class="form-group" id="privateInsuranceNameGroup" style="display: {{ 'block' if application.data.medicalCoverage.coverageType == 'Private' else 'none' }}">
-      <label for="medicalCoverage.privateInsuranceName">Private Insurance Name</label>
-      <input type="text" id="medicalCoverage.privateInsuranceName" name="medicalCoverage[privateInsuranceName]" 
-             value="{{ application.data.medicalCoverage.privateInsuranceName or '' }}">
+      <label for="medicalCoverage.privateInsuranceName" class="required">Private Insurance Name</label>
+        <input type="text" id="medicalCoverage.privateInsuranceName" name="medicalCoverage[privateInsuranceName]" 
+          value="{{ application.data.medicalCoverage.privateInsuranceName or '' }}"
+          {% if not application.data.medicalCoverage.hasInsurance or application.data.medicalCoverage.coverageType != 'Private' %}disabled{% endif %}
+          {% if application.data.medicalCoverage.hasInsurance and application.data.medicalCoverage.coverageType == 'Private' %}required{% endif %}>
       {% if errors['medicalCoverage.privateInsuranceName'] %}
         <div class="error">{{ errors['medicalCoverage.privateInsuranceName'] }}</div>
       {% endif %}
     </div>
 
     <div class="form-group">
-      <label for="medicalCoverage.rxCoverage">Prescription Drug Coverage</label>
-      <select id="medicalCoverage.rxCoverage" name="medicalCoverage[rxCoverage]">
-        <option value="">Select...</option>
+      <label for="medicalCoverage.rxCoverage" class="required">Prescription Drug Coverage</label>
+      <select id="medicalCoverage.rxCoverage" name="medicalCoverage[rxCoverage]"
+        {% if not application.data.medicalCoverage.hasInsurance %}disabled{% endif %}>
+        <option value="None" {% if not application.data.medicalCoverage.rxCoverage or application.data.medicalCoverage.rxCoverage == 'None' %}selected{% endif %}>None</option>
         <option value="Yes" {{ "selected" if application.data.medicalCoverage.rxCoverage == "Yes" }}>Yes</option>
         <option value="No" {{ "selected" if application.data.medicalCoverage.rxCoverage == "No" }}>No</option>
         <option value="Copay" {{ "selected" if application.data.medicalCoverage.rxCoverage == "Copay" }}>Copay</option>
@@ -123,9 +198,11 @@
     </div>
 
     <div class="form-group" id="copayAmountGroup" style="display: {{ 'block' if application.data.medicalCoverage.rxCoverage == 'Copay' else 'none' }}">
-      <label for="medicalCoverage.copayAmount">Copay Amount</label>
-      <input type="number" id="medicalCoverage.copayAmount" name="medicalCoverage[copayAmount]" 
-             min="0" step="0.01" value="{{ application.data.medicalCoverage.copayAmount or '' }}">
+      <label for="medicalCoverage.copayAmount" class="required">Copay Amount</label>
+        <input type="number" id="medicalCoverage.copayAmount" name="medicalCoverage[copayAmount]" 
+          min="0" step="0.01" value="{{ application.data.medicalCoverage.copayAmount or '' }}"
+          {% if not application.data.medicalCoverage.hasInsurance or application.data.medicalCoverage.rxCoverage != 'Copay' %}disabled{% endif %}
+          {% if application.data.medicalCoverage.hasInsurance and application.data.medicalCoverage.rxCoverage == 'Copay' %}required{% endif %}>
       {% if errors['medicalCoverage.copayAmount'] %}
         <div class="error">{{ errors['medicalCoverage.copayAmount'] }}</div>
       {% endif %}
@@ -134,8 +211,21 @@
 
   <div class="form-navigation">
     <a href="/applications/{{ application.id }}/step/1" class="btn-secondary">Back to Step 1</a>
-    <button type="submit">Continue to Step 3</button>
+    <button type="submit" id="step2-continue-btn">Continue to Step 3</button>
   </div>
+
+<script>
+  // Prevent both coverageType and rxCoverage from being 'None' if insurance is checked
+  document.getElementById('step2-continue-btn').addEventListener('click', function(e) {
+    var hasInsurance = document.getElementById('medicalCoverage.hasInsurance').checked;
+    var coverageType = document.getElementById('medicalCoverage.coverageType').value;
+    var rxCoverage = document.getElementById('medicalCoverage.rxCoverage').value;
+    if (hasInsurance && coverageType === 'None' && rxCoverage === 'None') {
+      alert('If you have health insurance, either Coverage Type or Prescription Drug Coverage must be selected. Both cannot be None.');
+      e.preventDefault();
+    }
+  });
+</script>
 </form>
 
 <script>

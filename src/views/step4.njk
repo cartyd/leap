@@ -10,6 +10,41 @@
   <div class="progress-step">6. Certification</div>
 </div>
 
+
+{% if isDevelopment %}
+<div style="margin: 20px 0 10px 0;">
+  <button type="button" id="populate-form-btn" style="background:#28a745; color:white; border:none; padding:10px 18px; border-radius:4px; font-size:15px;">Populate Form (Dev Only)</button>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('populate-form-btn');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        const data = {
+          'dependents[count]': '2',
+          'dependents[agesText]': '5, 8',
+          'residencyGA': true,
+          'resourcesContacted[0][nameOrAgency]': 'Charity Org',
+          'resourcesContacted[0][outcome]': 'Denied',
+          'resourcesContacted[1][nameOrAgency]': 'Local Aid',
+          'resourcesContacted[1][outcome]': 'Pending',
+        };
+        for (const [name, value] of Object.entries(data)) {
+          const el = document.querySelector(`[name="${name}"]`);
+          if (el) {
+            if (el.type === 'checkbox') {
+              el.checked = true;
+            } else {
+              el.value = value;
+            }
+          }
+        }
+      });
+    }
+  });
+</script>
+{% endif %}
+
 <h2>Step 4: Dependents & Residency</h2>
 
 <form method="POST" action="/applications/{{ application.id }}/step/4" 

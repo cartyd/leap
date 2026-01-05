@@ -22,8 +22,10 @@ body {
 }
 
 /* Header */
+
 header {
-  background: #0066cc;
+  background: #800080;
+  background: #490075;
   color: white;
   padding: 20px;
   margin: -20px -20px 20px;
@@ -33,10 +35,12 @@ h1 {
   font-size: 24px;
 }
 
+
 h2 {
   font-size: 20px;
   margin: 20px 0 10px;
-  color: #0066cc;
+  color: #800080;
+  color: #490075;
 }
 
 h3 {
@@ -52,9 +56,11 @@ fieldset {
   border-radius: 4px;
 }
 
+
 legend {
   font-weight: bold;
-  color: #0066cc;
+  color: #800080;
+  color: #490075;
   padding: 0 10px;
 }
 
@@ -101,9 +107,11 @@ textarea {
 }
 
 /* Buttons */
+
 button,
 .btn {
-  background: #0066cc;
+  background: #800080;
+  background: #490075;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -116,7 +124,8 @@ button,
 
 button:hover,
 .btn:hover {
-  background: #0052a3;
+  background: #6a006a;
+  background: #37005c;
 }
 
 .btn-secondary {
@@ -176,8 +185,10 @@ button:hover,
   font-size: 14px;
 }
 
+
 .progress-step.active {
-  background: #0066cc;
+  background: #800080;
+  background: #490075;
   color: white;
   font-weight: bold;
 }
@@ -199,10 +210,13 @@ button:hover,
   border-radius: 4px;
 }
 
+
 .review-section h3 {
   margin-top: 0;
-  color: #0066cc;
-  border-bottom: 2px solid #0066cc;
+  color: #800080;
+  border-bottom: 2px solid #800080;
+  color: #490075;
+  border-bottom: 2px solid #490075;
   padding-bottom: 10px;
 }
 

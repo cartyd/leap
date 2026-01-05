@@ -10,6 +10,51 @@
   <div class="progress-step">6. Certification</div>
 </div>
 
+
+{% if isDevelopment %}
+<div style="margin: 20px 0 10px 0;">
+  <button type="button" id="populate-form-btn" style="background:#28a745; color:white; border:none; padding:10px 18px; border-radius:4px; font-size:15px;">Populate Form (Dev Only)</button>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('populate-form-btn');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        const data = {
+          'income[appliedDisability]': true,
+          'income[receives][ssdi]': true,
+          'income[receives][ssi]': false,
+          'income[receives][monthlyAmount]': '1200',
+          'income[currentlyEmployed]': true,
+          'income[unemployment][receiving]': false,
+          'income[unemployment][amount]': '',
+          'income[employerName]': 'Acme Corp',
+          'income[employerPhone]': '(404) 555-5678',
+          'income[employerAddress]': '456 Work Ave',
+          'income[monthlyNet]': '2000',
+          'spouse[name]': 'Jane Public',
+          'spouse[relationship]': 'Spouse',
+          'spouse[employed]': true,
+          'spouse[employerName]': 'Widgets Inc',
+          'spouse[monthlyNet]': '1500',
+          'spouse[grossTaxableIncome]': '18000',
+        };
+        for (const [name, value] of Object.entries(data)) {
+          const el = document.querySelector(`[name="${name}"]`);
+          if (el) {
+            if (el.type === 'checkbox') {
+              el.checked = !!value;
+            } else {
+              el.value = value;
+            }
+          }
+        }
+      });
+    }
+  });
+</script>
+{% endif %}
+
 <h2>Step 3: Income & Employment</h2>
 
 <form method="POST" action="/applications/{{ application.id }}/step/3" 

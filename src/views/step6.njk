@@ -10,6 +10,30 @@
   <div class="progress-step active">6. Certification</div>
 </div>
 
+
+{% if isDevelopment %}
+<div style="margin: 20px 0 10px 0;">
+  <button type="button" id="populate-form-btn" style="background:#28a745; color:white; border:none; padding:10px 18px; border-radius:4px; font-size:15px;">Populate Form (Dev Only)</button>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('populate-form-btn');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        const data = {
+          'certification[applicantSignatureTyped]': 'John Public',
+          'certification[dateSigned]': (new Date()).toISOString().slice(0,10),
+        };
+        for (const [name, value] of Object.entries(data)) {
+          const el = document.querySelector(`[name="${name}"]`);
+          if (el) el.value = value;
+        }
+      });
+    }
+  });
+</script>
+{% endif %}
+
 <h2>Step 6: Certification</h2>
 
 <form method="POST" action="/applications/{{ application.id }}/step/6" 
@@ -37,10 +61,10 @@
       <label for="certification.applicantSignatureTyped" class="required">
         Type your full name to sign this application
       </label>
-      <input type="text" id="certification.applicantSignatureTyped" 
-             name="certification[applicantSignatureTyped]" 
-             value="{{ application.data.certification.applicantSignatureTyped or '' if application.data.certification else '' }}" 
-             required>
+            <input type="text" id="certification.applicantSignatureTyped" 
+              name="certification[applicantSignatureTyped]" 
+              value="{{ application.data.certification.applicantSignatureTyped or (application.data.applicant.firstName ~ ' ' ~ application.data.applicant.lastName) if application.data.certification is not none else (application.data.applicant.firstName ~ ' ' ~ application.data.applicant.lastName) }}" 
+              required>
       {% if errors['certification.applicantSignatureTyped'] %}
         <div class="error">{{ errors['certification.applicantSignatureTyped'] }}</div>
       {% endif %}
@@ -48,10 +72,10 @@
 
     <div class="form-group">
       <label for="certification.dateSigned" class="required">Date</label>
-      <input type="date" id="certification.dateSigned" 
-             name="certification[dateSigned]" 
-             value="{{ application.data.certification.dateSigned or '' if application.data.certification else '' }}" 
-             required>
+            <input type="date" id="certification.dateSigned" 
+              name="certification[dateSigned]" 
+              value="{{ application.data.certification.dateSigned or ("now" | date("yyyy-MM-dd")) if application.data.certification is not none else ("now" | date("yyyy-MM-dd")) }}" 
+              required>
       {% if errors['certification.dateSigned'] %}
         <div class="error">{{ errors['certification.dateSigned'] }}</div>
       {% endif %}
