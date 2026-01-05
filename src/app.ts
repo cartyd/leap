@@ -8,6 +8,7 @@ import fastifyStatic from '@fastify/static';
 import fastifyView from '@fastify/view';
 import nunjucks from 'nunjucks';
 import path from 'path';
+import qs from 'qs';
 import config from '@config/index';
 import { errorHandler } from '@middleware/error-handler';
 import { csrfProtection } from '@middleware/csrf';
@@ -58,7 +59,9 @@ app.register(fastifyCookie, {
 });
 
 // Body parsing
-app.register(fastifyFormbody);
+app.register(fastifyFormbody, {
+  parser: (str) => qs.parse(str)
+});
 app.register(fastifyMultipart, {
   limits: {
     fileSize: config.uploads.maxFileSize,

@@ -40,6 +40,8 @@ export async function stepRoutes(app: FastifyInstance) {
     const { id, stepNum } = request.params as { id: string; stepNum: string };
     const step = parseInt(stepNum, 10);
     const body = request.body as any;
+    console.log('Step', step, 'RAW body keys:', Object.keys(body));
+    console.log('Step', step, 'RAW body:', JSON.stringify(body, null, 2));
 
     if (step < 1 || step > 6) {
       return reply.code(400).send({ error: 'Invalid step number' });
@@ -51,8 +53,9 @@ export async function stepRoutes(app: FastifyInstance) {
     }
 
     // Validate step data (lenient)
+    let validatedData;
     try {
-      stepSchemas[step - 1].parse(body);
+      validatedData = stepSchemas[step - 1].parse(body);
     } catch (error: any) {
       // Re-render with errors
       return reply.view(stepTemplates[step - 1], {
@@ -66,8 +69,11 @@ export async function stepRoutes(app: FastifyInstance) {
       });
     }
 
-    // Save data
-    await applicationService.updateApplication(id, body);
+    // Save data (use validated data which includes transformations)
+    console.log('Step', step, 'validated data:', JSON.stringify(validatedData, null, 2));
+    await applicationService.updateApplication(id, validatedData);
+    const updated = await applicationService.getApplication(id);
+    console.log('After update, data:', JSON.stringify(updated?.data, null, 2));
 
     // Redirect to next step or review
     if (step < 6) {

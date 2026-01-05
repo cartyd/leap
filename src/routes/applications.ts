@@ -19,6 +19,8 @@ export async function applicationRoutes(app: FastifyInstance) {
       return reply.code(404).send({ error: 'Application not found' });
     }
 
+    console.log('REVIEW PAGE - application.data:', JSON.stringify(application.data, null, 2));
+
     const uploads = await uploadService.getUploadsByApplication(id);
 
     return reply.view('review.njk', {
