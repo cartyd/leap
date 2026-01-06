@@ -1,3 +1,20 @@
+/* Compact form tweaks for step 1 */
+.compact-form input,
+.compact-form select,
+.compact-form textarea {
+  font-size: 13px;
+  padding: 5px 7px;
+}
+.compact-form label {
+  font-size: 13px;
+  margin: 4px 0 2px 0;
+}
+.compact-form .form-group {
+  margin-bottom: 8px;
+}
+.compact-form .form-row {
+  gap: 10px;
+}
 /* Readonly/Non-editable Field Styles */
 .readonly-field {
   background: #f4f4f4;

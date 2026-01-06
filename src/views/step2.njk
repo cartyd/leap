@@ -23,15 +23,28 @@
         const data = {
           'medicalHistory[diagnosisYear]': '2010',
           'medicalHistory[lupusType]': 'Systemic',
+          'medicalHistory[currentlyEmployed]': 'Yes',
+          'medicalHistory[employmentStatus]': 'Full Time',
+          'medicalHistory[spouseEmploymentStatus]': 'N/A',
           'medicalHistory[physicianName]': 'Dr. Smith',
           'medicalHistory[physicianPhone]': '(404) 555-1234',
-          'medicalCoverage[hasInsurance]': true,
+          // Required radios
+          'medicalCoverage[hasInsurance]': 'true',
           'medicalCoverage[coverageType]': 'Private',
+          'medicalCoverage[rxCoverage]': 'Yes',
+          // Dependent field when rxCoverage is Yes
           'medicalCoverage[privateInsuranceName]': 'Blue Cross',
-          'medicalCoverage[rxCoverage]': 'Copay',
           'medicalCoverage[copayAmount]': '25',
         };
         for (const [name, value] of Object.entries(data)) {
+          // Special handling for radio groups
+          const radios = document.querySelectorAll(`input[type="radio"][name="${name}"]`);
+          if (radios.length > 0) {
+            radios.forEach(radio => {
+              radio.checked = (radio.value === value);
+            });
+            continue;
+          }
           const el = document.querySelector(`[name="${name}"]`);
           if (el) {
             if (el.type === 'checkbox') {
@@ -41,54 +54,31 @@
             }
           }
         }
-        // Trigger change events for conditional fields
-        document.getElementById('medicalCoverage.coverageType').dispatchEvent(new Event('change'));
-        document.getElementById('medicalCoverage.rxCoverage').dispatchEvent(new Event('change'));
+        // Refresh conditional UI after programmatic changes
+        if (typeof updateEmploymentStatusRequired === 'function') updateEmploymentStatusRequired();
+        if (typeof updateCoverageTypeEnabled === 'function') updateCoverageTypeEnabled();
+        if (typeof updatePrivateInsuranceGroup === 'function') updatePrivateInsuranceGroup();
+        if (typeof updateCopayGroup === 'function') updateCopayGroup();
       });
     }
-
-    // Disable/enable and clear coverage fields based on insurance checkbox
-    var hasInsurance = document.getElementById('medicalCoverage.hasInsurance');
-    var coverageType = document.getElementById('medicalCoverage.coverageType');
-    var rxCoverage = document.getElementById('medicalCoverage.rxCoverage');
-    var privateInsuranceName = document.getElementById('medicalCoverage.privateInsuranceName');
-    var copayAmount = document.getElementById('medicalCoverage.copayAmount');
-
-    function updateCoverageFields() {
-      if (!hasInsurance.checked) {
-        coverageType.value = '';
-        coverageType.disabled = true;
-        rxCoverage.value = '';
-        rxCoverage.disabled = true;
-        if (privateInsuranceName) privateInsuranceName.value = '';
-        if (privateInsuranceName) privateInsuranceName.disabled = true;
-        if (copayAmount) copayAmount.value = '';
-        if (copayAmount) copayAmount.disabled = true;
-        document.getElementById('privateInsuranceNameGroup').style.display = 'none';
-        document.getElementById('copayAmountGroup').style.display = 'none';
-      } else {
-        coverageType.disabled = false;
-        rxCoverage.disabled = false;
-        if (privateInsuranceName) privateInsuranceName.disabled = false;
-        if (copayAmount) copayAmount.disabled = false;
-        // Show/hide conditional fields as normal
-        coverageType.dispatchEvent(new Event('change'));
-        rxCoverage.dispatchEvent(new Event('change'));
-      }
-    }
-    hasInsurance.addEventListener('change', updateCoverageFields);
-    updateCoverageFields();
   });
 </script>
 {% endif %}
 
 <h2>Step 2: Medical Information</h2>
 
-<form method="POST" action="/applications/{{ application.id }}/step/2" 
-      hx-trigger="change delay:500ms" 
-      hx-post="/applications/{{ application.id }}/autosave"
-      hx-target="#autosave-indicator"
-      hx-swap="innerHTML">
+<form method="POST" action="/applications/{{ application.id }}/step/2">
+
+  {% if errors and errors|length > 0 %}
+    <div class="error-summary" style="background:#ffe6e6; color:#a94442; border:1px solid #a94442; padding:16px; margin-bottom:20px; border-radius:4px;">
+      <strong>Please correct the following errors before continuing:</strong>
+      <ul style="margin:10px 0 0 20px;">
+        {% for field, message in errors %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
   
   <input type="hidden" name="_csrf" value="{{ csrfToken }}">
   
@@ -136,6 +126,55 @@
         {% endif %}
       </div>
     </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="required">Currently Employed</label>
+        <div class="segmented-control" id="currentlyEmployedControl">
+          <label><input type="radio" name="medicalHistory[currentlyEmployed]" value="Yes" {% if application.data.medicalHistory.currentlyEmployed == 'Yes' %}checked{% endif %} required> Yes</label>
+          <label><input type="radio" name="medicalHistory[currentlyEmployed]" value="No" {% if application.data.medicalHistory.currentlyEmployed == 'No' or not application.data.medicalHistory.currentlyEmployed %}checked{% endif %} required> No</label>
+        </div>
+        {% if errors['medicalHistory.currentlyEmployed'] %}
+          <div class="error">{{ errors['medicalHistory.currentlyEmployed'] }}</div>
+        {% endif %}
+      </div>
+      <div class="form-group">
+        <label class="required">Receiving Unemployment Benefits</label>
+        <div class="segmented-control" id="receivingUnemploymentControl">
+          <label><input type="radio" name="medicalHistory[receivingUnemployment]" value="Yes" {% if application.data.medicalHistory.receivingUnemployment == 'Yes' %}checked{% endif %} required> Yes</label>
+          <label><input type="radio" name="medicalHistory[receivingUnemployment]" value="No" {% if application.data.medicalHistory.receivingUnemployment == 'No' or not application.data.medicalHistory.receivingUnemployment %}checked{% endif %} required> No</label>
+        </div>
+        {% if errors['medicalHistory.receivingUnemployment'] %}
+          <div class="error">{{ errors['medicalHistory.receivingUnemployment'] }}</div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="required">Employment Status</label>
+        <div class="segmented-control" id="employmentStatusControl">
+          <label><input type="radio" name="medicalHistory[employmentStatus]" value="Full Time" {% if application.data.medicalHistory.employmentStatus == 'Full Time' %}checked{% endif %}> Full Time</label>
+          <label><input type="radio" name="medicalHistory[employmentStatus]" value="Part Time" {% if application.data.medicalHistory.employmentStatus == 'Part Time' %}checked{% endif %}> Part Time</label>
+          <label><input type="radio" name="medicalHistory[employmentStatus]" value="Unemployed" {% if application.data.medicalHistory.employmentStatus == 'Unemployed' %}checked{% endif %}> Unemployed</label>
+          <label><input type="radio" name="medicalHistory[employmentStatus]" value="Self-Employed" {% if application.data.medicalHistory.employmentStatus == 'Self-Employed' %}checked{% endif %}> Self-Employed</label>
+        </div>
+        {% if errors['medicalHistory.employmentStatus'] %}
+          <div class="error">{{ errors['medicalHistory.employmentStatus'] }}</div>
+        {% endif %}
+      </div>
+      <div class="form-group">
+        <label class="required">Spouse Employment Status</label>
+        <div class="segmented-control" id="spouseEmploymentStatusControl">
+          <label><input type="radio" name="medicalHistory[spouseEmploymentStatus]" value="Full Time" {% if application.data.medicalHistory.spouseEmploymentStatus == 'Full Time' %}checked{% endif %} required> Full Time</label>
+          <label><input type="radio" name="medicalHistory[spouseEmploymentStatus]" value="Part Time" {% if application.data.medicalHistory.spouseEmploymentStatus == 'Part Time' %}checked{% endif %} required> Part Time</label>
+          <label><input type="radio" name="medicalHistory[spouseEmploymentStatus]" value="Unemployed" {% if application.data.medicalHistory.spouseEmploymentStatus == 'Unemployed' %}checked{% endif %} required> Unemployed</label>
+          <label><input type="radio" name="medicalHistory[spouseEmploymentStatus]" value="Self-Employed" {% if application.data.medicalHistory.spouseEmploymentStatus == 'Self-Employed' %}checked{% endif %} required> Self-Employed</label>
+          <label><input type="radio" name="medicalHistory[spouseEmploymentStatus]" value="N/A" {% if application.data.medicalHistory.spouseEmploymentStatus == 'N/A' %}checked{% endif %} required> N/A</label>
+        </div>
+        {% if errors['medicalHistory.spouseEmploymentStatus'] %}
+          <div class="error">{{ errors['medicalHistory.spouseEmploymentStatus'] }}</div>
+        {% endif %}
+      </div>
+    </div>
 
     <div class="form-row">
       <div class="form-group">
@@ -157,6 +196,55 @@
         {% if errors['medicalHistory.physicianPhone'] %}
           <div class="error">{{ errors['medicalHistory.physicianPhone'] }}</div>
         {% endif %}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="required">Have you applied for disability?</label>
+        <div class="segmented-control" id="appliedDisabilityControl">
+          <label><input type="radio" name="medicalHistory[appliedForDisability]" value="Yes" {% if application.data.medicalHistory.appliedForDisability == 'Yes' %}checked{% endif %} required> Yes</label>
+          <label><input type="radio" name="medicalHistory[appliedForDisability]" value="No" {% if application.data.medicalHistory.appliedForDisability == 'No' or not application.data.medicalHistory.appliedForDisability %}checked{% endif %} required> No</label>
+        </div>
+        {% if errors['medicalHistory.appliedForDisability'] %}
+          <div class="error">{{ errors['medicalHistory.appliedForDisability'] }}</div>
+        {% endif %}
+      </div>
+      <div class="form-group">
+        <label class="required">Do you receive benefits?</label>
+        <div class="segmented-control" id="receiveBenefitsControl">
+          <label><input type="radio" name="medicalHistory[receiveBenefits]" value="SSDI" {% if application.data.medicalHistory.receiveBenefits == 'SSDI' %}checked{% endif %} required> SSDI</label>
+          <label><input type="radio" name="medicalHistory[receiveBenefits]" value="SSI" {% if application.data.medicalHistory.receiveBenefits == 'SSI' %}checked{% endif %} required> SSI</label>
+          <label><input type="radio" name="medicalHistory[receiveBenefits]" value="No Benefits" {% if application.data.medicalHistory.receiveBenefits == 'No Benefits' or not application.data.medicalHistory.receiveBenefits %}checked{% endif %} required> No Benefits</label>
+        </div>
+        {% if errors['medicalHistory.receiveBenefits'] %}
+          <div class="error">{{ errors['medicalHistory.receiveBenefits'] }}</div>
+        {% endif %}
+        <div id="monthlyAmountGroup" style="margin-top:10px; display: {% if application.data.medicalHistory.receiveBenefits == 'SSDI' or application.data.medicalHistory.receiveBenefits == 'SSI' %}block{% else %}none{% endif %};">
+          <label for="medicalHistory.monthlyAmount">Monthly Amount (if receiving SSDI/SSI)</label>
+          <div style="position:relative;">
+            <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#666; font-size:15px;">$</span>
+            <input type="number" id="medicalHistory.monthlyAmount" name="medicalHistory[monthlyAmount]" min="0" step="0.01" value="{{ application.data.medicalHistory.monthlyAmount or '' }}" style="padding-left:22px; width:90%;">
+          </div>
+          {% if errors['medicalHistory.monthlyAmount'] %}
+            <div class="error">{{ errors['medicalHistory.monthlyAmount'] }}</div>
+          {% endif %}
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var radios = document.querySelectorAll('input[name="medicalHistory[receiveBenefits]"]');
+            var group = document.getElementById('monthlyAmountGroup');
+            radios.forEach(function(radio) {
+              radio.addEventListener('change', function() {
+                if (this.value === 'SSDI' || this.value === 'SSI') {
+                  group.style.display = 'block';
+                } else {
+                  group.style.display = 'none';
+                }
+              });
+            });
+          });
+        </script>
       </div>
     </div>
   </fieldset>
@@ -209,10 +297,13 @@
 
     <div class="form-group" id="copayAmountGroup" style="display: {{ 'block' if application.data.medicalCoverage.rxCoverage == 'Yes' else 'none' }}">
       <label for="medicalCoverage.copayAmount" class="required">Copay Amount</label>
-        <input type="number" id="medicalCoverage.copayAmount" name="medicalCoverage[copayAmount]" 
-          min="0" step="0.01" value="{{ application.data.medicalCoverage.copayAmount or '' }}"
-          {% if not application.data.medicalCoverage.hasInsurance or application.data.medicalCoverage.rxCoverage != 'Yes' %}disabled{% endif %}
-          {% if application.data.medicalCoverage.hasInsurance and application.data.medicalCoverage.rxCoverage == 'Yes' %}required{% endif %}>
+        <div style="position:relative; display:flex; align-items:center; gap:8px;">
+          <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#666; font-size:15px;">$</span>
+          <input type="number" id="medicalCoverage.copayAmount" name="medicalCoverage[copayAmount]" 
+            min="0" step="0.01" value="{{ application.data.medicalCoverage.copayAmount or '' }}" style="padding-left:22px; width:90%;"
+            {% if not application.data.medicalCoverage.hasInsurance or application.data.medicalCoverage.rxCoverage != 'Yes' %}disabled{% endif %}
+            {% if application.data.medicalCoverage.hasInsurance and application.data.medicalCoverage.rxCoverage == 'Yes' %}required{% endif %}>
+        </div>
       {% if errors['medicalCoverage.copayAmount'] %}
         <div class="error">{{ errors['medicalCoverage.copayAmount'] }}</div>
       {% endif %}
@@ -226,15 +317,25 @@
 
 <script>
   // Prevent both coverageType and rxCoverage from being 'None' if insurance is checked
-  document.getElementById('step2-continue-btn').addEventListener('click', function(e) {
-    var hasInsurance = document.getElementById('medicalCoverage.hasInsurance').checked;
-    var coverageType = document.getElementById('medicalCoverage.coverageType').value;
-    var rxCoverage = document.getElementById('medicalCoverage.rxCoverage').value;
-    if (hasInsurance && coverageType === 'None' && rxCoverage === 'None') {
-      alert('If you have health insurance, either Coverage Type or Prescription Drug Coverage must be selected. Both cannot be None.');
-      e.preventDefault();
-    }
-  });
+  var step2Form = document.querySelector('form[action*="/step/2"]');
+  if (step2Form) {
+    step2Form.addEventListener('submit', function(e) {
+      function getRadioValue(name) {
+        var radios = document.getElementsByName(name);
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) return radios[i].value;
+        }
+        return null;
+      }
+      var hasInsurance = getRadioValue('medicalCoverage[hasInsurance]') === 'true';
+      var coverageType = getRadioValue('medicalCoverage[coverageType]');
+      var rxCoverage = getRadioValue('medicalCoverage[rxCoverage]');
+      if (hasInsurance && coverageType === 'None' && rxCoverage === 'None') {
+        alert('If you have health insurance, either Coverage Type or Prescription Drug Coverage must be selected. Both cannot be None.');
+        e.preventDefault();
+      }
+    });
+  }
 </script>
 </form>
 
@@ -265,6 +366,18 @@
 </style>
 <script>
   // Show/hide conditional fields for private insurance and copay
+  function updateEmploymentStatusRequired() {
+    var employedYes = document.querySelector('input[name="medicalHistory[currentlyEmployed]"][value="Yes"]');
+    var statusRadios = document.querySelectorAll('input[name="medicalHistory[employmentStatus]"]');
+    var require = employedYes && employedYes.checked;
+    statusRadios.forEach(function(radio){
+      radio.required = require;
+      if (!require) {
+        radio.checked = false;
+      }
+    });
+  }
+
   function updatePrivateInsuranceGroup() {
     var priv = document.getElementById('privateInsuranceNameGroup');
     var privRadio = document.getElementById('medicalCoverage.coverageType-private');
@@ -301,7 +414,11 @@
   document.querySelectorAll('input[name="medicalCoverage[hasInsurance]"]').forEach(function(radio) {
     radio.addEventListener('change', updateCoverageTypeEnabled);
   });
+  document.querySelectorAll('input[name="medicalHistory[currentlyEmployed]"]').forEach(function(radio) {
+    radio.addEventListener('change', updateEmploymentStatusRequired);
+  });
   // Initial state
+  updateEmploymentStatusRequired();
   updateCoverageTypeEnabled();
   updateCopayGroup();
 </script>
