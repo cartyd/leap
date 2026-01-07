@@ -8,4 +8,4 @@ mkdir -p /data/uploads
 npx prisma migrate deploy
 
 # Start the application
-node dist/server.js
+node -r ./dist/tsconfig-paths-bootstrap.js dist/server.js

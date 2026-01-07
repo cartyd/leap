@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node -r ./dist/tsconfig-paths-bootstrap.js dist/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:e2e": "playwright test",
@@ -37,6 +37,7 @@
     "pino": "^8.17.2",
     "pino-pretty": "^10.3.1",
     "qs": "^6.14.1",
+    "tsconfig-paths": "^4.2.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {

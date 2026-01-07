@@ -7,6 +7,7 @@ import {
   step4Schema,
   step5Schema,
   step6Schema,
+  ApplicationData,
 } from '@schemas/application.schema';
 import config from '@config/index';
 
@@ -55,9 +56,9 @@ export async function stepRoutes(app: FastifyInstance) {
     }
 
     // Validate step data (lenient)
-    let validatedData;
+    let validatedData: Partial<ApplicationData>;
     try {
-      validatedData = stepSchemas[step - 1].parse(body);
+      validatedData = stepSchemas[step - 1].parse(body) as Partial<ApplicationData>;
     } catch (error: any) {
       // Re-render with errors
       return reply.view(stepTemplates[step - 1], {
