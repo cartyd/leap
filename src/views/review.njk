@@ -108,6 +108,11 @@
       {% if application.data.medicalCoverage.rxCoverage %}
         <dt>Prescription Coverage:</dt>
         <dd>{{ application.data.medicalCoverage.rxCoverage }}</dd>
+        
+        {% if application.data.medicalCoverage.copayAmount %}
+          <dt>Copay Amount:</dt>
+          <dd>{{ application.data.medicalCoverage.copayAmount | currency }}</dd>
+        {% endif %}
       {% endif %}
     </dl>
   </section>
@@ -118,11 +123,10 @@
       <a href="/applications/{{ application.id }}/step/3" class="edit-link">Edit</a>
     </div>
     <dl class="review-list">
-      {% if application.data.income.receives.ssdi or application.data.income.receives.ssi %}
+      {% if application.data.income.receives.type and application.data.income.receives.type != 'None' %}
         <dt>Receives:</dt>
         <dd>
-          {% if application.data.income.receives.ssdi %}SSDI{% endif %}
-          {% if application.data.income.receives.ssi %}{% if application.data.income.receives.ssdi %}, {% endif %}SSI{% endif %}
+          {{ application.data.income.receives.type }}
           {% if application.data.income.receives.monthlyAmount %}
             - {{ application.data.income.receives.monthlyAmount | currency }}/month
           {% endif %}

@@ -21,25 +21,26 @@
     if (btn) {
       btn.addEventListener('click', function() {
         const data = {
-          'income[appliedDisability]': true,
-          'income[receives][ssdi]': true,
-          'income[receives][ssi]': false,
+          'income[appliedDisability]': 'true',
+          'income[receives][type]': 'SSDI',
           'income[receives][monthlyAmount]': '1200',
-          'income[currentlyEmployed]': true,
-          'income[unemployment][receiving]': false,
+          'income[currentlyEmployed]': 'true',
+          'income[unemployment][receiving]': 'false',
           'income[unemployment][amount]': '',
-          'income[employerName]': 'Acme Corp',
-          'income[employerPhone]': '(404) 555-5678',
-          'income[employerAddress]': '456 Work Ave',
-          'income[monthlyNet]': '2000',
+          'employmentApplicant[employerName]': 'Acme Corp',
+          'employmentApplicant[status]': 'Full-Time, Part-Time',
+          'employmentApplicant[grossIncome]': '2000',
           'spouse[name]': 'Jane Public',
-          'spouse[relationship]': 'Spouse',
-          'spouse[employed]': true,
           'spouse[employerName]': 'Widgets Inc',
-          'spouse[monthlyNet]': '1500',
+          'spouse[status]': 'Full-Time, Part-Time',
           'spouse[grossTaxableIncome]': '18000',
         };
         for (const [name, value] of Object.entries(data)) {
+          const radios = document.querySelectorAll(`input[type="radio"][name="${name}"]`);
+          if (radios.length > 0) {
+            radios.forEach(r => { r.checked = (r.value === value); });
+            continue;
+          }
           const el = document.querySelector(`[name="${name}"]`);
           if (el) {
             if (el.type === 'checkbox') {
@@ -71,56 +72,57 @@
     <legend>Income Information</legend>
     
     <div class="form-group">
-      <label>
-        <input type="checkbox" id="income.appliedDisability" name="income[appliedDisability]" 
-               value="true" {{ "checked" if application.data.income.appliedDisability }}>
-        Have you applied for disability?
-      </label>
+      <label class="required">Have you applied for disability?</label>
+      <div class="segmented-control" id="appliedDisabilityControl">
+        <label><input type="radio" id="income.appliedDisability-yes" name="income[appliedDisability]" value="true" {% if application.data.income.appliedDisability %}checked{% endif %} required> Yes</label>
+        <label><input type="radio" id="income.appliedDisability-no" name="income[appliedDisability]" value="false" {% if not application.data.income.appliedDisability %}checked{% endif %} required> No</label>
+      </div>
     </div>
 
     <div class="form-group">
-      <label>Do you receive SSDI or SSI?</label>
-      <label>
-        <input type="checkbox" id="income.receives.ssdi" name="income[receives][ssdi]" 
-               value="true" {{ "checked" if application.data.income.receives.ssdi }}>
-        SSDI
-      </label>
-      <label>
-        <input type="checkbox" id="income.receives.ssi" name="income[receives][ssi]" 
-               value="true" {{ "checked" if application.data.income.receives.ssi }}>
-        SSI
-      </label>
+      <label class="required">Receive Disability Benefits?</label>
+      <div class="segmented-control" id="disabilityBenefitsControl">
+        <label><input type="radio" id="income.receives-ssdi" name="income[receives][type]" value="SSDI" {% if application.data.income.receives.type == 'SSDI' %}checked{% endif %}> SSDI</label>
+        <label><input type="radio" id="income.receives-ssi" name="income[receives][type]" value="SSI" {% if application.data.income.receives.type == 'SSI' %}checked{% endif %}> SSI</label>
+        <label><input type="radio" id="income.receives-none" name="income[receives][type]" value="None" {% if not application.data.income.receives.type or application.data.income.receives.type == 'None' %}checked{% endif %}> None</label>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="income.receives.monthlyAmount">Monthly Amount (if receiving SSDI/SSI)</label>
-      <input type="number" id="income.receives.monthlyAmount" name="income[receives][monthlyAmount]" 
-             min="0" step="0.01" value="{{ application.data.income.receives.monthlyAmount or '' }}">
+      <div class="currency-input-wrapper">
+        <span class="currency-symbol">$</span>
+        <input type="number" id="income.receives.monthlyAmount" name="income[receives][monthlyAmount]" 
+               min="0" step="0.01" value="{{ application.data.income.receives.monthlyAmount or '' }}">
+      </div>
       {% if errors['income.receives.monthlyAmount'] %}
         <div class="error">{{ errors['income.receives.monthlyAmount'] }}</div>
       {% endif %}
     </div>
 
     <div class="form-group">
-      <label>
-        <input type="checkbox" id="income.currentlyEmployed" name="income[currentlyEmployed]" 
-               value="true" {{ "checked" if application.data.income.currentlyEmployed }}>
-        Currently Employed
-      </label>
+      <label class="required">Currently Employed</label>
+      <div class="segmented-control" id="currentlyEmployedControl">
+        <label><input type="radio" id="income.currentlyEmployed-yes" name="income[currentlyEmployed]" value="true" {% if application.data.income.currentlyEmployed %}checked{% endif %} required> Yes</label>
+        <label><input type="radio" id="income.currentlyEmployed-no" name="income[currentlyEmployed]" value="false" {% if not application.data.income.currentlyEmployed %}checked{% endif %} required> No</label>
+      </div>
     </div>
 
     <div class="form-group">
-      <label>
-        <input type="checkbox" id="income.unemployment.receiving" name="income[unemployment][receiving]" 
-               value="true" {{ "checked" if application.data.income.unemployment.receiving }}>
-        Receiving Unemployment Benefits
-      </label>
+      <label class="required">Receiving Unemployment Benefits</label>
+      <div class="segmented-control" id="unemploymentReceivingControl">
+        <label><input type="radio" id="income.unemployment.receiving-yes" name="income[unemployment][receiving]" value="true" {% if application.data.income.unemployment.receiving %}checked{% endif %} required> Yes</label>
+        <label><input type="radio" id="income.unemployment.receiving-no" name="income[unemployment][receiving]" value="false" {% if not application.data.income.unemployment.receiving %}checked{% endif %} required> No</label>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="income.unemployment.amount">Unemployment Amount (if receiving)</label>
-      <input type="number" id="income.unemployment.amount" name="income[unemployment][amount]" 
-             min="0" step="0.01" value="{{ application.data.income.unemployment.amount or '' }}">
+      <div class="currency-input-wrapper">
+        <span class="currency-symbol">$</span>
+        <input type="number" id="income.unemployment.amount" name="income[unemployment][amount]" 
+               min="0" step="0.01" value="{{ application.data.income.unemployment.amount or '' }}">
+      </div>
       {% if errors['income.unemployment.amount'] %}
         <div class="error">{{ errors['income.unemployment.amount'] }}</div>
       {% endif %}
@@ -142,14 +144,12 @@
     </div>
 
     <div class="form-group">
-      <label for="employmentApplicant.status">Employment Status</label>
-      <select id="employmentApplicant.status" name="employmentApplicant[status]">
-        <option value="">Select...</option>
-        <option value="Full-Time" {{ "selected" if application.data.employmentApplicant.status == "Full-Time" }}>Full-Time</option>
-        <option value="Part-Time" {{ "selected" if application.data.employmentApplicant.status == "Part-Time" }}>Part-Time</option>
-        <option value="Other" {{ "selected" if application.data.employmentApplicant.status == "Other" }}>Other</option>
-        <option value="Unemployed" {{ "selected" if application.data.employmentApplicant.status == "Unemployed" }}>Unemployed</option>
-      </select>
+      <label class="required">Employment Status</label>
+      <div class="segmented-control" id="employmentStatusControl">
+        <label><input type="radio" id="employmentApplicant.status-full-part" name="employmentApplicant[status]" value="Full-Time, Part-Time" {% if application.data.employmentApplicant.status == 'Full-Time, Part-Time' %}checked{% endif %} required> Full-Time, Part-Time</label>
+        <label><input type="radio" id="employmentApplicant.status-self" name="employmentApplicant[status]" value="Self-Employed" {% if application.data.employmentApplicant.status == 'Self-Employed' %}checked{% endif %} required> Self-Employed</label>
+        <label><input type="radio" id="employmentApplicant.status-unemployed" name="employmentApplicant[status]" value="Unemployed" {% if application.data.employmentApplicant.status == 'Unemployed' %}checked{% endif %} required> Unemployed</label>
+      </div>
     </div>
 
     <div class="form-group">
@@ -160,8 +160,11 @@
 
     <div class="form-group">
       <label for="employmentApplicant.grossIncome">Gross Income</label>
-      <input type="number" id="employmentApplicant.grossIncome" name="employmentApplicant[grossIncome]" 
-             min="0" step="0.01" value="{{ application.data.employmentApplicant.grossIncome or '' }}">
+      <div class="currency-input-wrapper">
+        <span class="currency-symbol">$</span>
+        <input type="number" id="employmentApplicant.grossIncome" name="employmentApplicant[grossIncome]" 
+               min="0" step="0.01" value="{{ application.data.employmentApplicant.grossIncome or '' }}">
+      </div>
     </div>
   </fieldset>
 
@@ -190,14 +193,12 @@
     </div>
 
     <div class="form-group">
-      <label for="spouse.status">Spouse Employment Status</label>
-      <select id="spouse.status" name="spouse[status]">
-        <option value="">Select...</option>
-        <option value="Full-Time" {{ "selected" if application.data.spouse.status == "Full-Time" }}>Full-Time</option>
-        <option value="Part-Time" {{ "selected" if application.data.spouse.status == "Part-Time" }}>Part-Time</option>
-        <option value="Other" {{ "selected" if application.data.spouse.status == "Other" }}>Other</option>
-        <option value="Unemployed" {{ "selected" if application.data.spouse.status == "Unemployed" }}>Unemployed</option>
-      </select>
+      <label class="required">Spouse Employment Status</label>
+      <div class="segmented-control" id="spouseStatusControl">
+        <label><input type="radio" id="spouse.status-full-part" name="spouse[status]" value="Full-Time, Part-Time" {% if application.data.spouse.status == 'Full-Time, Part-Time' %}checked{% endif %} required> Full-Time, Part-Time</label>
+        <label><input type="radio" id="spouse.status-self" name="spouse[status]" value="Self-Employed" {% if application.data.spouse.status == 'Self-Employed' %}checked{% endif %} required> Self-Employed</label>
+        <label><input type="radio" id="spouse.status-unemployed" name="spouse[status]" value="Unemployed" {% if application.data.spouse.status == 'Unemployed' %}checked{% endif %} required> Unemployed</label>
+      </div>
     </div>
 
     <div class="form-group">
@@ -208,8 +209,11 @@
 
     <div class="form-group">
       <label for="spouse.grossTaxableIncome">Spouse Gross Taxable Income</label>
-      <input type="number" id="spouse.grossTaxableIncome" name="spouse[grossTaxableIncome]" 
-             min="0" step="0.01" value="{{ application.data.spouse.grossTaxableIncome or '' }}">
+      <div class="currency-input-wrapper">
+        <span class="currency-symbol">$</span>
+        <input type="number" id="spouse.grossTaxableIncome" name="spouse[grossTaxableIncome]" 
+               min="0" step="0.01" value="{{ application.data.spouse.grossTaxableIncome or '' }}">
+      </div>
     </div>
   </fieldset>
 
@@ -218,4 +222,30 @@
     <button type="submit">Continue to Step 4</button>
   </div>
 </form>
+
+<style>
+  .segmented-control {
+    display: flex;
+    gap: 10px;
+    margin: 5px 0 0 0;
+  }
+  .segmented-control label {
+    background: #f4f4f4;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 5px 14px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s, border 0.2s;
+  }
+  .segmented-control input[type="radio"] {
+    display: none;
+  }
+  .segmented-control input[type="radio"]:checked + span,
+  .segmented-control label:has(input[type="radio"]:checked) {
+    background: #490075;
+    color: #fff;
+    border-color: #490075;
+  }
+</style>
 {% endblock %}

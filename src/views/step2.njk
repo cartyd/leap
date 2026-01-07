@@ -28,39 +28,37 @@
           'medicalHistory[spouseEmploymentStatus]': 'N/A',
           'medicalHistory[physicianName]': 'Dr. Smith',
           'medicalHistory[physicianPhone]': '(404) 555-1234',
-          // Required radios
+          // radios
           'medicalCoverage[hasInsurance]': 'true',
           'medicalCoverage[coverageType]': 'Private',
           'medicalCoverage[rxCoverage]': 'Yes',
-          // Dependent field when rxCoverage is Yes
+          // dependent fields
           'medicalCoverage[privateInsuranceName]': 'Blue Cross',
           'medicalCoverage[copayAmount]': '25',
         };
         for (const [name, value] of Object.entries(data)) {
-          // Special handling for radio groups
           const radios = document.querySelectorAll(`input[type="radio"][name="${name}"]`);
           if (radios.length > 0) {
-            radios.forEach(radio => {
-              radio.checked = (radio.value === value);
-            });
+            radios.forEach(r => { r.checked = (r.value === value); });
             continue;
           }
           const el = document.querySelector(`[name="${name}"]`);
           if (el) {
             if (el.type === 'checkbox') {
-              el.checked = true;
+              el.checked = value === true || value === 'true';
             } else {
               el.value = value;
             }
           }
         }
         // Refresh conditional UI after programmatic changes
-        if (typeof updateEmploymentStatusRequired === 'function') updateEmploymentStatusRequired();
         if (typeof updateCoverageTypeEnabled === 'function') updateCoverageTypeEnabled();
         if (typeof updatePrivateInsuranceGroup === 'function') updatePrivateInsuranceGroup();
         if (typeof updateCopayGroup === 'function') updateCopayGroup();
       });
     }
+
+    // Using radio-based helpers defined later; no legacy single-input toggles needed.
   });
 </script>
 {% endif %}
@@ -297,17 +295,35 @@
 
     <div class="form-group" id="copayAmountGroup" style="display: {{ 'block' if application.data.medicalCoverage.rxCoverage == 'Yes' else 'none' }}">
       <label for="medicalCoverage.copayAmount" class="required">Copay Amount</label>
-        <div style="position:relative; display:flex; align-items:center; gap:8px;">
-          <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#666; font-size:15px;">$</span>
-          <input type="number" id="medicalCoverage.copayAmount" name="medicalCoverage[copayAmount]" 
-            min="0" step="0.01" value="{{ application.data.medicalCoverage.copayAmount or '' }}" style="padding-left:22px; width:90%;"
-            {% if not application.data.medicalCoverage.hasInsurance or application.data.medicalCoverage.rxCoverage != 'Yes' %}disabled{% endif %}
-            {% if application.data.medicalCoverage.hasInsurance and application.data.medicalCoverage.rxCoverage == 'Yes' %}required{% endif %}>
-        </div>
+      <div class="currency-input-wrapper">
+        <span class="currency-symbol">$</span>
+        <input type="number" id="medicalCoverage.copayAmount" name="medicalCoverage[copayAmount]" 
+          min="0" step="0.01" value="{{ application.data.medicalCoverage.copayAmount or '' }}"
+          {% if not application.data.medicalCoverage.hasInsurance or application.data.medicalCoverage.rxCoverage != 'Yes' %}disabled{% endif %}
+          {% if application.data.medicalCoverage.hasInsurance and application.data.medicalCoverage.rxCoverage == 'Yes' %}required{% endif %}>
+      </div>
       {% if errors['medicalCoverage.copayAmount'] %}
         <div class="error">{{ errors['medicalCoverage.copayAmount'] }}</div>
       {% endif %}
     </div>
+    <style>
+      .currency-input-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+      }
+      .currency-symbol {
+        position: absolute;
+        left: 12px;
+        pointer-events: none;
+        font-weight: 500;
+        color: #333;
+      }
+      .currency-input-wrapper input {
+        padding-left: 28px;
+      }
+    </style>
   </fieldset>
 
   <div class="form-navigation">

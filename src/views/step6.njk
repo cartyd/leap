@@ -72,14 +72,23 @@
 
     <div class="form-group">
       <label for="certification.dateSigned" class="required">Date</label>
-            <input type="date" id="certification.dateSigned" 
-              name="certification[dateSigned]" 
-              value="{{ application.data.certification.dateSigned or ("now" | date("yyyy-MM-dd")) if application.data.certification is not none else ("now" | date("yyyy-MM-dd")) }}" 
-              required>
+      <input type="date" id="certification.dateSigned" 
+             name="certification[dateSigned]" 
+             value="{{ application.data.certification.dateSigned or '' }}" 
+             required>
       {% if errors['certification.dateSigned'] %}
         <div class="error">{{ errors['certification.dateSigned'] }}</div>
       {% endif %}
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const dateInput = document.getElementById('certification.dateSigned');
+        if (dateInput && !dateInput.value) {
+          const today = new Date().toISOString().split('T')[0];
+          dateInput.value = today;
+        }
+      });
+    </script>
   </fieldset>
 
   <div class="form-navigation">

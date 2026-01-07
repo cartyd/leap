@@ -68,8 +68,7 @@ export const medicalCoverageSchema = z.object({
 export const incomeSchema = z.object({
   appliedDisability: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true').optional(),
   receives: z.object({
-    ssdi: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true').optional(),
-    ssi: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true').optional(),
+    type: z.enum(['SSDI', 'SSI', 'None']).optional().or(z.literal('')),
     monthlyAmount: currencySchema.optional().or(z.literal('')),
   }),
   currentlyEmployed: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true').optional(),
@@ -80,7 +79,7 @@ export const incomeSchema = z.object({
   otherIncome: z.string().optional().or(z.literal('')),
 }).superRefine((data, ctx) => {
   // If receives SSDI or SSI, require monthly amount
-  if ((data.receives.ssdi || data.receives.ssi) && !data.receives.monthlyAmount) {
+  if ((data.receives.type === 'SSDI' || data.receives.type === 'SSI') && !data.receives.monthlyAmount) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       message: 'Monthly amount is required',
@@ -99,7 +98,7 @@ export const incomeSchema = z.object({
 
 export const employmentApplicantSchema = z.object({
   employerName: z.string().optional().or(z.literal('')),
-  status: z.enum(['Full-Time', 'Part-Time', 'Other', 'Unemployed']).optional().or(z.literal('')),
+  status: z.enum(['Full-Time, Part-Time', 'Self-Employed', 'Unemployed']).optional().or(z.literal('')),
   otherStatusText: z.string().optional().or(z.literal('')),
   grossIncome: currencySchema.optional().or(z.literal('')),
 });
@@ -108,7 +107,7 @@ export const spouseSchema = z.object({
   name: z.string().optional().or(z.literal('')),
   phone: phoneSchema,
   employerName: z.string().optional().or(z.literal('')),
-  status: z.enum(['Full-Time', 'Part-Time', 'Other', 'Unemployed']).optional().or(z.literal('')),
+  status: z.enum(['Full-Time, Part-Time', 'Self-Employed', 'Unemployed']).optional().or(z.literal('')),
   otherStatusText: z.string().optional().or(z.literal('')),
   grossTaxableIncome: currencySchema.optional().or(z.literal('')),
 });
