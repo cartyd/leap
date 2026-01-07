@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc",
+    "build": "tsc && node scripts/copy-views.js",
     "start": "node -r ./dist/tsconfig-paths-bootstrap.js dist/server.js",
     "test": "jest",
     "test:watch": "jest --watch",

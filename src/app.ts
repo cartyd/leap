@@ -70,7 +70,7 @@ app.register(fastifyMultipart, {
 
 // Static files
 app.register(fastifyStatic, {
-  root: path.join(__dirname, '../public'),
+  root: path.join(__dirname, 'public'),
   prefix: '/public/',
 });
 
