@@ -23,13 +23,18 @@
         const data = {
           'dependents[count]': '2',
           'dependents[agesText]': '5, 8',
-          'residencyGA': true,
+          'residencyGA': 'true',
           'resourcesContacted[0][nameOrAgency]': 'Charity Org',
           'resourcesContacted[0][outcome]': 'Denied',
           'resourcesContacted[1][nameOrAgency]': 'Local Aid',
           'resourcesContacted[1][outcome]': 'Pending',
         };
         for (const [name, value] of Object.entries(data)) {
+          const radios = document.querySelectorAll(`input[type="radio"][name="${name}"]`);
+          if (radios.length > 0) {
+            radios.forEach(r => { r.checked = (r.value === value); });
+            continue;
+          }
           const el = document.querySelector(`[name="${name}"]`);
           if (el) {
             if (el.type === 'checkbox') {
@@ -77,11 +82,11 @@
     <legend>Residency</legend>
     
     <div class="form-group">
-      <label class="required">
-        <input type="checkbox" id="residencyGA" name="residencyGA" 
-               value="true" {{ "checked" if application.data.residencyGA }} required>
-        I am a resident of Georgia
-      </label>
+      <label class="required">I am a resident of Georgia</label>
+      <div class="segmented-control" id="residencyGAControl">
+        <label><input type="radio" id="residencyGA-yes" name="residencyGA" value="true" {% if application.data.residencyGA %}checked{% endif %} required> Yes</label>
+        <label><input type="radio" id="residencyGA-no" name="residencyGA" value="false" {% if not application.data.residencyGA %}checked{% endif %} required> No</label>
+      </div>
       {% if errors['residencyGA'] %}
         <div class="error">{{ errors['residencyGA'] }}</div>
       {% endif %}
@@ -115,4 +120,30 @@
     <button type="submit">Continue to Step 5</button>
   </div>
 </form>
+
+<style>
+  .segmented-control {
+    display: flex;
+    gap: 10px;
+    margin: 5px 0 0 0;
+  }
+  .segmented-control label {
+    background: #f4f4f4;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 5px 14px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s, border 0.2s;
+  }
+  .segmented-control input[type="radio"] {
+    display: none;
+  }
+  .segmented-control input[type="radio"]:checked + span,
+  .segmented-control label:has(input[type="radio"]:checked) {
+    background: #490075;
+    color: #fff;
+    border-color: #490075;
+  }
+</style>
 {% endblock %}

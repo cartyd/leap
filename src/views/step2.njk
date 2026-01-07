@@ -25,59 +25,37 @@
           'medicalHistory[lupusType]': 'Systemic',
           'medicalHistory[physicianName]': 'Dr. Smith',
           'medicalHistory[physicianPhone]': '(404) 555-1234',
-          'medicalCoverage[hasInsurance]': true,
+          // radios
+          'medicalCoverage[hasInsurance]': 'true',
           'medicalCoverage[coverageType]': 'Private',
+          'medicalCoverage[rxCoverage]': 'Yes',
+          // dependent fields
           'medicalCoverage[privateInsuranceName]': 'Blue Cross',
-          'medicalCoverage[rxCoverage]': 'Copay',
           'medicalCoverage[copayAmount]': '25',
         };
         for (const [name, value] of Object.entries(data)) {
+          const radios = document.querySelectorAll(`input[type="radio"][name="${name}"]`);
+          if (radios.length > 0) {
+            radios.forEach(r => { r.checked = (r.value === value); });
+            continue;
+          }
           const el = document.querySelector(`[name="${name}"]`);
           if (el) {
             if (el.type === 'checkbox') {
-              el.checked = true;
+              el.checked = value === true || value === 'true';
             } else {
               el.value = value;
             }
           }
         }
-        // Trigger change events for conditional fields
-        document.getElementById('medicalCoverage.coverageType').dispatchEvent(new Event('change'));
-        document.getElementById('medicalCoverage.rxCoverage').dispatchEvent(new Event('change'));
+        // Refresh conditional UI after programmatic changes
+        if (typeof updateCoverageTypeEnabled === 'function') updateCoverageTypeEnabled();
+        if (typeof updatePrivateInsuranceGroup === 'function') updatePrivateInsuranceGroup();
+        if (typeof updateCopayGroup === 'function') updateCopayGroup();
       });
     }
 
-    // Disable/enable and clear coverage fields based on insurance checkbox
-    var hasInsurance = document.getElementById('medicalCoverage.hasInsurance');
-    var coverageType = document.getElementById('medicalCoverage.coverageType');
-    var rxCoverage = document.getElementById('medicalCoverage.rxCoverage');
-    var privateInsuranceName = document.getElementById('medicalCoverage.privateInsuranceName');
-    var copayAmount = document.getElementById('medicalCoverage.copayAmount');
-
-    function updateCoverageFields() {
-      if (!hasInsurance.checked) {
-        coverageType.value = '';
-        coverageType.disabled = true;
-        rxCoverage.value = '';
-        rxCoverage.disabled = true;
-        if (privateInsuranceName) privateInsuranceName.value = '';
-        if (privateInsuranceName) privateInsuranceName.disabled = true;
-        if (copayAmount) copayAmount.value = '';
-        if (copayAmount) copayAmount.disabled = true;
-        document.getElementById('privateInsuranceNameGroup').style.display = 'none';
-        document.getElementById('copayAmountGroup').style.display = 'none';
-      } else {
-        coverageType.disabled = false;
-        rxCoverage.disabled = false;
-        if (privateInsuranceName) privateInsuranceName.disabled = false;
-        if (copayAmount) copayAmount.disabled = false;
-        // Show/hide conditional fields as normal
-        coverageType.dispatchEvent(new Event('change'));
-        rxCoverage.dispatchEvent(new Event('change'));
-      }
-    }
-    hasInsurance.addEventListener('change', updateCoverageFields);
-    updateCoverageFields();
+    // Using radio-based helpers defined later; no legacy single-input toggles needed.
   });
 </script>
 {% endif %}
@@ -209,14 +187,35 @@
 
     <div class="form-group" id="copayAmountGroup" style="display: {{ 'block' if application.data.medicalCoverage.rxCoverage == 'Yes' else 'none' }}">
       <label for="medicalCoverage.copayAmount" class="required">Copay Amount</label>
+      <div class="currency-input-wrapper">
+        <span class="currency-symbol">$</span>
         <input type="number" id="medicalCoverage.copayAmount" name="medicalCoverage[copayAmount]" 
           min="0" step="0.01" value="{{ application.data.medicalCoverage.copayAmount or '' }}"
           {% if not application.data.medicalCoverage.hasInsurance or application.data.medicalCoverage.rxCoverage != 'Yes' %}disabled{% endif %}
           {% if application.data.medicalCoverage.hasInsurance and application.data.medicalCoverage.rxCoverage == 'Yes' %}required{% endif %}>
+      </div>
       {% if errors['medicalCoverage.copayAmount'] %}
         <div class="error">{{ errors['medicalCoverage.copayAmount'] }}</div>
       {% endif %}
     </div>
+    <style>
+      .currency-input-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+      }
+      .currency-symbol {
+        position: absolute;
+        left: 12px;
+        pointer-events: none;
+        font-weight: 500;
+        color: #333;
+      }
+      .currency-input-wrapper input {
+        padding-left: 28px;
+      }
+    </style>
   </fieldset>
 
   <div class="form-navigation">
