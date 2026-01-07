@@ -1,0 +1,43 @@
+name: leap-prototype
+region: nyc
+
+services:
+  - name: web
+    github:
+      repo: cartyd/leap
+      branch: main
+      deploy_on_push: true
+    
+    build_command: npm run build
+    run_command: bash scripts/start.sh
+    
+    envs:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "8080"
+      - key: DATABASE_URL
+        value: file:/data/prod.db
+      - key: UPLOADS_DIR
+        value: /data/uploads
+      - key: SESSION_SECRET
+        type: SECRET
+        value: changeme-generate-secure-value
+      - key: CSRF_SECRET
+        type: SECRET
+        value: changeme-generate-secure-value
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        type: SECRET
+        value: changeme
+      - key: MAX_FILE_SIZE
+        value: "10485760"
+    
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    
+    http_port: 8080
+    
+    routes:
+      - path: /
