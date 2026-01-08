@@ -164,6 +164,7 @@ describe('Medical Coverage Schema Validation', () => {
         coverageType: 'Private',
         privateInsuranceName: 'Blue Cross',
         rxCoverage: 'Yes',
+        copayAmount: 20,
       },
       shouldPass: true,
     },
@@ -173,16 +174,17 @@ describe('Medical Coverage Schema Validation', () => {
         hasInsurance: true,
         coverageType: 'Medicaid',
         rxCoverage: 'Yes',
+        copayAmount: 15,
       },
       shouldPass: true,
     },
     {
-      name: 'valid with copay',
+      name: 'valid with rxCoverage Yes + copay',
       input: {
         hasInsurance: true,
         coverageType: 'Medicare',
-        rxCoverage: 'Copay',
-        copayAmount: 25.50,
+        rxCoverage: 'Yes',
+        copayAmount: 25.5,
       },
       shouldPass: true,
     },
@@ -201,6 +203,7 @@ describe('Medical Coverage Schema Validation', () => {
         hasInsurance: true,
         coverageType: 'Private',
         rxCoverage: 'Yes',
+        copayAmount: 10,
       },
       shouldPass: false,
       expectedErrors: ['privateInsuranceName'],
@@ -210,7 +213,7 @@ describe('Medical Coverage Schema Validation', () => {
       input: {
         hasInsurance: true,
         coverageType: 'Medicare',
-        rxCoverage: 'Copay',
+        rxCoverage: 'Yes',
       },
       shouldPass: false,
       expectedErrors: ['copayAmount'],
@@ -220,7 +223,7 @@ describe('Medical Coverage Schema Validation', () => {
       input: {
         hasInsurance: true,
         coverageType: 'Medicare',
-        rxCoverage: 'Copay',
+        rxCoverage: 'Yes',
         copayAmount: 0,
       },
       shouldPass: true,
@@ -272,8 +275,7 @@ describe('Income Schema Validation', () => {
       input: {
         appliedDisability: true,
         receives: {
-          ssdi: true,
-          ssi: false,
+          type: 'SSDI',
           monthlyAmount: 1200,
         },
         currentlyEmployed: false,
@@ -287,8 +289,7 @@ describe('Income Schema Validation', () => {
       name: 'valid with SSI',
       input: {
         receives: {
-          ssdi: false,
-          ssi: true,
+          type: 'SSI',
           monthlyAmount: 800,
         },
         unemployment: {
@@ -301,8 +302,7 @@ describe('Income Schema Validation', () => {
       name: 'valid with unemployment',
       input: {
         receives: {
-          ssdi: false,
-          ssi: false,
+          type: 'None',
         },
         unemployment: {
           receiving: true,
@@ -315,8 +315,7 @@ describe('Income Schema Validation', () => {
       name: 'valid with no benefits',
       input: {
         receives: {
-          ssdi: false,
-          ssi: false,
+          type: 'None',
         },
         currentlyEmployed: true,
         unemployment: {
@@ -329,8 +328,7 @@ describe('Income Schema Validation', () => {
       name: 'SSDI without monthly amount',
       input: {
         receives: {
-          ssdi: true,
-          ssi: false,
+          type: 'SSDI',
         },
         unemployment: {
           receiving: false,
@@ -343,8 +341,7 @@ describe('Income Schema Validation', () => {
       name: 'SSI without monthly amount',
       input: {
         receives: {
-          ssdi: false,
-          ssi: true,
+          type: 'SSI',
         },
         unemployment: {
           receiving: false,
@@ -357,8 +354,7 @@ describe('Income Schema Validation', () => {
       name: 'unemployment without amount',
       input: {
         receives: {
-          ssdi: false,
-          ssi: false,
+          type: 'None',
         },
         unemployment: {
           receiving: true,
@@ -368,11 +364,10 @@ describe('Income Schema Validation', () => {
       expectedErrors: ['unemployment.amount'],
     },
     {
-      name: 'both SSDI and SSI with amount',
+      name: 'SSDI with amount',
       input: {
         receives: {
-          ssdi: true,
-          ssi: true,
+          type: 'SSDI',
           monthlyAmount: 1500,
         },
         unemployment: {
@@ -385,8 +380,7 @@ describe('Income Schema Validation', () => {
       name: 'negative monthly amount',
       input: {
         receives: {
-          ssdi: true,
-          ssi: false,
+          type: 'SSDI',
           monthlyAmount: -100,
         },
         unemployment: {
@@ -446,10 +440,11 @@ describe('Submit Application Schema Validation', () => {
       hasInsurance: true,
       coverageType: 'Medicare',
       rxCoverage: 'Yes',
+      copayAmount: 50,
     },
     income: {
       receives: {
-        ssdi: true,
+        type: 'SSDI',
         monthlyAmount: 1200,
       },
       unemployment: {

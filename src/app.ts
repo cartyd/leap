@@ -69,13 +69,23 @@ app.register(fastifyMultipart, {
 });
 
 // Static files
+// In dev: __dirname is src/, public is ../public
+// In prod: __dirname is dist/, public is dist/public (copied by build)
+const publicPath = config.isDevelopment 
+  ? path.join(__dirname, '../public')
+  : path.join(__dirname, 'public');
+
 app.register(fastifyStatic, {
-  root: path.join(__dirname, 'public'),
+  root: publicPath,
   prefix: '/public/',
 });
 
 // View engine (Nunjucks)
-const viewsPath = path.join(__dirname, 'views');
+// In dev: __dirname is src/, views is src/views
+// In prod: __dirname is dist/, views is dist/views (copied by build)
+const viewsPath = config.isDevelopment
+  ? path.join(__dirname, 'views')
+  : path.join(__dirname, 'views');
 
 app.register(fastifyView, {
   engine: {

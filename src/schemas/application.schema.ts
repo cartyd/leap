@@ -43,7 +43,7 @@ export const medicalCoverageSchema = z.object({
   hasInsurance: z.union([z.boolean(), z.literal('true'), z.literal('false')]).transform(val => val === true || val === 'true'),
   coverageType: z.enum(['Medicaid', 'Medicare', 'Private', 'None']).optional().or(z.literal('')),
   privateInsuranceName: z.string().optional().or(z.literal('')),
-  rxCoverage: z.enum(['Yes', 'No', 'None']).optional().or(z.literal('')),
+  rxCoverage: z.enum(['Yes', 'No']).optional().or(z.literal('')),
   copayAmount: currencySchema.optional().or(z.literal('')),
 }).superRefine((data, ctx) => {
   // If has insurance and is private, require insurance name
