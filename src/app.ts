@@ -48,10 +48,13 @@ app.register(fastifyHelmet, {
   },
 });
 
-app.register(fastifyRateLimit, {
-  max: 100,
-  timeWindow: '15 minutes',
-});
+// Rate limiting (only in production)
+if (!config.isDevelopment) {
+  app.register(fastifyRateLimit, {
+    max: 100,
+    timeWindow: '15 minutes',
+  });
+}
 
 // Cookie support
 app.register(fastifyCookie, {

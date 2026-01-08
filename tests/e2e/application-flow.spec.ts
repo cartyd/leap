@@ -44,9 +44,6 @@ test.describe('Emergency Assistance Fund Application', () => {
     // Fill medical history
     await page.fill('input[name="medicalHistory[diagnosisYear]"]', '2015');
     await page.check('input[name="medicalHistory[lupusType]"][value="Systemic"]');
-    // Choose employment statuses per updated options
-    await page.check('input[name="medicalHistory[employmentStatus]"][value="Self-Employed"]');
-    await page.check('input[name="medicalHistory[spouseEmploymentStatus]"][value="N/A"]');
     await page.fill('input[name="medicalHistory[physicianName]"]', 'Dr. Sarah Smith');
     await page.fill('input[name="medicalHistory[physicianPhone]"]', '404-555-9999');
 
@@ -64,14 +61,17 @@ test.describe('Emergency Assistance Fund Application', () => {
     await expect(page.locator('h2')).toContainText('Step 3');
 
     // Income information
-    await page.check('input[name="income[appliedDisability]"]');
-    await page.check('input[name="income[receives][ssdi]"]');
+    await page.check('input[name="income[appliedDisability]"][value="true"]');
+    await page.check('input[name="income[receives][type]"][value="SSDI"]');
     await page.fill('input[name="income[receives][monthlyAmount]"]', '1200');
     // Leave currentlyEmployed and unemployment.receiving unchecked (default state)
 
     // Employment applicant
     await page.fill('input[name="employmentApplicant[employerName]"]', '');
-    await page.selectOption('select[name="employmentApplicant[status]"]', 'Unemployed');
+    await page.check('input[name="employmentApplicant[status]"][value="Unemployed"]');
+
+    // Spouse employment status (optional)
+    await page.check('input[name="spouse[status]"][value="Unemployed"]');
 
     await page.waitForTimeout(1000);
     await page.click('button:has-text("Continue to Step 4")');

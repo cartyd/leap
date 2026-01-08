@@ -23,9 +23,6 @@
         const data = {
           'medicalHistory[diagnosisYear]': '2010',
           'medicalHistory[lupusType]': 'Systemic',
-          'medicalHistory[currentlyEmployed]': 'Yes',
-          'medicalHistory[employmentStatus]': 'Full Time',
-          'medicalHistory[spouseEmploymentStatus]': 'N/A',
           'medicalHistory[physicianName]': 'Dr. Smith',
           'medicalHistory[physicianPhone]': '(404) 555-1234',
           // radios
@@ -136,55 +133,6 @@
         {% endif %}
       </div>
       <div class="form-group">
-        <label class="required">Receiving Unemployment Benefits</label>
-        <div class="segmented-control" id="receivingUnemploymentControl">
-          <label><input type="radio" name="medicalHistory[receivingUnemployment]" value="Yes" {% if application.data.medicalHistory.receivingUnemployment == 'Yes' %}checked{% endif %} required> Yes</label>
-          <label><input type="radio" name="medicalHistory[receivingUnemployment]" value="No" {% if application.data.medicalHistory.receivingUnemployment == 'No' or not application.data.medicalHistory.receivingUnemployment %}checked{% endif %} required> No</label>
-        </div>
-        {% if errors['medicalHistory.receivingUnemployment'] %}
-          <div class="error">{{ errors['medicalHistory.receivingUnemployment'] }}</div>
-        {% endif %}
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="required">Employment Status</label>
-        <div class="segmented-control" id="employmentStatusControl">
-          <label><input type="radio" name="medicalHistory[employmentStatus]" value="Full Time" {% if application.data.medicalHistory.employmentStatus == 'Full Time' %}checked{% endif %}> Full Time</label>
-          <label><input type="radio" name="medicalHistory[employmentStatus]" value="Part Time" {% if application.data.medicalHistory.employmentStatus == 'Part Time' %}checked{% endif %}> Part Time</label>
-          <label><input type="radio" name="medicalHistory[employmentStatus]" value="Unemployed" {% if application.data.medicalHistory.employmentStatus == 'Unemployed' %}checked{% endif %}> Unemployed</label>
-          <label><input type="radio" name="medicalHistory[employmentStatus]" value="Self-Employed" {% if application.data.medicalHistory.employmentStatus == 'Self-Employed' %}checked{% endif %}> Self-Employed</label>
-        </div>
-        {% if errors['medicalHistory.employmentStatus'] %}
-          <div class="error">{{ errors['medicalHistory.employmentStatus'] }}</div>
-        {% endif %}
-      </div>
-      <div class="form-group">
-        <label class="required">Spouse Employment Status</label>
-        <div class="segmented-control" id="spouseEmploymentStatusControl">
-          <label><input type="radio" name="medicalHistory[spouseEmploymentStatus]" value="Full Time" {% if application.data.medicalHistory.spouseEmploymentStatus == 'Full Time' %}checked{% endif %} required> Full Time</label>
-          <label><input type="radio" name="medicalHistory[spouseEmploymentStatus]" value="Part Time" {% if application.data.medicalHistory.spouseEmploymentStatus == 'Part Time' %}checked{% endif %} required> Part Time</label>
-          <label><input type="radio" name="medicalHistory[spouseEmploymentStatus]" value="Unemployed" {% if application.data.medicalHistory.spouseEmploymentStatus == 'Unemployed' %}checked{% endif %} required> Unemployed</label>
-          <label><input type="radio" name="medicalHistory[spouseEmploymentStatus]" value="Self-Employed" {% if application.data.medicalHistory.spouseEmploymentStatus == 'Self-Employed' %}checked{% endif %} required> Self-Employed</label>
-          <label><input type="radio" name="medicalHistory[spouseEmploymentStatus]" value="N/A" {% if application.data.medicalHistory.spouseEmploymentStatus == 'N/A' %}checked{% endif %} required> N/A</label>
-        </div>
-        {% if errors['medicalHistory.spouseEmploymentStatus'] %}
-          <div class="error">{{ errors['medicalHistory.spouseEmploymentStatus'] }}</div>
-        {% endif %}
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="medicalHistory.physicianName" class="required">Physician Name</label>
-           <input type="text" id="medicalHistory.physicianName" name="medicalHistory[physicianName]" 
-             value="{{ application.data.medicalHistory.physicianName or '' }}" required>
-        {% if errors['medicalHistory.physicianName'] %}
-          <div class="error">{{ errors['medicalHistory.physicianName'] }}</div>
-        {% endif %}
-      </div>
-      
-      <div class="form-group">
         <label for="medicalHistory.physicianPhone" class="required">Physician Phone</label>
            <input type="tel" id="medicalHistory.physicianPhone" name="medicalHistory[physicianPhone]" 
              value="{{ application.data.medicalHistory.physicianPhone | phone }}" 
@@ -197,54 +145,6 @@
       </div>
     </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <label class="required">Have you applied for disability?</label>
-        <div class="segmented-control" id="appliedDisabilityControl">
-          <label><input type="radio" name="medicalHistory[appliedForDisability]" value="Yes" {% if application.data.medicalHistory.appliedForDisability == 'Yes' %}checked{% endif %} required> Yes</label>
-          <label><input type="radio" name="medicalHistory[appliedForDisability]" value="No" {% if application.data.medicalHistory.appliedForDisability == 'No' or not application.data.medicalHistory.appliedForDisability %}checked{% endif %} required> No</label>
-        </div>
-        {% if errors['medicalHistory.appliedForDisability'] %}
-          <div class="error">{{ errors['medicalHistory.appliedForDisability'] }}</div>
-        {% endif %}
-      </div>
-      <div class="form-group">
-        <label class="required">Do you receive benefits?</label>
-        <div class="segmented-control" id="receiveBenefitsControl">
-          <label><input type="radio" name="medicalHistory[receiveBenefits]" value="SSDI" {% if application.data.medicalHistory.receiveBenefits == 'SSDI' %}checked{% endif %} required> SSDI</label>
-          <label><input type="radio" name="medicalHistory[receiveBenefits]" value="SSI" {% if application.data.medicalHistory.receiveBenefits == 'SSI' %}checked{% endif %} required> SSI</label>
-          <label><input type="radio" name="medicalHistory[receiveBenefits]" value="No Benefits" {% if application.data.medicalHistory.receiveBenefits == 'No Benefits' or not application.data.medicalHistory.receiveBenefits %}checked{% endif %} required> No Benefits</label>
-        </div>
-        {% if errors['medicalHistory.receiveBenefits'] %}
-          <div class="error">{{ errors['medicalHistory.receiveBenefits'] }}</div>
-        {% endif %}
-        <div id="monthlyAmountGroup" style="margin-top:10px; display: {% if application.data.medicalHistory.receiveBenefits == 'SSDI' or application.data.medicalHistory.receiveBenefits == 'SSI' %}block{% else %}none{% endif %};">
-          <label for="medicalHistory.monthlyAmount">Monthly Amount (if receiving SSDI/SSI)</label>
-          <div style="position:relative;">
-            <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:#666; font-size:15px;">$</span>
-            <input type="number" id="medicalHistory.monthlyAmount" name="medicalHistory[monthlyAmount]" min="0" step="0.01" value="{{ application.data.medicalHistory.monthlyAmount or '' }}" style="padding-left:22px; width:90%;">
-          </div>
-          {% if errors['medicalHistory.monthlyAmount'] %}
-            <div class="error">{{ errors['medicalHistory.monthlyAmount'] }}</div>
-          {% endif %}
-        </div>
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            var radios = document.querySelectorAll('input[name="medicalHistory[receiveBenefits]"]');
-            var group = document.getElementById('monthlyAmountGroup');
-            radios.forEach(function(radio) {
-              radio.addEventListener('change', function() {
-                if (this.value === 'SSDI' || this.value === 'SSI') {
-                  group.style.display = 'block';
-                } else {
-                  group.style.display = 'none';
-                }
-              });
-            });
-          });
-        </script>
-      </div>
-    </div>
   </fieldset>
 
   <fieldset>
