@@ -35,7 +35,7 @@ test.describe('File Uploads', () => {
     await page.fill('input[name="applicant[zip]"]', '30306');
     await page.waitForTimeout(500);
     
-    await page.fill('input[name="request[assistanceFor]"]', 'Upload test');
+    await page.check('input[name="request[assistanceFor]"][value="Medical"]');
     await page.fill('input[name="request[approximateCost]"]', '250');
 
     await page.waitForTimeout(1000);
@@ -76,7 +76,7 @@ test.describe('File Uploads', () => {
     await page.fill('input[name="applicant[zip]"]', '30307');
     await page.waitForTimeout(500);
     
-    await page.fill('input[name="request[assistanceFor]"]', 'Size test');
+    await page.check('input[name="request[assistanceFor]"][value="Transportation"]');
     await page.fill('input[name="request[approximateCost]"]', '100');
 
     await page.waitForTimeout(1000);
@@ -114,7 +114,7 @@ test.describe('File Uploads', () => {
     await page.fill('input[name="applicant[zip]"]', '30308');
     await page.waitForTimeout(500);
     
-    await page.fill('input[name="request[assistanceFor]"]', 'Multi upload test');
+    await page.check('input[name="request[assistanceFor]"][value="Utilities"]');
     await page.fill('input[name="request[approximateCost]"]', '300');
 
     await page.waitForTimeout(1000);
@@ -157,7 +157,7 @@ test.describe('File Uploads', () => {
     await page.fill('input[name="applicant[zip]"]', '30309');
     await page.waitForTimeout(500);
     
-    await page.fill('input[name="request[assistanceFor]"]', 'Delete test');
+    await page.check('input[name="request[assistanceFor]"][value="Rent"]');
     await page.fill('input[name="request[approximateCost]"]', '150');
 
     await page.waitForTimeout(1000);
@@ -207,7 +207,7 @@ test.describe('File Uploads', () => {
     await page.fill('input[name="applicant[zip]"]', '30310');
     await page.waitForTimeout(500);
     
-    await page.fill('input[name="request[assistanceFor]"]', 'MIME test');
+    await page.check('input[name="request[assistanceFor]"][value="Medical"]');
     await page.fill('input[name="request[approximateCost]"]', '200');
 
     await page.waitForTimeout(1000);

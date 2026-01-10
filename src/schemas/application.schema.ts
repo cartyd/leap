@@ -27,7 +27,9 @@ export const guardianSchema = z.object({
 });
 
 export const requestSchema = z.object({
-  assistanceFor: z.string().min(1, 'Assistance type is required'),
+  assistanceFor: z.enum(['Medical', 'Rent', 'Utilities', 'Transportation'], {
+    errorMap: () => ({ message: 'Please select an assistance type' }),
+  }),
   approximateCost: currencySchema,
 });
 

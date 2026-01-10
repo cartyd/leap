@@ -427,7 +427,7 @@ describe('Submit Application Schema Validation', () => {
       county: 'Fulton',
     },
     request: {
-      assistanceFor: 'Medical Bills',
+      assistanceFor: 'Medical',
       approximateCost: 5000,
     },
     medicalHistory: {

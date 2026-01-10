@@ -29,7 +29,7 @@ test.describe('Emergency Assistance Fund Application', () => {
     await page.fill('input[name="applicant[phoneCell]"]', '404-555-5678');
 
     // Fill request information
-    await page.fill('input[name="request[assistanceFor]"]', 'Medical bills and prescription medications');
+    await page.check('input[name="request[assistanceFor]"][value="Medical"]');
     await page.fill('input[name="request[approximateCost]"]', '2500.00');
 
     // Wait for auto-save (optional, but good practice)
@@ -193,7 +193,7 @@ test.describe('Emergency Assistance Fund Application', () => {
     await page.fill('input[name="applicant[state]"]', 'GA');
     await page.fill('input[name="applicant[zip]"]', '30301');
     await page.fill('input[name="applicant[county]"]', 'Fulton');
-    await page.fill('input[name="request[assistanceFor]"]', 'Medical');
+    await page.check('input[name="request[assistanceFor]"][value="Medical"]');
     await page.fill('input[name="request[approximateCost]"]', '1000');
 
     await page.click('button:has-text("Continue to Step 2")');
@@ -226,7 +226,7 @@ test.describe('Emergency Assistance Fund Application', () => {
     await page.fill('input[name="applicant[state]"]', 'GA');
     await page.fill('input[name="applicant[zip]"]', '30302');
     await page.fill('input[name="applicant[county]"]', 'DeKalb');
-    await page.fill('input[name="request[assistanceFor]"]', 'Test request');
+    await page.check('input[name="request[assistanceFor]"][value="Utilities"]');
     await page.fill('input[name="request[approximateCost]"]', '500');
 
     await page.waitForTimeout(1000);

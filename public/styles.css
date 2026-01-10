@@ -22,6 +22,56 @@
   border: 1px dashed #bbb;
   cursor: not-allowed;
 }
+
+/* Segmented Control */
+.segmented-control {
+  display: inline-flex;
+  border: 2px solid #490075;
+  border-radius: 6px;
+  overflow: hidden;
+  background: white;
+}
+
+.segmented-control input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.segmented-control label {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-right: 1px solid #490075;
+  background: white;
+  color: #490075;
+  text-align: center;
+  min-width: 100px;
+}
+
+.segmented-control label:last-of-type {
+  border-right: none;
+}
+
+.segmented-control label:hover {
+  background: #f5f0f8;
+}
+
+.segmented-control input[type="radio"]:checked + label {
+  background: #490075;
+  color: white;
+  font-weight: 600;
+}
+
+.segmented-control input[type="radio"]:focus + label {
+  outline: 2px solid #490075;
+  outline-offset: -2px;
+}
 /* Reset and Base Styles */
 * {
   box-sizing: border-box;

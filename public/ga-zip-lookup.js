@@ -1,6 +1,8 @@
 // Georgia ZIP code lookup and auto-population
 (function() {
   let gaZipData = {};
+  let dataLoaded = false;
+  let pendingValidation = null;
   
   // Load GA ZIP code data
   fetch('/public/ga-zip-codes.json')
@@ -13,10 +15,18 @@
           county: item.county
         };
       });
+      dataLoaded = true;
       console.log('Loaded', Object.keys(gaZipData).length, 'GA ZIP codes');
+      
+      // If there was a pending validation (from page load), run it now
+      if (pendingValidation) {
+        pendingValidation();
+        pendingValidation = null;
+      }
     })
     .catch(error => {
       console.error('Failed to load GA ZIP codes:', error);
+      dataLoaded = true; // Mark as loaded even on error to prevent hanging
     });
   
   // Function to lookup and populate city, state, county from ZIP
@@ -125,7 +135,12 @@
     
     // On page load, if ZIP is already filled, populate the fields
     if (zipInput.value && zipInput.value.length === 5) {
-      validateAndPopulate();
+      if (dataLoaded) {
+        validateAndPopulate();
+      } else {
+        // Queue validation to run once data is loaded
+        pendingValidation = validateAndPopulate;
+      }
     }
   });
 })();

@@ -81,7 +81,7 @@ test.describe('Admin Panel', () => {
     await expect(page.locator('input[name="applicant[state]"]')).toHaveValue('GA');
     await expect(page.locator('input[name="applicant[county]"]')).toHaveValue('Fulton');
     
-    await page.fill('input[name="request[assistanceFor]"]', 'Reset test');
+    await page.check('input[name="request[assistanceFor]"][value="Rent"]');
     await page.fill('input[name="request[approximateCost]"]', '500');
     
     await page.waitForTimeout(1000);

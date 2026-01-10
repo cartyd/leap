@@ -32,7 +32,7 @@
           'applicant[state]': 'GA',
           'applicant[zip]': '30301',
           'applicant[county]': 'Fulton',
-          'request[assistanceFor]': 'Prescription Medication',
+          'request[assistanceFor]': 'Medical',
           'request[approximateCost]': '145',
           // Add more fields as needed
         };
@@ -205,9 +205,24 @@
     <legend>Request Information</legend>
     
     <div class="form-group">
-      <label for="request.assistanceFor" class="required">Requesting Assistance For</label>
-      <input type="text" id="request.assistanceFor" name="request[assistanceFor]" 
-             value="{{ application.data.request.assistanceFor or '' }}" required>
+      <label class="required" style="margin-bottom: 10px;">Requesting Assistance For</label>
+      <div class="segmented-control">
+        <input type="radio" id="assistance-medical" name="request[assistanceFor]" value="Medical" 
+               {% if application.data.request.assistanceFor == 'Medical' %}checked{% endif %} required>
+        <label for="assistance-medical">Medical</label>
+        
+        <input type="radio" id="assistance-rent" name="request[assistanceFor]" value="Rent" 
+               {% if application.data.request.assistanceFor == 'Rent' %}checked{% endif %} required>
+        <label for="assistance-rent">Rent</label>
+        
+        <input type="radio" id="assistance-utilities" name="request[assistanceFor]" value="Utilities" 
+               {% if application.data.request.assistanceFor == 'Utilities' %}checked{% endif %} required>
+        <label for="assistance-utilities">Utilities</label>
+        
+        <input type="radio" id="assistance-transportation" name="request[assistanceFor]" value="Transportation" 
+               {% if application.data.request.assistanceFor == 'Transportation' %}checked{% endif %} required>
+        <label for="assistance-transportation">Transportation</label>
+      </div>
       {% if errors['request.assistanceFor'] %}
         <div class="error">{{ errors['request.assistanceFor'] }}</div>
       {% endif %}
