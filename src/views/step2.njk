@@ -123,13 +123,11 @@
     </div>
     <div class="form-row">
       <div class="form-group">
-        <label class="required">Currently Employed</label>
-        <div class="segmented-control" id="currentlyEmployedControl">
-          <label><input type="radio" name="medicalHistory[currentlyEmployed]" value="Yes" {% if application.data.medicalHistory.currentlyEmployed == 'Yes' %}checked{% endif %} required> Yes</label>
-          <label><input type="radio" name="medicalHistory[currentlyEmployed]" value="No" {% if application.data.medicalHistory.currentlyEmployed == 'No' or not application.data.medicalHistory.currentlyEmployed %}checked{% endif %} required> No</label>
-        </div>
-        {% if errors['medicalHistory.currentlyEmployed'] %}
-          <div class="error">{{ errors['medicalHistory.currentlyEmployed'] }}</div>
+        <label for="medicalHistory.physicianName" class="required">Physician Name</label>
+           <input type="text" id="medicalHistory.physicianName" name="medicalHistory[physicianName]" 
+             value="{{ application.data.medicalHistory.physicianName or '' }}" required>
+        {% if errors['medicalHistory.physicianName'] %}
+          <div class="error">{{ errors['medicalHistory.physicianName'] }}</div>
         {% endif %}
       </div>
       <div class="form-group">
@@ -282,17 +280,7 @@
 </style>
 <script>
   // Show/hide conditional fields for private insurance and copay
-  function updateEmploymentStatusRequired() {
-    var employedYes = document.querySelector('input[name="medicalHistory[currentlyEmployed]"][value="Yes"]');
-    var statusRadios = document.querySelectorAll('input[name="medicalHistory[employmentStatus]"]');
-    var require = employedYes && employedYes.checked;
-    statusRadios.forEach(function(radio){
-      radio.required = require;
-      if (!require) {
-        radio.checked = false;
-      }
-    });
-  }
+  // No employment controls on Step 2
 
   function updatePrivateInsuranceGroup() {
     var priv = document.getElementById('privateInsuranceNameGroup');
@@ -330,11 +318,7 @@
   document.querySelectorAll('input[name="medicalCoverage[hasInsurance]"]').forEach(function(radio) {
     radio.addEventListener('change', updateCoverageTypeEnabled);
   });
-  document.querySelectorAll('input[name="medicalHistory[currentlyEmployed]"]').forEach(function(radio) {
-    radio.addEventListener('change', updateEmploymentStatusRequired);
-  });
   // Initial state
-  updateEmploymentStatusRequired();
   updateCoverageTypeEnabled();
   updateCopayGroup();
 </script>
